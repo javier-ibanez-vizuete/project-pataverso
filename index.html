@@ -42,22 +42,22 @@
             <h2 class="title-login-screen">PataVerso</h2>
 
             <div class="btns-select-forms-container">
-                <button class="btn-open-login-form btn-login-screen">INICIAR SESIÓN</button>
-                <button class="btn-open-register-form btn-login-screen selected-btn-form">REGISTRARSE</button>
+                <button class="btn-open-login-form btn-login-screen selected-btn-form">INICIAR SESIÓN</button>
+                <button class="btn-open-register-form btn-login-screen">REGISTRARSE</button>
             </div>
 
             <div class="forms-container">
-                <form action="#" method="get" class="form-login-user">
+                <form action="#" method="get" class="form-login-user selected-login-form">
                     <div class="email-login-container">
                         <label for="input-email-login-form" class="label-email-login-form">EMAIL</label>
                         <input type="email" name="input-email-login-form" id="input-email-login-form"
-                            class="input-email-login-form" required>
+                            class="input-email-login-form" placeholder="Introducir Correo eléctronico..." required>
                     </div>
 
                     <div class="password-login-container">
                         <label for="input-password-login-form" class="label-password-login-form">CONTRASEÑA</label>
                         <input type="password" name="input-password-login-form" id="input-password-login-form"
-                            class="input-password-login-form" required>
+                            class="input-password-login-form" placeholder="Introducir Contraseña..." required>
                     </div>
 
                     <button class="btn-submit-login btn-style">INICIAR SESIÓN</button>
@@ -69,24 +69,24 @@
                     </small>
                 </form>
 
-                <form action="#" method="get" class="form-register-user selected-login-form">
+                <form action="#" method="get" class="form-register-user">
                     <div class="name-register-container">
                         <label for="input-name-register-form" class="label-name-register-form">NOMBRE</label>
                         <input type="text" name="input-name-register-form" id="input-name-register-form"
-                            class="input-name-register-form" minlength="2" maxlength="16" required>
+                            class="input-name-register-form" minlength="2" maxlength="16" placeholder="Introducir Nombre..." required>
                     </div>
 
                     <div class="email-register-container">
                         <label for="input-email-register-form" class="label-email-register-form">EMAIL</label>
                         <input type="email" name="input-email-register-form" id="input-email-register-form"
-                            class="input-email-register-form" required>
+                            class="input-email-register-form" placeholder="Introducir Correo eléctronico..." required>
                     </div>
 
                     <div class="password-register-container">
                         <label for="input-password-register-form"
                             class="label-password-register-form">CONTRASEÑA</label>
                         <input type="password" name="input-password-register-form" id="input-password-register-form"
-                            class="input-password-register-form" minlength="8" maxlength="20" required>
+                            class="input-password-register-form" minlength="8" maxlength="20" placeholder="Introducir Contraseña..." required>
                     </div>
 
                     <div class="checkbox-newsletter-container">
@@ -105,7 +105,8 @@
 
     <header id="header" class="dont-show">
         <!-- boton para limpiar el storage -->
-<button class="clear-storage">BORRAR LOCAL STORAGE</button>
+        <button class="clear-storage">BORRAR LOCAL STORAGE</button>
+        <button class="cerrar-sesion">CERRAR SESION</button>
         <!-- boton para limpiar el storage -->
 
         <div class="header-container container">

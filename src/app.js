@@ -1,5 +1,6 @@
 import { loginScreenLauncher } from "./components/login-screen.js";
 import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
+import { sendingAFetch } from "./utils/fetchs.js";
 
 export let sesionIsOpen = false;
 
@@ -9,40 +10,30 @@ if (getDataFromStorage("sesionIsOpen")) {
 	saveDataInStorage("sesionIsOpen", sesionIsOpen);
 }
 
-export const USERS_DATA = [];
+export const USERS_DATA = [
+	{ nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true },
+];
 
 if (getDataFromStorage("usersData")) {
-	USERS_DATA.push(getDataFromStorage("usersData"))
+	USERS_DATA.push(getDataFromStorage("usersData"));
 }
 if (!getDataFromStorage("usersData")) {
 	saveDataInStorage("usersData", USERS_DATA);
 }
 
-const sendingAFetch = async () => {
-	try {
-		const response = await fetch("https://huachitos.cl/api/animales");
-		if (!response.ok) {
-			throw new Error("NEW ERROR");
-		}
-		const data = await response.json();
-		const animales = data.data;
-		animales.forEach((animal) => {
-			// console.log(animal.tipo);
-		});
-	} catch (error) {
-		// console.log("error.message", error);
-	}
-};
-
 sendingAFetch();
-
 
 document.addEventListener("DOMContentLoaded", () => {
 	const btnClearStorage = document.querySelector(".clear-storage");
+	const btnCloseProfile = document.querySelector(".cerrar-sesion");
 
 	btnClearStorage.addEventListener("click", () => {
 		localStorage.clear();
 		window.location.reload();
+	});
+	btnCloseProfile.addEventListener("click", () => {
+		saveDataInStorage("sesionIsOpen", false);
+		loginScreenLauncher();
 	})
 	loginScreenLauncher();
-})
+});
