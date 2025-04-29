@@ -20,15 +20,120 @@
     <meta name="twitter:site" content="@eljaviersiclaro">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="shortcut icon" href="media/logos/amazon-favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/styles/index.css"/>
+    <link rel="shortcut icon" href="media/favicon-pataverso.png" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/index.css" />
 
     <script src="/src/app.js" defer type="module"></script>
     <title>Pataverso.com | Home Page</title>
 </head>
 
 <body>
-    <h1>Pataverso</h1>
+    <div class="login-section-bg">
+        <section class="login-section-container">
+            <div class="login-section-logo-container">
+                <picture>
+                    <source srcset="/media/logos/logo-pataverso-200w.avif" type="image/avif">
+                    <source srcset="/media/logos/logo-pataverso-200w.webp" type="image/webp">
+                    <source srcset="/media/logos/logo-pataverso-200w.png" type="image/png">
+                    <img src="/media/logos/logo-pataverso.png" alt="Pataverso logo">
+                </picture>
+            </div>
+
+            <div class="btns-select-forms-container">
+                <button class="btn-open-login-form">INICIAR SESION</button>
+                <button class="btn-open-register-form">REGISTRARSE</button>
+            </div>
+
+            <div class="forms-container">
+                <form action="#" method="get" class="form-login-user">
+                    <div class="email-login-container">
+                        <label for="input-email-login-form" class="label-email-login-form">EMAIL:</label>
+                        <input type="email" name="input-email-login-form" id="input-email-login-form"
+                            class="input-email-login-form" required>
+                    </div>
+
+                    <div class="password-login-container">
+                        <label for="input-password-login-form" class="label-password-login-form">CONTRASEÑA:</label>
+                        <input type="password" name="input-password-login-form" id="input-password-login-form"
+                            class="input-password-login-form" required>
+                    </div>
+
+                    <small class="small-privacy-policy-terms">
+                        Al hacer Click en Iniciar sesión aceptas nuestros
+                        <a href="#" target="_blank" rel="noopener noreferrer">Terminos de servicio</a>
+                        y nuestra
+                        <a href="#" target="_blank" rel="noopener noreferrer">Politica de privacidad.</a>
+                    </small>
+                    <button class="btn-submit-login">INICIAR SESIÓN</button>
+                </form>
+
+                <form action="#" method="get" class="form-register-user">
+                    <div class="name-register-container">
+                        <label for="input-name-register-form" class="label-name-register-form">NOMBRE:</label>
+                        <input type="text" name="input-name-register-form" id="input-name-register-form"
+                            class="input-name-register-form" minlength="2" maxlength="16" required>
+                    </div>
+
+                    <div class="email-register-container">
+                        <label for="input-email-register-form" class="label-email-register-form">EMAIL:</label>
+                        <input type="email" name="input-email-register-form" id="input-email-register-form"
+                            class="input-email-register-form" required>
+                    </div>
+
+                    <div class="password-register-container">
+                        <label for="input-password-register-form"
+                            class="label-password-register-form">CONTRASEÑA:</label>
+                        <input type="password" name="input-password-register-form" id="input-password-register-form"
+                            class="input-password-register-form" required>
+                    </div>
+
+                    <div class="checkbox-newsletter-container">
+                        <input type="checkbox" name="input-checkbox-register-form" id="input-checkbox-register-form" class="input-checkbox-register-form" required>
+                        <label for="input-checkbox-register-form" class="label-checkbox-register-form">Deseo recibir noticias sobre las novedades en Pataverso.com</label>
+                    </div>
+
+                    <button class="btn-submit-register">REGISTRARSE</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- <header id="header">
+        <div class="header-container container">
+            <div class="logo-header-container">
+                <div class="logo-image-container">
+                    <picture>
+                        <source srcset="/media/logos/logo-pataverso-200w.avif" type="image/avif">
+                        <source srcset="/media/logos/logo-pataverso-200w.webp" type="image/webp">
+                        <source srcset="/media/logos/logo-pataverso-200w.png" type="image/png">
+                        <img src="/media/logos/logo-pataverso.png" alt="Pataverso Logo">
+                    </picture>
+                </div>
+                <h4 class="header-title">PATAVERSO.COM</h4>
+            </div>
+
+            <div class="image-burger-menu-container">
+                <picture>
+                    <source srcset="/media/icons/icon-dog-footprint-200w.avif" type="image/avif">
+                    <source srcset="/media/icons/icon-dog-footprint-200w.webp" type="image/webp">
+                    <source srcset="/media/icons/icon-dog-footprint-200w.png" type="image/png">
+                    <img src="/media/icons/icon-dog-footprint.png" alt="icon of a dog footprint">
+                </picture>
+            </div>
+
+            <nav id="mobile-navigator">
+                <a href="#" class="perrichuchos-nav-container">
+                    <p>PERRICHUCHOS</p>
+                </a>
+                <a href="#" class="gaticornios-nav-container"></a>
+                <a href="#" class="conejaurios-nav-container"></a>
+                <div class="aves-nav-container"></div>
+                <a href="#" class="pataamigos-rescued-container"></a>
+            </nav>
+        </div>
+    </header>
+    <main id="main"></main>
+    <footer id="footer"></footer> -->
 </body>
 
 </html>

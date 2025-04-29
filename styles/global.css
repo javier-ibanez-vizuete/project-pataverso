@@ -124,3 +124,25 @@ img {
 	width: var(--container-width);
 	margin: 0 auto;
 }
+
+/* ----LOGIN SECTION------ */
+.login-section-bg {
+	display: flex;
+	justify-content: center;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	padding: var(--spacing-lg);
+	background-color: #AA4465;
+}
+
+.login-section-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	background-color: purple;
+}
