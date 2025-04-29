@@ -39,60 +39,64 @@
                 </picture>
             </div>
 
+            <h2 class="title-login-screen">PataVerso</h2>
+
             <div class="btns-select-forms-container">
-                <button class="btn-open-login-form">INICIAR SESION</button>
-                <button class="btn-open-register-form">REGISTRARSE</button>
+                <button class="btn-open-login-form btn-login-screen">INICIAR SESIÓN</button>
+                <button class="btn-open-register-form btn-login-screen selected-btn-form">REGISTRARSE</button>
             </div>
 
             <div class="forms-container">
                 <form action="#" method="get" class="form-login-user">
                     <div class="email-login-container">
-                        <label for="input-email-login-form" class="label-email-login-form">EMAIL:</label>
+                        <label for="input-email-login-form" class="label-email-login-form">EMAIL</label>
                         <input type="email" name="input-email-login-form" id="input-email-login-form"
                             class="input-email-login-form" required>
                     </div>
 
                     <div class="password-login-container">
-                        <label for="input-password-login-form" class="label-password-login-form">CONTRASEÑA:</label>
+                        <label for="input-password-login-form" class="label-password-login-form">CONTRASEÑA</label>
                         <input type="password" name="input-password-login-form" id="input-password-login-form"
                             class="input-password-login-form" required>
                     </div>
 
+                    <button class="btn-submit-login btn-style">INICIAR SESIÓN</button>
                     <small class="small-privacy-policy-terms">
-                        Al hacer Click en Iniciar sesión aceptas nuestros
+                        Al hacer Click en 'INICIAR SESIÓN' aceptas nuestros
                         <a href="#" target="_blank" rel="noopener noreferrer">Terminos de servicio</a>
                         y nuestra
                         <a href="#" target="_blank" rel="noopener noreferrer">Politica de privacidad.</a>
                     </small>
-                    <button class="btn-submit-login">INICIAR SESIÓN</button>
                 </form>
 
-                <form action="#" method="get" class="form-register-user">
+                <form action="#" method="get" class="form-register-user selected-login-form">
                     <div class="name-register-container">
-                        <label for="input-name-register-form" class="label-name-register-form">NOMBRE:</label>
+                        <label for="input-name-register-form" class="label-name-register-form">NOMBRE</label>
                         <input type="text" name="input-name-register-form" id="input-name-register-form"
                             class="input-name-register-form" minlength="2" maxlength="16" required>
                     </div>
 
                     <div class="email-register-container">
-                        <label for="input-email-register-form" class="label-email-register-form">EMAIL:</label>
+                        <label for="input-email-register-form" class="label-email-register-form">EMAIL</label>
                         <input type="email" name="input-email-register-form" id="input-email-register-form"
                             class="input-email-register-form" required>
                     </div>
 
                     <div class="password-register-container">
                         <label for="input-password-register-form"
-                            class="label-password-register-form">CONTRASEÑA:</label>
+                            class="label-password-register-form">CONTRASEÑA</label>
                         <input type="password" name="input-password-register-form" id="input-password-register-form"
                             class="input-password-register-form" required>
                     </div>
 
                     <div class="checkbox-newsletter-container">
-                        <input type="checkbox" name="input-checkbox-register-form" id="input-checkbox-register-form" class="input-checkbox-register-form" required>
-                        <label for="input-checkbox-register-form" class="label-checkbox-register-form">Deseo recibir noticias sobre las novedades en Pataverso.com</label>
+                        <input type="checkbox" name="input-checkbox-register-form" id="input-checkbox-register-form"
+                            class="input-checkbox-register-form" required>
+                        <label for="input-checkbox-register-form" class="label-checkbox-register-form">Deseo recibir
+                            noticias sobre las novedades en <a href="https:pataverso.netlify.app" target="_blank" rel="noopener noreferrer">Pataverso.com</a></label>
                     </div>
 
-                    <button class="btn-submit-register">REGISTRARSE</button>
+                    <button class="btn-submit-register btn-style">REGISTRARSE</button>
                 </form>
             </div>
         </section>
