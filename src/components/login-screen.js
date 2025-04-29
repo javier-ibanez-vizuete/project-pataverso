@@ -2,7 +2,7 @@ import { sesionIsOpen, USERS_DATA } from "../app.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 const verificationUser = async (newUser) => {
 	const users = await getDataFromStorage("usersData");
-	const userDuplicate = users.find((user) => user.email === newUser.email);
+	const userDuplicate = users.some((user) => user.email === newUser.email);
 
 	if (userDuplicate) {
 		return alert("El correo electronico introducido ya esta registrado");
