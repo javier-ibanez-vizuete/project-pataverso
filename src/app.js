@@ -1,4 +1,22 @@
 import { loginScreenLauncher } from "./components/login-screen.js";
+import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
+
+export let sesionIsOpen = false;
+
+if (getDataFromStorage("sesionIsOpen")) {
+	sesionIsOpen = getDataFromStorage("sesionIsOpen");
+} else {
+	saveDataInStorage("sesionIsOpen", sesionIsOpen);
+}
+
+export const USERS_DATA = [];
+
+if (getDataFromStorage("usersData")) {
+	USERS_DATA.push(getDataFromStorage("usersData"))
+}
+if (!getDataFromStorage("usersData")) {
+	saveDataInStorage("usersData", USERS_DATA);
+}
 
 const sendingAFetch = async () => {
 	try {
@@ -20,5 +38,11 @@ sendingAFetch();
 
 
 document.addEventListener("DOMContentLoaded", () => {
+	const btnClearStorage = document.querySelector(".clear-storage");
+
+	btnClearStorage.addEventListener("click", () => {
+		localStorage.clear();
+		window.location.reload();
+	})
 	loginScreenLauncher();
 })

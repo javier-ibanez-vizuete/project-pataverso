@@ -5,7 +5,7 @@ export const getDataFromStorage = (key) => {
 
 	try {
 		const parsed = JSON.parse(data);
-		if (typeof parsed === "object" && parsed !== null) {
+		if (typeof parsed === "object" && parsed !== null || typeof parsed === "boolean" && parsed !== null) {
 			return parsed; // SI ES UN OBJETO/ARRAY RETURNA EL MISMO (OBJETO/ARRAY)
 		}
 		return data; // POR SI ACASO 'NO DEBERIA DE SER USADO'

@@ -158,12 +158,17 @@ a:hover {
 	margin: 0 auto;
 }
 
+.dont-show {
+	display: none !important;
+}
+
+
 /* ----LOGIN SECTION------ */
 .login-section-bg {
 	display: flex;
 	justify-content: center;
 
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -172,6 +177,10 @@ a:hover {
 	padding: var(--spacing-lg);
 	background-color: var(--bg-color);
 }
+
+/* .sesion-open-login-screen {
+	display: none;
+	} */
 
 .login-section-container {
 	display: flex;

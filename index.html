@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -86,14 +86,15 @@
                         <label for="input-password-register-form"
                             class="label-password-register-form">CONTRASEÑA</label>
                         <input type="password" name="input-password-register-form" id="input-password-register-form"
-                            class="input-password-register-form" required>
+                            class="input-password-register-form" minlength="8" maxlength="20" required>
                     </div>
 
                     <div class="checkbox-newsletter-container">
                         <input type="checkbox" name="input-checkbox-register-form" id="input-checkbox-register-form"
-                            class="input-checkbox-register-form" required>
+                            class="input-checkbox-register-form">
                         <label for="input-checkbox-register-form" class="label-checkbox-register-form">Deseo recibir
-                            noticias sobre las novedades en <a href="/index.html" target="_blank" rel="noopener noreferrer">Pataverso.com</a></label>
+                            noticias sobre las novedades en <a href="/index.html" target="_blank"
+                                rel="noopener noreferrer">Pataverso.com</a></label>
                     </div>
 
                     <button class="btn-submit-register btn-style">REGISTRARSE</button>
@@ -102,7 +103,11 @@
         </section>
     </div>
 
-    <!-- <header id="header">
+    <header id="header" class="dont-show">
+        <!-- boton para limpiar el storage -->
+<button class="clear-storage">BORRAR LOCAL STORAGE</button>
+        <!-- boton para limpiar el storage -->
+
         <div class="header-container container">
             <div class="logo-header-container">
                 <div class="logo-image-container">
@@ -136,8 +141,8 @@
             </nav>
         </div>
     </header>
-    <main id="main"></main>
-    <footer id="footer"></footer> -->
+    <main id="main" class="dont-show"></main>
+    <footer id="footer" class="dont-show"></footer>
 </body>
 
 </html>
