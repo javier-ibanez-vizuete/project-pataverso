@@ -1,18 +1,16 @@
 import { sesionIsOpen, USERS_DATA } from "../app.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 const verificationUser = async (newUser) => {
-	console.log("Registrando al usuario =>", newUser);
 	const users = await getDataFromStorage("usersData");
-	console.log("que vale users", users);
-	const userDuplicate = USERS_DATA.some((user) => user.email === newUser.email);
+	const userDuplicate = users.find((user) => user.email === newUser.email);
+
 	if (userDuplicate) {
 		return alert("El correo electronico introducido ya esta registrado");
 	}
 	if (!userDuplicate) {
 		USERS_DATA.push(newUser);
-		saveDataInStorage("usersData");
+		saveDataInStorage("usersData", USERS_DATA);
 		saveDataInStorage("sesionIsOpen", true);
-		console.log("que vale sesion is open tras crear usuario", sesionIsOpen);
 		handleSeason();
 	}
 };
@@ -41,17 +39,7 @@ const createUser = () => {
 		password: userPassword.value.trim(),
 		allowToNewsLetter: checkboxNewsLetter.checked,
 	};
-	// console.log("Que vale userdata en local => ", getDataFromStorage("usersData"));
-	if (!getDataFromStorage("usersData") || getDataFromStorage("usersData") === undefined) {
-		saveDataInStorage("usersData", [newUser]);
-		// console.log(
-		// 	"NO habia usuario en el local estorage y ahora vale usersData => ",
-		// 	getDataFromStorage("usersData")
-		// );
-	} else {
-		// console.log("Si habian datos de usuarios asi que entro en la funcion para verificar usuarios");
-		verificationUser(newUser);
-	}
+	verificationUser(newUser);
 };
 
 const handleRegisterForm = () => {
@@ -65,12 +53,7 @@ const handleRegisterForm = () => {
 };
 const validationLogin = (userForLogin) => {
 	const usersRegistered = getDataFromStorage("usersData");
-	// console.log("Usuarios en local storage", usersRegistered);
 	const correctLogin = usersRegistered.find((user) => {
-		console.log("email en nube => ", user.email);
-		console.log("email en input => ", userForLogin.email);
-		console.log("Contraseña en nube => ", user.password);
-		console.log("Contraseña en input => ", userForLogin.password);
 		const email = user.email === userForLogin.email;
 		const password = user.password === userForLogin.password;
 		return email && password;
@@ -152,7 +135,7 @@ const handleSeason = async (user) => {
 		header.classList.remove("dont-show");
 		main.classList.remove("dont-show");
 		footer.classList.remove("dont-show");
-		renderAnimals();
+		// renderAnimals();
 	} else {
 		console.log("SESION CERRADA");
 		loginPage.classList.remove("dont-show");

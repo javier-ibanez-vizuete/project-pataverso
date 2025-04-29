@@ -10,16 +10,18 @@ if (getDataFromStorage("sesionIsOpen")) {
 	saveDataInStorage("sesionIsOpen", sesionIsOpen);
 }
 
-export const USERS_DATA = [
+export let USERS_DATA = [
 	{ nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true },
 ];
 
 if (getDataFromStorage("usersData")) {
-	USERS_DATA.push(getDataFromStorage("usersData"));
+	USERS_DATA = getDataFromStorage("usersData");
 }
 if (!getDataFromStorage("usersData")) {
 	saveDataInStorage("usersData", USERS_DATA);
 }
+
+console.log("Que tengo en el local usersData ", getDataFromStorage("usersData"));
 
 sendingAFetch();
 
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 	btnCloseProfile.addEventListener("click", () => {
 		saveDataInStorage("sesionIsOpen", false);
-		loginScreenLauncher();
+		window.location.reload();
 	})
 	loginScreenLauncher();
 });
