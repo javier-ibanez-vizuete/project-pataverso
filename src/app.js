@@ -1,3 +1,4 @@
+import { loginScreenLauncher } from "./components/login-screen.js";
 
 const sendingAFetch = async () => {
 	try {
@@ -8,13 +9,16 @@ const sendingAFetch = async () => {
 		const data = await response.json();
 		const animales = data.data;
 		animales.forEach((animal) => {
-			console.log(animal.tipo);
+			// console.log(animal.tipo);
 		});
 	} catch (error) {
-		console.log("error.message", error);
+		// console.log("error.message", error);
 	}
 };
 
 sendingAFetch();
 
-console.log("hola");
+
+document.addEventListener("DOMContentLoaded", () => {
+	loginScreenLauncher();
+})
