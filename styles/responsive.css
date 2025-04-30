@@ -64,7 +64,20 @@
 
 	#desktop-navigator a {
 		flex: 1;
+
+        color: var(--primary-text-color);
 	}
+
+    #desktop-navigator .cerrar-sesion {
+        flex-direction: column;
+        gap: 0;
+
+        color: var(--primary-text-color);
+    }
+
+    #desktop-navigator .logout-image-container {
+        width: 60px;
+    }
 }
 
 @media (min-width: 1440px) {
