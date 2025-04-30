@@ -1,4 +1,5 @@
 import { loginScreenLauncher } from "./components/login-screen.js";
+import { openMobileNav } from "./helpers/buttons-nav.js";
 import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
 import { sendingAFetch } from "./utils/fetchs.js";
 
@@ -40,4 +41,5 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 	loginScreenLauncher();
+	openMobileNav();
 });

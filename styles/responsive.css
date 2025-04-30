@@ -18,13 +18,18 @@
 		--container-width: 90%;
 	}
 
+	a:hover {
+		text-decoration-line: underline;
+		text-underline-offset: 2px;
+	}
+
 	.not-on-desktop {
 		display: none;
 	}
 
-    .only-on-desktop {
-        display: flex;
-    }
+	.only-on-desktop {
+		display: flex;
+	}
 
 	/* ----LOGIN SECTION------ */
 	.login-section-container {
@@ -49,18 +54,17 @@
 		animation: walk 24s linear forwards infinite;
 	}
 
-    /* ------ header ------- */
+	/* ------ header ------- */
 
-    #desktop-navigator {
-        justify-content: flex-end;
-        align-items: center;
-        gap: 0.5rem;
-    }
+	#desktop-navigator {
+		justify-content: flex-end;
+		align-items: center;
+		gap: 0.5rem;
+	}
 
-    #desktop-navigator a {
-        flex: 1;
-    }
-
+	#desktop-navigator a {
+		flex: 1;
+	}
 }
 
 @media (min-width: 1440px) {
