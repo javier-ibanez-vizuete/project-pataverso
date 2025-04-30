@@ -19,6 +19,15 @@ await sendingAFetch(animal);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
+
+    btnCloseProfile.forEach((btn) => {
+		btn.addEventListener("click", () => {
+			saveDataInStorage("sesionIsOpen", false);
+            window.location.href = "/index.html";
+		});
+	});
+    
     renderAnimal(animal);
     linksInteraction();
     openMobileNav();
