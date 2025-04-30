@@ -57,6 +57,10 @@ input {
 	padding: var(--spacing-xs);
 }
 
+body, .body-container {
+	height: 100%;
+}
+
 :root {
 	--bg-color: #e0b7b7;
 	--accent-bg-color: #aa4465;
@@ -172,6 +176,11 @@ button:hover {
 
 .only-on-desktop {
 	display: none;
+}
+
+.body-container {
+	display: flex;
+	flex-direction: column;
 }
 
 /* ----LOGIN SECTION------ */
@@ -350,7 +359,6 @@ button:hover {
 	gap: 1rem;
 }
 
-
 .logo-image-container {
 	width: 80px;
 }
@@ -415,7 +423,8 @@ button:hover {
 .perrichuchos-nav-container,
 .gaticornios-nav-container,
 .conejaurios-nav-container,
-.cerrar-sesion, .pataamigos-rescued-container {
+.cerrar-sesion,
+.pataamigos-rescued-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -478,4 +487,49 @@ button:hover {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+/* ------ main ------- */
+#main {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+
+	background-color: var(--bg-color);
+	padding: var(--spacing-2xl) 0;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: column;
+
+	gap: 2rem;
+}
+
+.image-homepage-container {
+	align-self: center;
+
+	height: 250px;
+	width: 250px;
+	background-color: var(--accent-bg-color);
+	padding: var(--spacing-md);
+	border-radius: 50%;
+}
+
+.image-homepage-container,
+.image-homepage-container picture {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.welcome-message-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+/* ----- footer ----- */
+#footer {
+	background-color: var(--accent-bg-color);
 }
