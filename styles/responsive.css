@@ -5,10 +5,10 @@
 	:root {
 		--font-size-html: 16px;
 
-		--spacing-xs: 6px;
-		--spacing-sm: 10px;
-		--spacing-md: 14px;
-		--spacing-lg: 18px;
+		--spacing-xs: 4px;
+		--spacing-sm: 8px;
+		--spacing-md: 12px;
+		--spacing-lg: 16px;
 		--spacing-2xl: 40px;
 		--spacing-4xl: 68px;
 
@@ -17,15 +17,33 @@
 
 		--container-width: 90%;
 	}
-}
 
-/* ----LOGIN SECTION------ */
-.login-section-container {
-	max-width: 620px;
+	/* ----LOGIN SECTION------ */
+	.login-section-container {
+		max-width: 620px;
+	}
+
+	.login-section-logo-container {
+		width: 140px;
+	}
+
+	@keyframes walk {
+		0% {
+			transform: translateX(-140px);
+		}
+		100% {
+			transform: translateX(2000px);
+		}
+	}
+
+	.walking-dog-gif-container {
+		width: 100px;
+		animation: walk 24s linear forwards infinite;
+	}
 }
 
 @media (min-width: 1440px) {
-    :root {
+	:root {
 		--font-size-html: 17px;
 
 		--spacing-xs: 8px;
@@ -40,5 +58,4 @@
 
 		--container-width: 85%;
 	}
-
 }

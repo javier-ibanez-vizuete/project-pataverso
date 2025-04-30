@@ -192,7 +192,7 @@ a:hover {
 .login-section-logo-container {
 	align-self: center;
 
-	width: 200px;
+	width: 160px;
 }
 
 .login-section-logo-container,
@@ -284,3 +284,28 @@ a:hover {
 	color: var(--primary-text-color);
 }
 
+.div-walking-dog-bg {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	
+	position: fixed;
+	/* top: 0; */
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+@keyframes walk {
+	0% { transform: translateX(-120px);}
+	100% { transform: translateX(1024px);}
+}
+
+.walking-dog-gif-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 80px;
+	animation: walk 12s linear forwards infinite;
+}
