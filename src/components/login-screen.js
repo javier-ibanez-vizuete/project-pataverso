@@ -1,4 +1,5 @@
 import { sesionIsOpen, USERS_DATA } from "../app.js";
+import { openMobileNav } from "../helpers/buttons-nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 const verificationUser = async (newUser) => {
 	const users = await getDataFromStorage("usersData");
@@ -122,26 +123,40 @@ const handleBtnsForms = () => {
 	});
 };
 
-const handleSeason = async (user) => {
+export const hideLoginPage = () => {
+	const loginPage = document.querySelector(".login-section-bg");
+	const header = document.querySelector("#header");
+	const main = document.querySelector("#main");
+	const footer = document.querySelector("#footer");
+	
+	loginPage.classList.add("dont-show");
+	header.classList.remove("dont-show");
+	main.classList.remove("dont-show");
+	footer.classList.remove("dont-show");
+}
+
+const showLoginPage = () => {
 	const loginPage = document.querySelector(".login-section-bg");
 	const header = document.querySelector("#header");
 	const main = document.querySelector("#main");
 	const footer = document.querySelector("#footer");
 
+	loginPage.classList.remove("dont-show");
+	header.classList.add("dont-show");
+	main.classList.add("dont-show");
+	footer.classList.add("dont-show");
+}
+
+const handleSeason = async (user) => {
+
 	const openSesion = await getDataFromStorage("sesionIsOpen");
 	if (openSesion) {
 		console.log("SESION ABIERTA");
-		loginPage.classList.add("dont-show");
-		header.classList.remove("dont-show");
-		main.classList.remove("dont-show");
-		footer.classList.remove("dont-show");
-		// renderAnimals();
+		hideLoginPage();
+		// changePage();
 	} else {
 		console.log("SESION CERRADA");
-		loginPage.classList.remove("dont-show");
-		header.classList.add("dont-show");
-		main.classList.add("dont-show");
-		footer.classList.add("dont-show");
+		showLoginPage();
 		handleBtnsForms();
 		handleRegisterForm();
 		handleLoginForm();
@@ -150,6 +165,4 @@ const handleSeason = async (user) => {
 
 export const loginScreenLauncher = () => {
 	handleSeason();
-
-	// console.log("Hola en LOGIN SCREEN");
 };

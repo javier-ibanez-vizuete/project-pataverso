@@ -1,7 +1,6 @@
 import { loginScreenLauncher } from "./components/login-screen.js";
 import { openMobileNav } from "./helpers/buttons-nav.js";
 import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
-import { sendingAFetch } from "./utils/fetchs.js";
 
 export let sesionIsOpen = false;
 
@@ -23,8 +22,6 @@ if (!getDataFromStorage("usersData")) {
 }
 
 console.log("Que tengo en el local usersData ", getDataFromStorage("usersData"));
-
-sendingAFetch();
 
 document.addEventListener("DOMContentLoaded", () => {
 	const btnClearStorage = document.querySelector(".clear-storage");

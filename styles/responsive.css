@@ -78,6 +78,10 @@
     #desktop-navigator .logout-image-container {
         width: 60px;
     }
+
+	#desktop-navigator .cerrar-sesion span:hover {
+		text-decoration-line: underline;
+	}
 }
 
 @media (min-width: 1440px) {

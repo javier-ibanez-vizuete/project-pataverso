@@ -23,95 +23,12 @@
     <link rel="shortcut icon" href="media/favicon-pataverso-200w.webp" type="image/x-icon">
     <link rel="stylesheet" href="/styles/index.css" />
 
-    <script src="/src/app.js" defer type="module"></script>
-    <title>Pataverso.com | Home Page</title>
+    <script src="/src/pages/animals.js" defer type="module"></script>
+    <title></title>
 </head>
 
 <body>
-    <div class="login-section-bg">
-        <section class="login-section-container">
-            <div class="login-section-logo-container">
-                <picture>
-                    <source srcset="/media/logos/logo-pataverso-200w.avif" type="image/avif">
-                    <source srcset="/media/logos/logo-pataverso-200w.webp" type="image/webp">
-                    <source srcset="/media/logos/logo-pataverso-200w.png" type="image/png">
-                    <img src="/media/logos/logo-pataverso.png" alt="Pataverso logo">
-                </picture>
-            </div>
-
-            <h2 class="title-login-screen">PataVerso</h2>
-
-            <div class="btns-select-forms-container">
-                <button class="btn-open-login-form btn-login-screen selected-btn-form">INICIAR SESIÓN</button>
-                <button class="btn-open-register-form btn-login-screen">REGISTRARSE</button>
-            </div>
-
-            <div class="forms-container">
-                <form action="#" method="get" class="form-login-user selected-login-form">
-                    <div class="email-login-container">
-                        <label for="input-email-login-form" class="label-email-login-form">EMAIL</label>
-                        <input type="email" name="input-email-login-form" id="input-email-login-form"
-                            class="input-email-login-form" placeholder="Introducir Correo eléctronico..." required>
-                    </div>
-
-                    <div class="password-login-container">
-                        <label for="input-password-login-form" class="label-password-login-form">CONTRASEÑA</label>
-                        <input type="password" name="input-password-login-form" id="input-password-login-form"
-                            class="input-password-login-form" placeholder="Introducir Contraseña..." required>
-                    </div>
-
-                    <button class="btn-submit-login btn-style">INICIAR SESIÓN</button>
-                    <small class="small-privacy-policy-terms">
-                        Al hacer Click en 'INICIAR SESIÓN' aceptas nuestros
-                        <a href="#" target="_blank" rel="noopener noreferrer">Terminos de servicio</a>
-                        y nuestra
-                        <a href="#" target="_blank" rel="noopener noreferrer">Politica de privacidad.</a>
-                    </small>
-                </form>
-
-                <form action="#" method="get" class="form-register-user">
-                    <div class="name-register-container">
-                        <label for="input-name-register-form" class="label-name-register-form">NOMBRE</label>
-                        <input type="text" name="input-name-register-form" id="input-name-register-form"
-                            class="input-name-register-form" minlength="2" maxlength="16"
-                            placeholder="Introducir Nombre..." required>
-                    </div>
-
-                    <div class="email-register-container">
-                        <label for="input-email-register-form" class="label-email-register-form">EMAIL</label>
-                        <input type="email" name="input-email-register-form" id="input-email-register-form"
-                            class="input-email-register-form" placeholder="Introducir Correo eléctronico..." required>
-                    </div>
-
-                    <div class="password-register-container">
-                        <label for="input-password-register-form"
-                            class="label-password-register-form">CONTRASEÑA</label>
-                        <input type="password" name="input-password-register-form" id="input-password-register-form"
-                            class="input-password-register-form" minlength="8" maxlength="20"
-                            placeholder="Introducir Contraseña..." required>
-                    </div>
-
-                    <div class="checkbox-newsletter-container">
-                        <input type="checkbox" name="input-checkbox-register-form" id="input-checkbox-register-form"
-                            class="input-checkbox-register-form">
-                        <label for="input-checkbox-register-form" class="label-checkbox-register-form">Deseo recibir
-                            noticias sobre las novedades en <a href="/index.html" target="_blank"
-                                rel="noopener noreferrer">Pataverso.com</a></label>
-                    </div>
-
-                    <button class="btn-submit-register btn-style">REGISTRARSE</button>
-                </form>
-            </div>
-        </section>
-
-        <div class="div-walking-dog-bg">
-            <div class="walking-dog-gif-container">
-                <img src="/media/gif/gif-dog-walking.gif" alt="gif of dog walking">
-            </div>
-        </div>
-    </div>
-
-    <header id="header" class="dont-show">
+    <header id="header">
         <div class="header-container container">
             <div class="logo-header-container">
                 <a href="/index.html" class="logo-image-container">
@@ -216,13 +133,5 @@
             </nav>
         </div>
     </header>
-    <main id="main" class="dont-show"></main>
-    <footer id="footer" class="dont-show">
-        <!-- boton para limpiar el storage -->
-        <button class="clear-storage">BORRAR LOCAL STORAGE</button>
-        <!-- boton para limpiar el storage -->
-        <button class="cerrar-sesion">CERRAR SESION</button>
-    </footer>
-</body>
 
-</html>
+</body>
