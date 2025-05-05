@@ -158,11 +158,11 @@ const handleSeason = async (user) => {
 			window.location.href = "/index.html";
 		}
 		if (window.location.pathname.includes("index.html")) {
-			handleBtnsForms();
-			showLoginPage();
-			handleRegisterForm();
-			handleLoginForm();
 		}
+		handleBtnsForms();
+		showLoginPage();
+		handleRegisterForm();
+		handleLoginForm();
 	}
 };
 

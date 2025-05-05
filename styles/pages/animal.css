@@ -1,3 +1,10 @@
-body main {
+.h1-animal-page {
+    align-self: center; 
+}
+
+.filters-mobile-section-container {
+    display: flex;
+    flex-direction: column;
+    
     background-color: blue;
 }

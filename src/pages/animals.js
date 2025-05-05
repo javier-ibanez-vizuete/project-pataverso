@@ -15,8 +15,30 @@ if (!getDataFromStorage("animalFetch")) {
 	saveDataInStorage("animalFetch", animal);
 }
 
-export const renderAnimal = async (animal) => {
+let pataAnimalName = "Perrichuchos";
 
+if (getDataFromStorage("pataAnimalName")) {
+	pataAnimalName = getDataFromStorage("pataAnimalName");
+}
+
+if (!getDataFromStorage("pataAnimalName")) {
+	saveDataInStorage("pataAnimalName", pataAnimalName);
+}
+
+if (animal === "perro") {
+	pataAnimalName = "Perrichuchos";
+	saveDataInStorage("pataAnimalName", pataAnimalName);
+}
+if (animal === "gato") {
+	pataAnimalName = "Gaticornios";
+	saveDataInStorage("pataAnimalName", pataAnimalName);
+}
+if (animal === "conejo") {
+	pataAnimalName = "Conejaurios";
+	saveDataInStorage("pataAnimalName", pataAnimalName);
+}
+
+export const renderAnimal = async (animal) => {
 	await sendingAFetch(animal);
 
 	// animals.forEach((animal) => {})
@@ -24,6 +46,10 @@ export const renderAnimal = async (animal) => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
+	const h1 = document.querySelector(".h1-animal-page");
+
+	document.title = `Pataverso | ${pataAnimalName.toUpperCase()}`
+	h1.textContent = `${pataAnimalName.toUpperCase()}`
 
 	btnCloseProfile.forEach((btn) => {
 		btn.addEventListener("click", () => {
