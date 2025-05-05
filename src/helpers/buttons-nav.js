@@ -1,4 +1,4 @@
-import { saveDataInStorage } from "./storage.js";
+import { getDataFromStorage, saveDataInStorage } from "./storage.js";
 
 export const openMobileNav = () => {
 	const btnBurgerMenu = document.querySelector(".image-burger-menu-container");
@@ -23,13 +23,22 @@ export const linksInteraction = () => {
 	const gaticornios = document.querySelector(".gaticornios-nav-container");
 	const conejaurios = document.querySelector(".conejaurios-nav-container");
 
-	perrichuchos.addEventListener("click", () => {
+	perrichuchos.addEventListener("click", (event) => {
+		event.preventDefault();
 		saveDataInStorage("animalFetch", "perro");
+		saveDataInStorage("pataAnimalName", "Perrichuchos");
+		window.location.href = "/pages/animal.html";
 	});
-	gaticornios.addEventListener("click", () => {
+	gaticornios.addEventListener("click", (event) => {
+		event.preventDefault();
 		saveDataInStorage("animalFetch", "gato");
+		saveDataInStorage("pataAnimalName", "Gaticornios");
+		window.location.href = "/pages/animal.html";
 	});
-	conejaurios.addEventListener("click", () => {
+	conejaurios.addEventListener("click", (event) => {
+		event.preventDefault();
 		saveDataInStorage("animalFetch", "conejo");
+		saveDataInStorage("pataAnimalName", "Conejaurios");
+		window.location.href = "/pages/animal.html";
 	});
 };
