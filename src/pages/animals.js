@@ -41,7 +41,9 @@ if (animal === "conejo") {
 export const renderAnimal = async (animal) => {
 	await sendingAFetch(animal);
 
-	// animals.forEach((animal) => {})
+	animals.forEach((animalFounded) => {
+		console.log(animalFounded);
+	})
 };
 
 document.addEventListener("DOMContentLoaded", () => {

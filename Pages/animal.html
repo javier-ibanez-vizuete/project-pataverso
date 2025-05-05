@@ -141,7 +141,7 @@
 
             <form action="#" method="get" class="filters-mobile-section-container">
                 <div class="div-btn-open-close-filters">
-                    <button class="btn-open-close-filter-container"></button>
+                    <button class="btn-open-close-filter-container btn-style">Filtrar</button>
                     <div class="filters-counter-container">
                         <div class="icon-filter-container">
                             <picture>
@@ -158,19 +158,20 @@
                 <div class="expand-filters-menu">
                     <div class="pet-filters-container">
                         <div class="filter-container">
-                            <label for="genre-filter-select" class="genre-filter-label">GENERO</label>
+                            <label for="genre-filter-select" class="genre-filter-label">GENERO:</label>
                             <select name="genre-filter-select" id="genre-filter-select">
                                 <option disabled selected>Selecciona un Genero</option>
                                 <option value="male">macho</option>
                                 <option value="female">hembra</option>
                             </select>
                         </div>
+                        <!-- <div class="filter-container">
+                            <label for="age-filter-input" class="age-filter-label">EDAD: 'meses'</label>
+                            <input type="number" name="age-filter-input" id="age-filter-input"
+                                placeholder="introduce edad">
+                        </div> -->
                         <div class="filter-container">
-                            <label for="age-filter-input" class="age-filter-label">EDAD</label>
-                            <input type="number" name="age-filter-input" id="age-filter-input">
-                        </div>
-                        <div class="filter-container">
-                            <label for="vaccinated-filter-select" class="vaccinated-filter-label">VACUNADO</label>
+                            <label for="vaccinated-filter-select" class="vaccinated-filter-label">VACUNADO:</label>
                             <select name="vaccinated-filter-select" id="vaccinated-filter-select">
                                 <option disabled selected>Elige si o no</option>
                                 <option value="yes">Si</option>
@@ -178,7 +179,7 @@
                             </select>
                         </div>
                         <div class="filter-container">
-                            <label for="sterilized-filter-select" class="sterilized-filter-label">ESTERILIZADO</label>
+                            <label for="sterilized-filter-select" class="sterilized-filter-label">ESTERILIZADO:</label>
                             <select name="sterilized-filter-select" id="sterilized-filter-select">
                                 <option disabled selected>Elige si o no</option>
                                 <option value="yes">Si</option>
@@ -187,8 +188,8 @@
                         </div>
                     </div>
                     <div class="btns-form-container">
-                        <button class="btn-apply-filters">APLICAR FILTROS</button>
-                        <button class="btn-reset-filters">ELIMINAR FILTROS</button>
+                        <button class="btn-apply-filters btn-style">APLICAR FILTROS</button>
+                        <button class="btn-reset-filters btn-style" type="reset">ELIMINAR FILTROS</button>
                     </div>
                 </div>
             </form>
