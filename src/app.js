@@ -1,6 +1,6 @@
 import { loginScreenLauncher } from "./components/login-screen.js";
 import { linksInteraction, openMobileNav } from "./helpers/buttons-nav.js";
-import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
+import { deleteLocalStorage, getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
 
 export let sesionIsOpen = false;
 
@@ -24,8 +24,10 @@ if (!getDataFromStorage("usersData")) {
 console.log("Que tengo en el local usersData ", getDataFromStorage("usersData"));
 
 document.addEventListener("DOMContentLoaded", () => {
+	const btnResetStorage = document.querySelector(".clear-storage");
 	const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
 
+	btnResetStorage.addEventListener("click", deleteLocalStorage);
 	btnCloseProfile.forEach((btn) => {
 		btn.addEventListener("click", () => {
 			saveDataInStorage("sesionIsOpen", false);

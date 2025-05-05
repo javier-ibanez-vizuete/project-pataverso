@@ -22,3 +22,8 @@ export const saveDataInStorage = (key, data) => {
 		localStorage.setItem(key, JSON.stringify(data));
 	}
 };
+
+export const deleteLocalStorage = () => {
+	localStorage.clear();
+	window.location.reload();
+}

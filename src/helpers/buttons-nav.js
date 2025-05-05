@@ -22,6 +22,7 @@ export const linksInteraction = () => {
 	const perrichuchos = document.querySelector(".perrichuchos-nav-container");
 	const gaticornios = document.querySelector(".gaticornios-nav-container");
 	const conejaurios = document.querySelector(".conejaurios-nav-container");
+	const landingPageAnchor = document.querySelector(".logo-image-container")
 
 	perrichuchos.addEventListener("click", (event) => {
 		event.preventDefault();
