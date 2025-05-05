@@ -65,6 +65,7 @@ const handleFiltersSection = () => {
 		event.preventDefault();
 		filtersform.reset();
 		recalculateFilters();
+		containerFilters.classList.toggle("dont-show");
 	});
 };
 
