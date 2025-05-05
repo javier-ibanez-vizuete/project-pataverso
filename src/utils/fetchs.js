@@ -13,5 +13,6 @@ export const sendingAFetch = async (animal) => {
 			animals.push(animal);
 		});
 	} catch (error) {
+		console.log(error);
 	}
 };

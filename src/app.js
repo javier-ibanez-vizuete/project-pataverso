@@ -27,10 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	const btnClearStorage = document.querySelector(".clear-storage");
 	const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
 
-	btnClearStorage.addEventListener("click", () => {
-		localStorage.clear();
-		window.location.reload();
-	});
+	// btnClearStorage.addEventListener("click", () => {
+	// 	localStorage.clear();
+	// 	window.location.reload();
+	// });
 	btnCloseProfile.forEach((btn) => {
 		btn.addEventListener("click", () => {
 			saveDataInStorage("sesionIsOpen", false);

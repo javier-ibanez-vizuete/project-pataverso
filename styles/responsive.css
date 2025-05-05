@@ -18,6 +18,10 @@
 		--container-width: 90%;
 	}
 
+	small {
+		font-size: 0.8rem;
+	}
+
 	a:hover {
 		text-decoration-line: underline;
 		text-underline-offset: 2px;
@@ -65,22 +69,40 @@
 	#desktop-navigator a {
 		flex: 1;
 
-        color: var(--primary-text-color);
+		color: var(--primary-text-color);
 	}
 
-    #desktop-navigator .cerrar-sesion {
-        flex-direction: column;
-        gap: 0;
+	#desktop-navigator .cerrar-sesion {
+		flex-direction: column;
+		gap: 0;
 
-        color: var(--primary-text-color);
-    }
+		color: var(--primary-text-color);
+	}
 
-    #desktop-navigator .logout-image-container {
-        width: 60px;
-    }
+	#desktop-navigator .logout-image-container {
+		width: 60px;
+	}
 
 	#desktop-navigator .cerrar-sesion span:hover {
 		text-decoration-line: underline;
+	}
+
+	/* ------ main ------- */
+
+	/* ------- footer ------- */
+	.footer-container {
+		padding: var(--spacing-lg) 0;
+	}
+
+	.footer-links-container {
+		flex-direction: row;
+		justify-content: space-around;
+	}
+
+	.help-links-list,
+	.credits-list,
+	.help-list {
+		gap: 1rem;
 	}
 }
 

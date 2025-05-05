@@ -4,16 +4,17 @@ export const openMobileNav = () => {
 	const btnBurgerMenu = document.querySelector(".image-burger-menu-container");
 	const btnCloseMobileNav = document.querySelector(".btn-closing-mobile-nav");
 	const mobileNav = document.querySelector("#mobile-navigator");
+	// const mobileNav2 = document.querySelector(".mobile-navigator-animal");
 
 	btnBurgerMenu.addEventListener("click", () => {
 		console.log("HACIENDO CLICK EN EL MENU HAMBURGUESA");
 		console.log("Que vale mobilNav", mobileNav);
-		mobileNav.classList.toggle("pop-up-mobile-nav");
+		mobileNav.classList.add("pop-up-mobile-nav");
 		console.log("ESTO SE HACE");
 	});
 
 	btnCloseMobileNav.addEventListener("click", () => {
-		mobileNav.classList.toggle("pop-up-mobile-nav");
+		mobileNav.classList.remove("pop-up-mobile-nav");
 	});
 };
 

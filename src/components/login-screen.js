@@ -128,12 +128,12 @@ export const hideLoginPage = () => {
 	const header = document.querySelector("#header");
 	const main = document.querySelector("#main");
 	const footer = document.querySelector("#footer");
-	
+
 	loginPage.classList.add("dont-show");
 	header.classList.remove("dont-show");
 	main.classList.remove("dont-show");
 	footer.classList.remove("dont-show");
-}
+};
 
 const showLoginPage = () => {
 	const loginPage = document.querySelector(".login-section-bg");
@@ -145,21 +145,24 @@ const showLoginPage = () => {
 	header.classList.add("dont-show");
 	main.classList.add("dont-show");
 	footer.classList.add("dont-show");
-}
+};
 
 const handleSeason = async (user) => {
-
 	const openSesion = await getDataFromStorage("sesionIsOpen");
 	if (openSesion) {
 		console.log("SESION ABIERTA");
-		hideLoginPage();
-		// changePage();
+		if (window.location.pathname.includes("index.html")) hideLoginPage();
 	} else {
 		console.log("SESION CERRADA");
-		showLoginPage();
-		handleBtnsForms();
-		handleRegisterForm();
-		handleLoginForm();
+		if (!window.location.pathname.includes("index.html")) {
+			window.location.href = "/index.html";
+		}
+		if (window.location.pathname.includes("index.html")) {
+			handleBtnsForms();
+			showLoginPage();
+			handleRegisterForm();
+			handleLoginForm();
+		}
 	}
 };
 

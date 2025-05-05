@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="shortcut icon" href="media/favicon-pataverso-200w.webp" type="image/x-icon">
     <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="/styles/pages/animal.css" />
 
     <script src="/src/pages/animals.js" defer type="module"></script>
     <title></title>
@@ -51,7 +52,7 @@
                 </picture>
             </div>
 
-            <nav id="mobile-navigator" class="not-on-desktop">
+            <nav id="mobile-navigator" class="not-on-desktop mobile-navigator-animal">
                 <div class="mobile-nav-links-container">
                     <a href="/Pages/animal.html" class="perrichuchos-nav-container">
                         <span>PERRICHUCHOS</span>
@@ -133,5 +134,67 @@
             </nav>
         </div>
     </header>
+
+    <main id="main">
+        <div class="main-container">
+            <h1 class="h1-animal-page"></h1>
+
+            <form action="#" method="get" class="filters-mobile-section-container">
+                <div class="div-btn-open-close-filters">
+                    <button class="btn-open-close-filter-container"></button>
+                    <div class="filters-counter-container">
+                        <div class="icon-filter-container">
+                            <picture>
+                                <source srcset="/media/icons/icon-cottomball-200w.avif" type="image/avif">
+                                <source srcset="/media/icons/icon-cottomball-200w.webp" type="image/webp">
+                                <source srcset="/media/icons/icon-cottomball-200w.png" type="image/png">
+                                <img src="/media/icons/icon-cottomball.png" alt="icon brown cottomball">
+                            </picture>
+                        </div>
+                        <small class="small-filters-counter">0</small>
+                    </div>
+                </div>
+
+                <div class="expand-filters-menu">
+                    <div class="pet-filters-container">
+                        <div class="filter-container">
+                            <label for="genre-filter-select" class="genre-filter-label">GENERO</label>
+                            <select name="genre-filter-select" id="genre-filter-select">
+                                <option disabled selected>Selecciona un Genero</option>
+                                <option value="male">macho</option>
+                                <option value="female">hembra</option>
+                            </select>
+                        </div>
+                        <div class="filter-container">
+                            <label for="age-filter-input" class="age-filter-label">EDAD</label>
+                            <input type="number" name="age-filter-input" id="age-filter-input">
+                        </div>
+                        <div class="filter-container">
+                            <label for="vaccinated-filter-select" class="vaccinated-filter-label">VACUNADO</label>
+                            <select name="vaccinated-filter-select" id="vaccinated-filter-select">
+                                <option disabled selected>Elige si o no</option>
+                                <option value="yes">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="filter-container">
+                            <label for="sterilized-filter-select" class="sterilized-filter-label">ESTERILIZADO</label>
+                            <select name="sterilized-filter-select" id="sterilized-filter-select">
+                                <option disabled selected>Elige si o no</option>
+                                <option value="yes">Si</option>
+                                <option value="no">no</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="btns-form-container">
+                        <button class="btn-apply-filters">APLICAR FILTROS</button>
+                        <button class="btn-reset-filters">ELIMINAR FILTROS</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="pataamigos-cards-container"></div>
+        </div>
+    </main>
 
 </body>

@@ -1,4 +1,5 @@
-import { openMobileNav, linksInteraction } from "../helpers/buttons-nav.js"
+import { loginScreenLauncher } from "../components/login-screen.js";
+import { openMobileNav, linksInteraction } from "../helpers/buttons-nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 import { sendingAFetch } from "../utils/fetchs.js";
 
@@ -7,28 +8,32 @@ export const animals = [];
 let animal = "perro";
 
 if (getDataFromStorage("animalFetch")) {
-    animal = getDataFromStorage("animalFetch");
+	animal = getDataFromStorage("animalFetch");
 }
 
 if (!getDataFromStorage("animalFetch")) {
-    saveDataInStorage("animalFetch", animal)
+	saveDataInStorage("animalFetch", animal);
 }
 
 export const renderAnimal = async (animal) => {
-await sendingAFetch(animal);
-}
+
+	await sendingAFetch(animal);
+
+	// animals.forEach((animal) => {})
+};
 
 document.addEventListener("DOMContentLoaded", () => {
-    const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
+	const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
 
-    btnCloseProfile.forEach((btn) => {
+	btnCloseProfile.forEach((btn) => {
 		btn.addEventListener("click", () => {
 			saveDataInStorage("sesionIsOpen", false);
-            window.location.href = "/index.html";
+			window.location.href = "/index.html";
 		});
 	});
-    
-    renderAnimal(animal);
-    linksInteraction();
-    openMobileNav();
-})
+
+	loginScreenLauncher();
+	renderAnimal(animal);
+	linksInteraction();
+	openMobileNav();
+});
