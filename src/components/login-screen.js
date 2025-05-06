@@ -153,10 +153,8 @@ const isIndex = pathName === "/" || pathName.endsWith("/index.html");
 const handleSeason = async (user) => {
 	const openSesion = await getDataFromStorage("sesionIsOpen");
 	if (openSesion) {
-		console.log("SESION ABIERTA");
 		if (isIndex) hideLoginPage();
 	} else {
-		console.log("SESION CERRADA");
 		if (!isIndex) {
 			window.location.href = "/index.html";
 		}

@@ -24,10 +24,10 @@ if (!getDataFromStorage("usersData")) {
 console.log("Que tengo en el local usersData ", getDataFromStorage("usersData"));
 
 document.addEventListener("DOMContentLoaded", () => {
-	const btnResetStorage = document.querySelector(".clear-storage");
+	// const btnResetStorage = document.querySelector(".clear-storage");
 	const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
 
-	btnResetStorage.addEventListener("click", deleteLocalStorage);
+	// btnResetStorage.addEventListener("click", deleteLocalStorage);
 	btnCloseProfile.forEach((btn) => {
 		btn.addEventListener("click", () => {
 			saveDataInStorage("sesionIsOpen", false);

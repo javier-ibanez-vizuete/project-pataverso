@@ -1,18 +1,34 @@
 import { loginScreenLauncher } from "../components/login-screen.js";
+import { screeningAnimals } from "../components/render-animals.js";
 import { openMobileNav, linksInteraction } from "../helpers/buttons-nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
-import { sendingAFetch } from "../utils/fetchs.js";
 
-export const animals = [];
+export let animals = [];
+
+export const sendingAFetch = async (animal) => {
+	let animalToFetch = animal ? animal : getDataFromStorage("animalFetch");
+	try {
+		const response = await fetch(`https://huachitos.cl/api/animales/tipo/${animalToFetch}`);
+		if (!response.ok) {
+			throw new Error("NEW ERROR");
+		}
+		const data = await response.json();
+		const animales = data.data;
+		const slicedAnimals = animales.slice(0, 20);
+		animals = [];
+		slicedAnimals.forEach((animal) => {
+			animals.push(animal);
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
 
 let animal = "perro";
-
-console.log("ANIMAL DESPUES DE CREARLO", animal);
 
 if (getDataFromStorage("animalFetch")) {
 	animal = getDataFromStorage("animalFetch");
 }
-console.log("ANIMAL DESPUES ACTUALIZARLO", animal);
 
 if (!getDataFromStorage("animalFetch")) {
 	saveDataInStorage("animalFetch", animal);
@@ -28,10 +44,12 @@ if (!getDataFromStorage("pataAnimalName")) {
 	saveDataInStorage("pataAnimalName", pataAnimalName);
 }
 export const renderAnimal = async (animal) => {
+	const pataAmigosContainer = document.querySelector(".pataamigos-cards-container");
+	pataAmigosContainer.innerHTML = "";
 	await sendingAFetch(animal);
-
-	animals.forEach((animalFounded) => {
-		// console.log(animalFounded);
+	const filteredAnimals = screeningAnimals(animals);
+	filteredAnimals.forEach((animalFounded) => {
+		console.log(animalFounded);
 	});
 };
 
@@ -72,27 +90,14 @@ const handleFiltersSection = () => {
 const handleTitlesSection = async () => {
 	const h1 = document.querySelector(".h1-animal-page");
 	const currentAnimal = await getDataFromStorage("pataAnimalName");
-	console.log("Que vale currentAnimal", currentAnimal);
-	// if (animal === "perro") {
-	// 	pataAnimalName = "Perrichuchos";
-	// 	saveDataInStorage("pataAnimalName", pataAnimalName);
-	// }
-	// if (animal === "gato") {
-	// 	pataAnimalName = "Gaticornios";
-	// 	saveDataInStorage("pataAnimalName", pataAnimalName);
-	// }
-	// if (animal === "conejo") {
-	// 	pataAnimalName = "Conejaurios";
-	// 	saveDataInStorage("pataAnimalName", pataAnimalName);
-	// }
 
 	document.title = `Pataverso | ${currentAnimal.toUpperCase()}`;
 	h1.textContent = `${currentAnimal.toUpperCase()}`;
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-	handleTitlesSection();
 	const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
+	const btnApplyFilters = document.querySelector(".btn-apply-filters");
 
 	btnCloseProfile.forEach((btn) => {
 		btn.addEventListener("click", () => {
@@ -100,7 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			window.location.href = "/index.html";
 		});
 	});
+	btnApplyFilters.addEventListener("click", (event) => {
+		event.preventDefault();
+		renderAnimal(animal);
+	});
 
+	handleTitlesSection();
 	handleFiltersSection();
 	loginScreenLauncher();
 	renderAnimal(animal);
