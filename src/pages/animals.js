@@ -60,7 +60,7 @@ const recalculateFilters = () => {
 	let numberOFFilter = 0;
 
 	filterElements.forEach((filter) => {
-		if (filter.value !== filter.options[0].textContent) {
+		if (filter.value !== "disabled") {
 			numberOFFilter += 1;
 		}
 	});
