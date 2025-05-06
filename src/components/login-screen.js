@@ -147,22 +147,23 @@ const showLoginPage = () => {
 	footer.classList.add("dont-show");
 };
 
+const pathName = window.location.pathname;
+const isIndex = pathName === "/" || pathName.endsWith("/index.html");
+
 const handleSeason = async (user) => {
 	const openSesion = await getDataFromStorage("sesionIsOpen");
 	if (openSesion) {
 		console.log("SESION ABIERTA");
-		if (window.location.pathname.includes("index.html")) hideLoginPage();
+		if (isIndex) hideLoginPage();
 	} else {
 		console.log("SESION CERRADA");
-		if (!window.location.pathname.includes("index.html")) {
+		if (!isIndex) {
 			window.location.href = "/index.html";
 		}
-		if (window.location.pathname.includes("index.html")) {
-			handleBtnsForms();
-			showLoginPage();
-			handleRegisterForm();
-			handleLoginForm();
-		}
+		handleBtnsForms();
+		showLoginPage();
+		handleRegisterForm();
+		handleLoginForm();
 	}
 };
 
