@@ -22,9 +22,18 @@ export const linksInteraction = () => {
 	const perrichuchos = document.querySelector(".perrichuchos-nav-container");
 	const gaticornios = document.querySelector(".gaticornios-nav-container");
 	const conejaurios = document.querySelector(".conejaurios-nav-container");
-	const landingPageAnchor = document.querySelector(".logo-image-container")
+	// const landingPageAnchor = document.querySelector(".logo-image-container")
+	const perrichuchosDesktop = document.querySelector(".perrichuchos-nav-desktop-container");
+	const gaticorniosDesktop = document.querySelector(".gaticornios-nav-desktop-container");
+	const conejauriosDesktop = document.querySelector(".conejaurios-nav-desktop-container");
 
 	perrichuchos.addEventListener("click", (event) => {
+		event.preventDefault();
+		saveDataInStorage("animalFetch", "perro");
+		saveDataInStorage("pataAnimalName", "Perrichuchos");
+		window.location.href = "/pages/animal.html";
+	});
+	perrichuchosDesktop.addEventListener("click", (event) => {
 		event.preventDefault();
 		saveDataInStorage("animalFetch", "perro");
 		saveDataInStorage("pataAnimalName", "Perrichuchos");
@@ -36,7 +45,19 @@ export const linksInteraction = () => {
 		saveDataInStorage("pataAnimalName", "Gaticornios");
 		window.location.href = "/pages/animal.html";
 	});
+	gaticorniosDesktop.addEventListener("click", (event) => {
+		event.preventDefault();
+		saveDataInStorage("animalFetch", "gato");
+		saveDataInStorage("pataAnimalName", "Gaticornios");
+		window.location.href = "/pages/animal.html";
+	});
 	conejaurios.addEventListener("click", (event) => {
+		event.preventDefault();
+		saveDataInStorage("animalFetch", "conejo");
+		saveDataInStorage("pataAnimalName", "Conejaurios");
+		window.location.href = "/pages/animal.html";
+	});
+	conejauriosDesktop.addEventListener("click", (event) => {
 		event.preventDefault();
 		saveDataInStorage("animalFetch", "conejo");
 		saveDataInStorage("pataAnimalName", "Conejaurios");
