@@ -1,5 +1,5 @@
 import { loginScreenLauncher } from "../components/login-screen.js";
-import { screeningAnimals } from "../components/render-animals.js";
+import { createAnimalCard, screeningAnimals } from "../components/render-animals.js";
 import { openMobileNav, linksInteraction } from "../helpers/buttons-nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
@@ -49,7 +49,8 @@ export const renderAnimal = async (animal) => {
 	await sendingAFetch(animal);
 	const filteredAnimals = screeningAnimals(animals);
 	filteredAnimals.forEach((animalFounded) => {
-		console.log(animalFounded);
+		const animalCard = createAnimalCard(animalFounded);
+		pataAmigosContainer.append(animalCard);
 	});
 };
 
@@ -83,6 +84,7 @@ const handleFiltersSection = () => {
 		event.preventDefault();
 		filtersform.reset();
 		recalculateFilters();
+		renderAnimal(animal);
 		containerFilters.classList.toggle("dont-show");
 	});
 };
