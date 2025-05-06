@@ -1,4 +1,4 @@
-import { getDataFromStorage, saveDataInStorage } from "./storage.js";
+import { saveDataInStorage } from "./storage.js";
 
 export const openMobileNav = () => {
 	const btnBurgerMenu = document.querySelector(".image-burger-menu-container");

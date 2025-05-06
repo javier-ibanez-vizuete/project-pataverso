@@ -26,12 +26,12 @@ export const screeningAnimals = (animals) => {
 };
 
 const createExpandButtonsContainer = (animalName) => {
-    const expandedCard = document.querySelector("#tarjeta-extendida");
-    console.log("QUE ES EXPANDED CARD", expandedCard);
-    const h1 = document.querySelector(".h1-animal-page");
-    const filtersContainer = document.querySelector(".filters-mobile-section-container");
-    const cardsContainer = document.querySelector(".pataamigos-cards-container");
-    
+	const expandedCard = document.querySelector("#tarjeta-extendida");
+	console.log("QUE ES EXPANDED CARD", expandedCard);
+	const h1 = document.querySelector(".h1-animal-page");
+	const filtersContainer = document.querySelector(".filters-mobile-section-container");
+	const cardsContainer = document.querySelector(".pataamigos-cards-container");
+
 	const divDetailsButtonsContainer = document.createElement("div");
 	divDetailsButtonsContainer.classList.add("details-pet-btns-container");
 
@@ -72,20 +72,21 @@ const createExpandButtonsContainer = (animalName) => {
 
 	adoptSponsorBtnsContainer.append(btnAdoptPet, btnSponsorPet);
 
-    const btnGoToAnimals = document.createElement("button");
-    btnGoToAnimals.classList.add("btn-go-back");
-    btnGoToAnimals.textContent = "VOLVER ATRAS";
-    btnGoToAnimals.addEventListener("click", () => {
-    
-        console.log("QUE ES EXPANDED CARD", expandedCard);
-        expandedCard.remove();
-        h1.classList.remove("dont-show");
-        filtersContainer.classList.remove("dont-show");
-        cardsContainer.classList.remove("dont-show");
-    });
+	const btnGoToAnimals = document.createElement("button");
+	btnGoToAnimals.classList.add("btn-go-back");
+	btnGoToAnimals.textContent = "VOLVER ATRAS";
+	btnGoToAnimals.addEventListener("click", () => {
+		const expandedCard = document.querySelector("#tarjeta-extendida");
 
-    divDetailsButtonsContainer.append(adoptSponsorBtnsContainer, btnGoToAnimals);
-    
+		console.log("QUE ES EXPANDED CARD", expandedCard);
+		expandedCard.remove();
+		h1.classList.remove("dont-show");
+		filtersContainer.classList.remove("dont-show");
+		cardsContainer.classList.remove("dont-show");
+	});
+
+	divDetailsButtonsContainer.append(adoptSponsorBtnsContainer, btnGoToAnimals);
+
 	return divDetailsButtonsContainer;
 };
 
@@ -171,7 +172,7 @@ const createExpandPetInformationContainer = (animal) => {
 const createExpandPetCard = (animal) => {
 	const expandCardContainer = document.createElement("section");
 	expandCardContainer.classList.add("expand-pet-container");
-    expandCardContainer.id = "tarjeta-extendida";
+	expandCardContainer.id = "tarjeta-extendida";
 
 	const h2PetName = document.createElement("h2");
 	h2PetName.classList.add("h2-pet-title");

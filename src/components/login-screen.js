@@ -1,5 +1,5 @@
-import { sesionIsOpen, USERS_DATA } from "../app.js";
-import { openMobileNav } from "../helpers/buttons-nav.js";
+import {  USERS_DATA } from "../app.js";
+
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 const verificationUser = async (newUser) => {
 	const users = await getDataFromStorage("usersData");

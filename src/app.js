@@ -1,6 +1,6 @@
 import { loginScreenLauncher } from "./components/login-screen.js";
 import { linksInteraction, openMobileNav } from "./helpers/buttons-nav.js";
-import { deleteLocalStorage, getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
+import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
 
 export let sesionIsOpen = false;
 
