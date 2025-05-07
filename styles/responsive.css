@@ -99,7 +99,7 @@
 		justify-content: space-around;
 	}
 
-	.footer-links-container p, {
+	.footer-links-container p {
 		color: var(--primary-text-color);
 	}
 
