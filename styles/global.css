@@ -27,7 +27,7 @@ html {
 
 html,
 body {
-	font-family: "Roboto", "Poppins", "bodyfont", "doggyfont", "cattyfont", "bunnyfont", Helvetica, -apple-system,
+	font-family: "Roboto", "Poppins", Helvetica,"bodyfont", "doggyfont", "cattyfont", "bunnyfont", -apple-system,
 		BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol";
 }
