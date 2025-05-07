@@ -79,13 +79,137 @@
 }
 
 .btns-form-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    
-    padding: 0 var(--spacing-lg);
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	padding: 0 var(--spacing-lg);
 }
 
 .btn-reset-filters {
-    background: var(--btn-secondary-color);
+	background: var(--btn-secondary-color);
+}
+
+/* -------- pataamigos cards container ------ */
+
+.pataamigos-cards-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	padding: 0 var(--spacing-2xl);
+}
+
+.card-pet-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	border-radius: var(--border-card);
+	padding: var(--spacing-lg);
+	background-color: var(--accent-bg-color);
+}
+
+.card-pet-container span,
+.card-pet-container h5 {
+	color: var(--secondary-text-color);
+}
+
+.image-pet-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self: center;
+}
+
+.image-pet-container img {
+	border-radius: var(--border-card);
+}
+
+.information-pet-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.name-pet-container,
+.genre-pet-container {
+	display: flex;
+	align-items: center;
+	align-self: center;
+	gap: 0.5rem;
+}
+
+.div-button-container {
+	display: flex;
+	justify-content: center;
+}
+
+.btn-know-pet {
+	background-color: var(--btn-secondary-color);
+}
+
+/* ----- expanded card 'section' ----- */
+.expand-pet-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	border-radius: var(--border-card);
+	padding: var(--spacing-lg);
+	background-color: var(--accent-bg-color);
+}
+
+.expand-pet-container p {
+	color: var(--secondary-text-color);
+}
+
+.h2-pet-title {
+	font-family: "cattyfont";
+	font-weight: 200;
+	align-self: center;
+	font-size: 3rem;
+}
+
+.details-pet-information-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.p-age-pataamigo,
+.p-genre-pataamigo,
+.p-sterilized-pataamigo,
+.p-vaccines-pataamigo {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.p-description-pataamigo,
+.p-personality-pataamigo, 
+.p-advice-pataamigo {
+	display: flex;
+	flex-direction: column;
+}
+
+.details-pet-btns-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.details-pet-btns-adopt-sponsor-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.btn-sponsor-pet {
+	background-color: var(--btn-secondary-color);
+}
+
+.btn-go-back {
+	color: var(--secondary-text-color);
+	background-color: var(--btn-xtra-color);
 }

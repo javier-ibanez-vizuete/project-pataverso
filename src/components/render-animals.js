@@ -39,7 +39,7 @@ const createExpandButtonsContainer = (animalName) => {
 	adoptSponsorBtnsContainer.classList.add("details-pet-btns-adopt-sponsor-container");
 
 	const btnAdoptPet = document.createElement("button");
-	btnAdoptPet.classList.add("btn-adopt-pet");
+	btnAdoptPet.classList.add("btn-adopt-pet", "btn-style");
 	btnAdoptPet.textContent = "ADOPTAR A";
 	const spanAdoptPet = document.createElement("span");
 	spanAdoptPet.classList.add("span-adopt-pet");
@@ -55,7 +55,7 @@ const createExpandButtonsContainer = (animalName) => {
 	});
 
 	const btnSponsorPet = document.createElement("button");
-	btnSponsorPet.classList.add("btn-sponsor-pet");
+	btnSponsorPet.classList.add("btn-sponsor-pet", "btn-style");
 	btnSponsorPet.textContent = "APADRINAR A";
 	const spanSponsorPet = document.createElement("span");
 	spanSponsorPet.classList.add("span-sponsor.pet");
@@ -73,7 +73,7 @@ const createExpandButtonsContainer = (animalName) => {
 	adoptSponsorBtnsContainer.append(btnAdoptPet, btnSponsorPet);
 
 	const btnGoToAnimals = document.createElement("button");
-	btnGoToAnimals.classList.add("btn-go-back");
+	btnGoToAnimals.classList.add("btn-go-back", "btn-style");
 	btnGoToAnimals.textContent = "VOLVER ATRAS";
 	btnGoToAnimals.addEventListener("click", () => {
 		const expandedCard = document.querySelector("#tarjeta-extendida");
@@ -92,7 +92,7 @@ const createExpandButtonsContainer = (animalName) => {
 
 const createExpandPetInformationContainer = (animal) => {
 	const divExtendedInformationContainer = document.createElement("div");
-	divExtendedInformationContainer.classList.add("details.pet-information-container");
+	divExtendedInformationContainer.classList.add("details-pet-information-container");
 
 	const pAgePet = document.createElement("p");
 	pAgePet.classList.add("p-age-pataamigo");
@@ -144,13 +144,15 @@ const createExpandPetInformationContainer = (animal) => {
 	spanPersonalityPataamigo.textContent = cleanedPersonality ? cleanedPersonality : "Por descubrir";
 	pPersonalityPataamigo.appendChild(spanPersonalityPataamigo);
 
-	const cleanedAdvice = animal.desc_adicional.split("<p>").join("").split("</p>").join("");
+	const cleanedAdvice = animal.desc_adicional.replaceAll("<p>", "").replaceAll("</p>", "");
+	console.log("CLEANED ADVICE ", cleanedAdvice);
 	const pAdvicePataamigo = document.createElement("p");
 	pAdvicePataamigo.classList.add("p-advice-pataamigo");
-	pAdvicePataamigo.textContent = "CONSEJO:";
+	pAdvicePataamigo.textContent = "INFORMACION ADICIONAL:";
 	const spanAdvicePataamigo = document.createElement("span");
 	spanAdvicePataamigo.classList.add("span-advice-pataamigo");
 	spanAdvicePataamigo.textContent = cleanedAdvice ? cleanedAdvice : "Darle muchisimo amor";
+	pAdvicePataamigo.appendChild(spanAdvicePataamigo)
 
 	const { nombre } = animal;
 	const expandButtonsContainer = createExpandButtonsContainer(nombre);
@@ -180,7 +182,7 @@ const createExpandPetCard = (animal) => {
 
 	const { imagen } = animal;
 	const expandImageContainer = createImageContainer(imagen);
-	expandImageContainer.classList.add("details-pet-image-container");
+	// expandImageContainer.classList.add("details-pet-image-container");
 
 	const expandPetInformationContainer = createExpandPetInformationContainer(animal);
 
@@ -199,6 +201,7 @@ const createButtonContainer = (animal) => {
 
 	const btnForMore = document.createElement("button");
 	btnForMore.classList.add("btn-know-pet");
+	btnForMore.classList.add("btn-style");
 	btnForMore.textContent = "CONOCEME";
 	btnForMore.addEventListener("click", () => {
 		h1.classList.add("dont-show");
