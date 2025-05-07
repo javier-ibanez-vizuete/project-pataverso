@@ -99,6 +99,18 @@
 		justify-content: space-around;
 	}
 
+	.footer-links-container p, {
+		color: var(--primary-text-color);
+	}
+
+	.help-links-list,
+	.credits-list {
+		/* background-color: var(--bg-color); */
+		padding: var(--spacing-lg);
+		border-radius: var(--border-card);
+	}
+
+
 	.help-links-list,
 	.credits-list,
 	.help-list {

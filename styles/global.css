@@ -194,7 +194,7 @@ small {
 }
 
 .pata-title-nav .pata-letter {
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 }
 
 .landing-word .pata-letter {
@@ -631,6 +631,7 @@ button:hover {
 .help-list {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 0.5rem;
 }
 

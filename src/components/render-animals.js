@@ -43,7 +43,7 @@ const createExpandButtonsContainer = (animalName) => {
 	btnAdoptPet.textContent = "ADOPTAR A";
 	const spanAdoptPet = document.createElement("span");
 	spanAdoptPet.classList.add("span-adopt-pet");
-	spanAdoptPet.textContent = animalName;
+	spanAdoptPet.textContent = animalName.toUpperCase();
 	btnAdoptPet.appendChild(spanAdoptPet);
 	btnAdoptPet.addEventListener("click", () => {
 		alert(`
@@ -59,7 +59,7 @@ const createExpandButtonsContainer = (animalName) => {
 	btnSponsorPet.textContent = "APADRINAR A";
 	const spanSponsorPet = document.createElement("span");
 	spanSponsorPet.classList.add("span-sponsor.pet");
-	spanSponsorPet.textContent = animalName;
+	spanSponsorPet.textContent = animalName.toUpperCase();
 	btnSponsorPet.appendChild(spanSponsorPet);
 	btnSponsorPet.addEventListener("click", () => {
 		alert(`
