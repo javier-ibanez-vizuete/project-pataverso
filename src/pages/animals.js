@@ -66,7 +66,8 @@ export const renderAnimal = async (animal) => {
 	pataAmigosContainer.innerHTML = "";
 	await sendingAFetch(animal);
 	const filteredAnimals = screeningAnimals(ANIMALS_DATA_BASE[animalToFetch]);
-	filteredAnimals.forEach((animalFounded) => {
+console.log("Que es filterAnimal ", filteredAnimals);
+	filteredAnimals.sort((animalA, animalB) => animalB.id - animalA.id).forEach((animalFounded) => {
 		const animalCard = createAnimalCard(animalFounded);
 		pataAmigosContainer.append(animalCard);
 	});

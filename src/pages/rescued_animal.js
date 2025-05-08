@@ -34,8 +34,12 @@ const addPetToArray = async () => {
 	const inputName = document.getElementById("input-rescued-animal-name");
 	const inputType = document.getElementById("select-rescued-animal-type");
 	const inputGenre = document.getElementById("select-rescued-animal-genre");
+	const inputAge = document.getElementById("input-rescued-animal-age");
 	const inputVaccinated = document.getElementById("select-rescued-animal-vaccinated");
 	const inputSterilized = document.getElementById("select-rescued-animal-sterilized");
+	const inputDescription = document.getElementById("textarea-rescued-animal-description");
+	const inputPersonality = document.getElementById("textarea-rescued-animal-personality");
+	const inputAdvice = document.getElementById("textarea-rescued-animal-advice");
 	const inputImage = document.getElementById("input-rescued-animal-image");
 
 	try {
@@ -45,11 +49,15 @@ const addPetToArray = async () => {
 			nombre: inputName.value,
 			tipo: inputType.value,
 			genero: inputGenre.value,
+			edad: inputAge.value ? inputAge.value : "Desconocida",
 			vacunas: Number(inputVaccinated.value),
 			esterilizado: Number(inputSterilized.value),
 			imagen: imageDataUrl
 				? imageDataUrl
 				: "/media/pictures/image-pets-homepage/image-animals-home-page-480w.avif",
+			desc_fisica: inputDescription.value ? inputDescription.value : "Sin determinar",
+			desc_personalidad: inputPersonality.value ? inputPersonality.value : "Sin determinar",
+			desc_adicional: inputAdvice.value ? inputAdvice.value : "",
 		};
 		ANIMALS_DATA_BASE[inputType.value].push(animal);
 		saveDataInStorage("animalsData", ANIMALS_DATA_BASE);
