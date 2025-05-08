@@ -4,16 +4,16 @@ import { openMobileNav, linksInteraction } from "../helpers/buttons-nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
 // export let animals = [];
-export let ANIMALS_DATA = {
+export let ANIMALS_DATA_BASE = {
 	perro: [],
 	gato: [],
 	conejo: [],
 };
 if (!getDataFromStorage("animalsData")) {
-	saveDataInStorage("animalsData", ANIMALS_DATA);
+	saveDataInStorage("animalsData", ANIMALS_DATA_BASE);
 }
 if (getDataFromStorage("animalsData")) {
-	ANIMALS_DATA = getDataFromStorage("animalsData");
+	ANIMALS_DATA_BASE = getDataFromStorage("animalsData");
 }
 let animalToFetch = getDataFromStorage("animalFetch");
 
@@ -21,7 +21,7 @@ export const sendingAFetch = async (animal) => {
 	const main = document.querySelector(".main-container");
 	animalToFetch = animal ? animal : getDataFromStorage("animalFetch");
 	try {
-		if (!ANIMALS_DATA[animalToFetch].length) {
+		if (!ANIMALS_DATA_BASE[animalToFetch].length) {
 			const response = await fetch(`https://huachitos.cl/api/animales/tipo/${animalToFetch}`);
 			if (!response.ok) {
 				throw new Error("NEW ERROR");
@@ -29,9 +29,9 @@ export const sendingAFetch = async (animal) => {
 			const data = await response.json();
 			const animales = data.data;
 			animales.forEach((animal) => {
-				ANIMALS_DATA[animalToFetch].push(animal);
+				ANIMALS_DATA_BASE[animalToFetch].push(animal);
 			});
-			saveDataInStorage("animalsData", ANIMALS_DATA);
+			saveDataInStorage("animalsData", ANIMALS_DATA_BASE);
 		}
 	} catch (error) {
 		console.log(error);
@@ -65,7 +65,7 @@ export const renderAnimal = async (animal) => {
 	const pataAmigosContainer = document.querySelector(".pataamigos-cards-container");
 	pataAmigosContainer.innerHTML = "";
 	await sendingAFetch(animal);
-	const filteredAnimals = screeningAnimals(ANIMALS_DATA[animalToFetch]);
+	const filteredAnimals = screeningAnimals(ANIMALS_DATA_BASE[animalToFetch]);
 	filteredAnimals.forEach((animalFounded) => {
 		const animalCard = createAnimalCard(animalFounded);
 		pataAmigosContainer.append(animalCard);

@@ -100,7 +100,7 @@ const handleLoginForm = () => {
 	});
 };
 
-const handleBtnsForms = () => {
+export const handleBtnsForms = () => {
 	const btnLogin = document.querySelector(".btn-open-login-form");
 	const btnRegister = document.querySelector(".btn-open-register-form");
 	const loginForm = document.querySelector(".form-login-user");
@@ -150,7 +150,7 @@ const showLoginPage = () => {
 const pathName = window.location.pathname;
 const isIndex = pathName === "/" || pathName.endsWith("/index.html");
 
-const handleSeason = async (user) => {
+export const handleSeason = async (user) => {
 	const openSesion = await getDataFromStorage("sesionIsOpen");
 	if (openSesion) {
 		if (isIndex) hideLoginPage();
