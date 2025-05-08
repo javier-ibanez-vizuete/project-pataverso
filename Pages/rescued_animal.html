@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Pagina ficticia de Protectora Veterinaria. | Ejercicio didactico.">
+    <meta property="og:title" content="Pataverso.com">
+    <meta property="og:description" content="Pagina ficticia de Protectora Veterinaria. | Ejercicio didactico.">
+    <meta property="og:url" content="https://pataverso.netlify.app">
+    <meta property="og:image" content="https://pataverso.netlify.app/media/favicon-pataverso-200w.webp">
+    <meta property="og:site-name" content="pataverso.com">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary-large-image">
+    <meta name="twitter:title" content="Pagina ficticia de Protectora Veterinaria. | Ejercicio didactico.">
+    <meta name="twitter:description" content="Pagina ficticia de Protectora Veterinaria. | Ejercicio didactico.">
+    <meta name="twitter:image" content="https://pataverso.netlify.app/media/favicon-pataverso-200w.webp">
+    <meta name="twitter:site" content="@eljaviersiclaro">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="shortcut icon" href="media/favicon-pataverso-200w.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="/styles/pages/rescued-animal.css" />
+
+    <!-- <script src="/src/pages/rescued_animal.js" defer type="module"></script> -->
+
+    <title>Pataverso.com | PataAmigo Rescatado</title>
+</head>
+
+<body>
+    <div class="body-container">
+        <header id="header">
+            <div class="header-container container">
+                <a href="/index.html" class="logo-header-container">
+                    <picture>
+                        <source srcset="/media/logos/logo-pataverso-200w.avif" type="image/avif">
+                        <source srcset="/media/logos/logo-pataverso-200w.webp" type="image/webp">
+                        <source srcset="/media/logos/logo-pataverso-200w.png" type="image/png">
+                        <img src="/media/logos/logo-pataverso.png" alt="Pataverso Logo">
+                    </picture>
+                </a>
+
+                <h2 class="pataverso-word pata-title-nav">
+                    <span class="pata-letter span-p">P</span>
+                    <span class="pata-letter span-a">a</span>
+                    <span class="pata-letter span-t">t</span>
+                    <span class="pata-letter span-a">a</span>
+                    <span class="pata-letter span-v">v</span>
+                    <span class="pata-letter span-e">e</span>
+                    <span class="pata-letter span-r">r</span>
+                    <span class="pata-letter span-s">s</span>
+                    <span class="pata-letter span-o">o</span>
+                </h2>
+            </div>
+        </header>
+        <main id="main">
+            <div class="main-container container">
+                <div class="icon-and-title-container">
+                    <div class="icon-page-container">
+                        <picture>
+                            <source srcset="/media/icons/icon-rescued-animals-200w.avif" type="image/avif">
+                            <source srcset="/media/icons/icon-rescued-animals-200w.webp" type="image/webp">
+                            <source srcset="/media/icons/icon-rescued-animals-200w.png" type="image/png">
+                            <img src="/media/icons/icon-rescued-animals.png"
+                                alt="icon footprints with a colored earth's background">
+                        </picture>
+                    </div>
+                    <h1>TU RESCATE, NUESTRO COMPROMISO</h1>
+                </div>
+
+                <form action="#" method="post" class="form-rescued-animal">
+                    <div class="rescued-form-introduction-text-container">
+                        <p>
+                            En Pataverso, cada rescate es un pequeño milagro… y queremos ayudar a este compi pelud@ a
+                            encontrar el final feliz que se merece.
+                        </p>
+                        <p>
+                            Si has encontrado y rescatado a un animalito, este formulario nos ayudará a conocerlo mejor
+                            para poder buscarle una familia o un apadrinamiento perfecto.
+                        </p>
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="input-rescued-animal-name">Nombre</label>
+                        <input type="text" name="input-rescued-animal-name" id="input-rescued-animal-name"
+                            placeholder="¿Le has puesto nombre?" minlength="2" maxlength="15">
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="select-rescued-animal-type">Tipo de mascota</label>
+                        <select name="select-rescued-animal-type" id="select-rescued-animal-type" required>
+                            <option value="disabled" disabled selected>Selecciona un animal</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                            <option value="conejo">Conejo</option>
+                        </select>
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="select-rescued-animal-genre">Genero</label>
+                        <select name="select-rescued-animal-genre" id="select-rescued-animal-genre" required>
+                            <option value="disabled" disabled selected>Elige un Genero</option>
+                            <option value="macho">Macho</option>
+                            <option value="hembra">Hembra</option>
+                        </select>
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="input-rescued-animal-age">Edad estimada</label>
+                        <input type="text" name="input-rescued-animal-age" id="input-rescued-animal-age"
+                            placeholder="Introduce edad estimada" minlength="4" maxlength="10">
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="select-rescued-animal-vaccinated">Vacunado</label>
+                        <select name="select-rescued-animal-vaccinated" id="select-rescued-animal-vaccinated" required>
+                            <option value="disabled" disabled selected>¿Lo has vacunado?</option>
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="select-rescued-animal-sterilized">Esterilizado</label>
+                        <select name="select-rescued-animal-sterilized" id="select-rescued-animal-sterilized" required>
+                            <option value="disabled" disabled selected>¿Lo has esterilizado?</option>
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="textarea-rescued-animal-description">Descripción</label>
+                        <textarea name="textarea-rescued-animal-description" id="textarea-rescued-animal-description"
+                            cols="30" rows="3" placeholder="Introduce una breve descripcion fisica..." minlength="10"
+                            maxlength="100"></textarea>
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="textarea-rescued-animal-personality">Personalidad</label>
+                        <textarea name="textarea-rescued-animal-personality" id="textarea-rescued-animal-personality"
+                            cols="30" rows="4" placeholder="Hablanos un poco acerca de su personalidad..."
+                            minlength="10" maxlength="100"></textarea>
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="textarea-rescued-animal-advice">Informacion adicional</label>
+                        <textarea name="textarea-rescued-animal-advice" id="textarea-rescued-animal-advice" cols="30"
+                            rows="3" placeholder="¿Quieres aportar alguna informacion adicional?..." minlength="10"
+                            maxlength="100"></textarea>
+                    </div>
+
+                    <div class="rescued-input-container">
+                        <label for="input-rescued-animal-image">Imagen</label>
+                        <input type="file" name="input-rescued-animal-image" id="input-rescued-animal-image"
+                            accept=".png, .jpg, .webp">
+                    </div>
+
+                    <div class="rescued-animals-buttons-container">
+                        <button class="apply-rescued-animal-form btn-style">ENVIAR FORMULARIO</button>
+                        <button class="btn-go-to-index btn-style">CANCELAR FORMULARIO</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer id="footer">
+            <div class="footer-container container">
+                <div class="footer-links-container">
+                    <section class="help-links-list">
+                        <h6>AYUDA</h6>
+                        <ul class="help-list">
+                            <li><a href="#" target="_blank" rel="noopener noreferrer">Políticas de adopción</a></li>
+                            <li><a href="#" target="_blank" rel="noopener noreferrer">Política de privacidad</a></li>
+                            <li><a href="#" target="_blank" rel="noopener noreferrer">Términos y condiciones</a></li>
+                            <li><a href="#" target="_blank" rel="noopener noreferrer">Guia de apadrinamiento</a></li>
+                            <li><a href="#">¿Pataamigo Rescatado?</a></li>
+                        </ul>
+                    </section>
+
+                    <section class="credits-list">
+                        <h6>CREDITOS</h6>
+                        <p>Diseñado con mucho mimo por @Javiersiclaro</p>
+                        <p>Proyecto Ficticio creado con fines academicos</p>
+                    </section>
+                </div>
+
+                <small>®Pataverso - Donde cada patita cuenta</small>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
