@@ -3,24 +3,42 @@ import { createAnimalCard, screeningAnimals } from "../components/render-animals
 import { openMobileNav, linksInteraction } from "../helpers/buttons-nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
-export let animals = [];
+// export let animals = [];
+export let ANIMALS_DATA = {
+	perro: [],
+	gato: [],
+	conejo: [],
+};
+if (!getDataFromStorage("animalsData")) {
+	saveDataInStorage("animalsData", ANIMALS_DATA);
+}
+if (getDataFromStorage("animalsData")) {
+	ANIMALS_DATA = getDataFromStorage("animalsData");
+}
+let animalToFetch = getDataFromStorage("animalFetch");
 
 export const sendingAFetch = async (animal) => {
-	let animalToFetch = animal ? animal : getDataFromStorage("animalFetch");
+	const main = document.querySelector(".main-container");
+	animalToFetch = animal ? animal : getDataFromStorage("animalFetch");
 	try {
-		const response = await fetch(`https://huachitos.cl/api/animales/tipo/${animalToFetch}`);
-		if (!response.ok) {
-			throw new Error("NEW ERROR");
+		if (!ANIMALS_DATA[animalToFetch].length) {
+			const response = await fetch(`https://huachitos.cl/api/animales/tipo/${animalToFetch}`);
+			if (!response.ok) {
+				throw new Error("NEW ERROR");
+			}
+			const data = await response.json();
+			const animales = data.data;
+			animales.forEach((animal) => {
+				ANIMALS_DATA[animalToFetch].push(animal);
+			});
+			saveDataInStorage("animalsData", ANIMALS_DATA);
 		}
-		const data = await response.json();
-		const animales = data.data;
-		const slicedAnimals = animales.slice(0, 20);
-		animals = [];
-		slicedAnimals.forEach((animal) => {
-			animals.push(animal);
-		});
 	} catch (error) {
 		console.log(error);
+		main.innerHTML = `
+		<h2> No se han podido cargar los datos de los animales </h2>
+		<p> Intentelo nuevamente </p>
+		`;
 	}
 };
 
@@ -47,7 +65,7 @@ export const renderAnimal = async (animal) => {
 	const pataAmigosContainer = document.querySelector(".pataamigos-cards-container");
 	pataAmigosContainer.innerHTML = "";
 	await sendingAFetch(animal);
-	const filteredAnimals = screeningAnimals(animals);
+	const filteredAnimals = screeningAnimals(ANIMALS_DATA[animalToFetch]);
 	filteredAnimals.forEach((animalFounded) => {
 		const animalCard = createAnimalCard(animalFounded);
 		pataAmigosContainer.append(animalCard);
