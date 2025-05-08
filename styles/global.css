@@ -124,6 +124,7 @@ h1 {
 
 	color: var(--primary-text-color);
 	font-weight: 900;
+	font-size: 1.8rem;
 }
 
 h2 {
@@ -160,7 +161,7 @@ span,
 input,
 button {
 	font-size: 1rem;
-	font-weight: 100;
+	font-weight: 300;
 }
 
 small {
