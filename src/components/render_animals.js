@@ -1,3 +1,5 @@
+import { createAdoptModal } from "./adopt_modal.js";
+
 export const screeningAnimals = (animals) => {
 	const filterForm = document.querySelector(".filters-mobile-section-container");
 	const genreFilter = document.querySelector("#genre-filter-select");
@@ -46,12 +48,7 @@ const createExpandButtonsContainer = (animalName) => {
 	spanAdoptPet.textContent = animalName.toUpperCase();
 	btnAdoptPet.appendChild(spanAdoptPet);
 	btnAdoptPet.addEventListener("click", () => {
-		alert(`
-            GRACIAS POR ADOPTAR A ${animalName}
-            En breves nos pondremos en contacto con usted
-            a traves de su correo electronico para organizar
-            los tramites de la adopción.
-            `);
+		createAdoptModal(animalName);
 	});
 
 	const btnSponsorPet = document.createElement("button");
