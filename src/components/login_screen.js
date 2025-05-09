@@ -2,6 +2,7 @@ import { firstRender, USERS_DATA } from "../app.js";
 
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 const verificationUser = async (newUser) => {
+	let currentUserLogged = newUser;
 	const users = await getDataFromStorage("usersData");
 	const userDuplicate = users.some((user) => user.email === newUser.email);
 
@@ -10,6 +11,7 @@ const verificationUser = async (newUser) => {
 	}
 	if (!userDuplicate) {
 		USERS_DATA.push(newUser);
+		saveDataInStorage("currentUser", currentUserLogged);
 		saveDataInStorage("usersData", USERS_DATA);
 		saveDataInStorage("sesionIsOpen", true);
 		handleSeason();
@@ -40,6 +42,7 @@ const createUser = () => {
 		email: userEmail.value.trim().toLowerCase(),
 		password: userPassword.value.trim(),
 		allowToNewsLetter: checkboxNewsLetter.checked,
+		isBanned: false,
 	};
 	verificationUser(newUser);
 };
@@ -55,6 +58,10 @@ const handleRegisterForm = () => {
 };
 const validationLogin = (userForLogin) => {
 	const usersRegistered = getDataFromStorage("usersData");
+	const userBanned = usersRegistered.find((user) => user.isBanned);
+	if (userBanned) {
+		return alert("Su cuenta esta temporalmente en revisión")
+	}
 	const correctLogin = usersRegistered.find((user) => {
 		const email = user.email === userForLogin.email;
 		const password = user.password === userForLogin.password;
@@ -64,6 +71,8 @@ const validationLogin = (userForLogin) => {
 		return alert("Email o contraseña incorrectos");
 	}
 	if (correctLogin) {
+		const userOnCloud = usersRegistered.filter((user) => user.email === userForLogin.email);
+		saveDataInStorage("currentUser", userOnCloud);
 		saveDataInStorage("sesionIsOpen", true);
 		handleSeason(correctLogin);
 		firstRender();

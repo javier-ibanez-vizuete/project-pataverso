@@ -67,7 +67,7 @@ if (!getDataFromStorage("animalsData")) {
 }
 
 export let USERS_DATA = [
-	{ nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true },
+	{ nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true, banned: false },
 ];
 
 if (getDataFromStorage("usersData")) {
@@ -76,8 +76,6 @@ if (getDataFromStorage("usersData")) {
 if (!getDataFromStorage("usersData")) {
 	saveDataInStorage("usersData", USERS_DATA);
 }
-
-console.log("Que tengo en el local usersData ", getDataFromStorage("usersData"));
 
 document.addEventListener("DOMContentLoaded", () => {
 	// const btnResetStorage = document.querySelector(".clear-storage");
@@ -90,8 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			window.location.reload();
 		});
 	});
-	if (sesionIsOpen) {
-	}
 	loginScreenLauncher();
 	openMobileNav();
 	linksInteraction();

@@ -28,8 +28,6 @@ export const screeningAnimals = (animals) => {
 };
 
 const createExpandButtonsContainer = (animalName) => {
-	const expandedCard = document.querySelector("#tarjeta-extendida");
-	console.log("QUE ES EXPANDED CARD", expandedCard);
 	const h1 = document.querySelector(".h1-animal-page");
 	const filtersContainer = document.querySelector(".filters-mobile-section-container");
 	const cardsContainer = document.querySelector(".pataamigos-cards-container");
@@ -142,7 +140,6 @@ const createExpandPetInformationContainer = (animal) => {
 	pPersonalityPataamigo.appendChild(spanPersonalityPataamigo);
 
 	const cleanedAdvice = animal.desc_adicional.replaceAll("<p>", "").replaceAll("</p>", "");
-	console.log("CLEANED ADVICE ", cleanedAdvice);
 	const pAdvicePataamigo = document.createElement("p");
 	pAdvicePataamigo.classList.add("p-advice-pataamigo");
 	pAdvicePataamigo.textContent = "INFORMACION ADICIONAL:";
@@ -283,7 +280,6 @@ export const createAnimalCard = (animal) => {
 	const informationContainer = createInformationContainer(animal);
 
 	animalCard.append(imageContainer, informationContainer);
-	console.log(animal);
 
 	return animalCard;
 };

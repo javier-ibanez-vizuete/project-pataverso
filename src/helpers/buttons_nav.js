@@ -6,10 +6,7 @@ export const openMobileNav = () => {
 	const mobileNav = document.querySelector("#mobile-navigator");
 
 	btnBurgerMenu.addEventListener("click", () => {
-		console.log("HACIENDO CLICK EN EL MENU HAMBURGUESA");
-		console.log("Que vale mobilNav", mobileNav);
 		mobileNav.classList.add("pop-up-mobile-nav");
-		console.log("ESTO SE HACE");
 	});
 
 	btnCloseMobileNav.addEventListener("click", () => {

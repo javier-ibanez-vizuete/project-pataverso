@@ -27,3 +27,11 @@ export const deleteLocalStorage = () => {
 	localStorage.clear();
 	window.location.reload();
 };
+
+export const removeFromStorage = (key) => {
+	const data = localStorage.getItem(key);
+
+	if (!data) return null;
+
+	if (data) localStorage.removeItem(key);
+}

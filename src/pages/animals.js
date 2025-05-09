@@ -1,7 +1,7 @@
 import { loginScreenLauncher } from "../components/login_screen.js";
 import { createAnimalCard, screeningAnimals } from "../components/render_animals.js";
 import { openMobileNav, linksInteraction } from "../helpers/buttons_nav.js";
-import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
+import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
 // export let animals = [];
 export let ANIMALS_DATA_BASE = {
@@ -66,11 +66,12 @@ export const renderAnimal = async (animal) => {
 	pataAmigosContainer.innerHTML = "";
 	await sendingAFetch(animal);
 	const filteredAnimals = screeningAnimals(ANIMALS_DATA_BASE[animalToFetch]);
-console.log("Que es filterAnimal ", filteredAnimals);
-	filteredAnimals.sort((animalA, animalB) => animalB.id - animalA.id).forEach((animalFounded) => {
-		const animalCard = createAnimalCard(animalFounded);
-		pataAmigosContainer.append(animalCard);
-	});
+	filteredAnimals
+		.sort((animalA, animalB) => animalB.id - animalA.id)
+		.forEach((animalFounded) => {
+			const animalCard = createAnimalCard(animalFounded);
+			pataAmigosContainer.append(animalCard);
+		});
 };
 
 const recalculateFilters = () => {
@@ -122,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	btnCloseProfile.forEach((btn) => {
 		btn.addEventListener("click", () => {
+			removeFromStorage("currentUser");
 			saveDataInStorage("sesionIsOpen", false);
 			window.location.href = "/index.html";
 		});
