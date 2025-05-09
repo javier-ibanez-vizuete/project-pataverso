@@ -1,5 +1,5 @@
-import { loginScreenLauncher } from "./components/login-screen.js";
-import { linksInteraction, openMobileNav } from "./helpers/buttons-nav.js";
+import { loginScreenLauncher } from "./components/login_screen.js";
+import { linksInteraction, openMobileNav } from "./helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
 
 export let sesionIsOpen = false;

@@ -1,6 +1,6 @@
-import { loginScreenLauncher } from "../components/login-screen.js";
-import { createAnimalCard, screeningAnimals } from "../components/render-animals.js";
-import { openMobileNav, linksInteraction } from "../helpers/buttons-nav.js";
+import { loginScreenLauncher } from "../components/login_screen.js";
+import { createAnimalCard, screeningAnimals } from "../components/render_animals.js";
+import { openMobileNav, linksInteraction } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
 // export let animals = [];
