@@ -1,4 +1,4 @@
-import {  USERS_DATA } from "../app.js";
+import { firstRender, USERS_DATA } from "../app.js";
 
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 const verificationUser = async (newUser) => {
@@ -13,6 +13,7 @@ const verificationUser = async (newUser) => {
 		saveDataInStorage("usersData", USERS_DATA);
 		saveDataInStorage("sesionIsOpen", true);
 		handleSeason();
+		firstRender();
 	}
 };
 
@@ -65,6 +66,7 @@ const validationLogin = (userForLogin) => {
 	if (correctLogin) {
 		saveDataInStorage("sesionIsOpen", true);
 		handleSeason(correctLogin);
+		firstRender();
 	}
 };
 
@@ -150,7 +152,7 @@ const showLoginPage = () => {
 const pathName = window.location.pathname;
 const isIndex = pathName === "/" || pathName.endsWith("/index.html");
 
-export const handleSeason = async (user) => {
+export const handleSeason = async () => {
 	const openSesion = await getDataFromStorage("sesionIsOpen");
 	if (openSesion) {
 		if (isIndex) hideLoginPage();

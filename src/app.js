@@ -16,7 +16,7 @@ let ANIMALS_DATA_BASE = {
 	conejo: [],
 };
 
-const firstRender = async () => {
+export const firstRender = async () => {
 	try {
 		if (!ANIMALS_DATA_BASE.perro.length) {
 			const response = await fetch(`https://huachitos.cl/api/animales/tipo/${"perro"}`);
@@ -90,7 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			window.location.reload();
 		});
 	});
-	firstRender();
+	if (sesionIsOpen) {
+	}
 	loginScreenLauncher();
 	openMobileNav();
 	linksInteraction();
