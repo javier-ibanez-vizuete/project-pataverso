@@ -10,6 +10,62 @@ if (getDataFromStorage("sesionIsOpen")) {
 	saveDataInStorage("sesionIsOpen", sesionIsOpen);
 }
 
+let ANIMALS_DATA_BASE = {
+	perro: [],
+	gato: [],
+	conejo: [],
+};
+
+const firstRender = async () => {
+	try {
+		if (!ANIMALS_DATA_BASE.perro.length) {
+			const response = await fetch(`https://huachitos.cl/api/animales/tipo/${"perro"}`);
+			if (!response.ok) {
+				throw new Error("NEW ERROR");
+			}
+			const data = await response.json();
+			const animales = data.data;
+			animales.forEach((animal) => {
+				ANIMALS_DATA_BASE.perro.push(animal);
+			});
+			saveDataInStorage("animalsData", ANIMALS_DATA_BASE);
+		}
+		if (!ANIMALS_DATA_BASE.gato.length) {
+			const response = await fetch(`https://huachitos.cl/api/animales/tipo/${"gato"}`);
+			if (!response.ok) {
+				throw new Error("NEW ERROR");
+			}
+			const data = await response.json();
+			const animales = data.data;
+			animales.forEach((animal) => {
+				ANIMALS_DATA_BASE.gato.push(animal);
+			});
+			saveDataInStorage("animalsData", ANIMALS_DATA_BASE);
+		}
+		if (!ANIMALS_DATA_BASE.conejo.length) {
+			const response = await fetch(`https://huachitos.cl/api/animales/tipo/${"conejo"}`);
+			if (!response.ok) {
+				throw new Error("NEW ERROR");
+			}
+			const data = await response.json();
+			const animales = data.data;
+			animales.forEach((animal) => {
+				ANIMALS_DATA_BASE.conejo.push(animal);
+			});
+			saveDataInStorage("animalsData", ANIMALS_DATA_BASE);
+		}
+	} catch (error) {
+		console.error("there is an error on first render ", error);
+	}
+};
+
+if (getDataFromStorage("animalsData")) {
+	ANIMALS_DATA_BASE = getDataFromStorage("animalsData");
+}
+if (!getDataFromStorage("animalsData")) {
+	saveDataInStorage("animalsData");
+}
+
 export let USERS_DATA = [
 	{ nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true },
 ];
@@ -34,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			window.location.reload();
 		});
 	});
+	firstRender();
 	loginScreenLauncher();
 	openMobileNav();
 	linksInteraction();
