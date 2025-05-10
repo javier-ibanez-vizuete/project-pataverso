@@ -16,6 +16,13 @@ let ANIMALS_DATA_BASE = {
 	conejo: [],
 };
 
+if (getDataFromStorage("animalsData")) {
+	ANIMALS_DATA_BASE = getDataFromStorage("animalsData");
+}
+if (!getDataFromStorage("animalsData")) {
+	saveDataInStorage("animalsData", ANIMALS_DATA_BASE);
+}
+
 export const firstRender = async () => {
 	try {
 		if (!ANIMALS_DATA_BASE.perro.length) {
@@ -58,13 +65,6 @@ export const firstRender = async () => {
 		console.error("there is an error on first render ", error);
 	}
 };
-
-if (getDataFromStorage("animalsData")) {
-	ANIMALS_DATA_BASE = getDataFromStorage("animalsData");
-}
-if (!getDataFromStorage("animalsData")) {
-	saveDataInStorage("animalsData");
-}
 
 export let USERS_DATA = [
 	{ nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true, is_banned: false },
