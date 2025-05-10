@@ -58,8 +58,8 @@ const handleRegisterForm = () => {
 };
 const validationLogin = (userForLogin) => {
 	const usersRegistered = getDataFromStorage("usersData");
-	const userBanned = usersRegistered.find((user) => user.is_banned);
-	if (userBanned) {
+	const userBanned = usersRegistered.filter((user) => user.email === userForLogin.email);
+	if (userBanned[0].is_banned) {
 		return alert("Su cuenta esta temporalmente en revisión");
 	}
 	const correctLogin = usersRegistered.find((user) => {

@@ -2,6 +2,7 @@ import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../hel
 
 const calculateResponse = (animalName) =>
 	new Promise((resolve, reject) => {
+		const currentUser = getDataFromStorage("currentUser");
 		const inputHomeType = document.querySelector("#select-adopt-form-home-type");
 		const inputHomeAlone = document.querySelector("#select-adopt-form-home-alone");
 		const inputHandleBills = document.querySelector("#select-adopt-form-handle-vet-bills");
@@ -33,18 +34,20 @@ const calculateResponse = (animalName) =>
 			pointsCounter += 1;
 		}
 		if (pointsCounter < 1) {
-			reject("No esta capacitado para la adopcion a traves de Pataverso. Disculpe las molestias");
+			reject(
+				`${currentUser.nombre} No esta capacitado para la adopcion a traves de Pataverso. Disculpe las molestias`
+			);
 			return;
 		}
 		if (pointsCounter >= 1 && pointsCounter < 7) {
 			resolve(`Le hemos añadido a la lista de candidatos para la adopcion de ${animalName}.
-            Nos pondremos en contacto con usted.
+            Nos pondremos en contacto con usted a traves de la direccion de correo electronico (${currentUser.email}).
             `);
 		}
 		if (pointsCounter >= 7) {
-			resolve(
-				"Nos ha encantado el resultado de su formulario. Nos pondremos en contacto con usted lo antes posible"
-			);
+			resolve(`
+				Nos ha encantado el resultado de su formulario ${currentUser.nombre}. Nos pondremos en contacto con usted lo antes posible
+			`);
 		}
 	});
 
