@@ -1,5 +1,6 @@
 import { loginScreenLauncher } from "../components/login_screen.js";
 import { createAnimalCard, screeningAnimals } from "../components/render_animals.js";
+import { ANIMALS_DATA_BACKUP } from "../helpers/animals_backup.js";
 import { openMobileNav, linksInteraction } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
@@ -18,7 +19,6 @@ if (getDataFromStorage("animalsData")) {
 let animalToFetch = getDataFromStorage("animalFetch");
 
 export const sendingAFetch = async (animal) => {
-	const main = document.querySelector(".main-container");
 	animalToFetch = animal ? animal : getDataFromStorage("animalFetch");
 	try {
 		if (!ANIMALS_DATA_BASE[animalToFetch].length) {
@@ -35,10 +35,7 @@ export const sendingAFetch = async (animal) => {
 		}
 	} catch (error) {
 		console.log(error);
-		main.innerHTML = `
-		<h2> No se han podido cargar los datos de los animales </h2>
-		<p> Intentelo nuevamente </p>
-		`;
+		ANIMALS_DATA_BASE = ANIMALS_DATA_BACKUP;
 	}
 };
 
