@@ -42,7 +42,7 @@ const createUser = () => {
 		email: userEmail.value.trim().toLowerCase(),
 		password: userPassword.value.trim(),
 		allowToNewsLetter: checkboxNewsLetter.checked,
-		isBanned: false,
+		is_banned: false,
 	};
 	verificationUser(newUser);
 };
@@ -58,9 +58,9 @@ const handleRegisterForm = () => {
 };
 const validationLogin = (userForLogin) => {
 	const usersRegistered = getDataFromStorage("usersData");
-	const userBanned = usersRegistered.find((user) => user.isBanned);
+	const userBanned = usersRegistered.find((user) => user.is_banned);
 	if (userBanned) {
-		return alert("Su cuenta esta temporalmente en revisión")
+		return alert("Su cuenta esta temporalmente en revisión");
 	}
 	const correctLogin = usersRegistered.find((user) => {
 		const email = user.email === userForLogin.email;
@@ -72,7 +72,8 @@ const validationLogin = (userForLogin) => {
 	}
 	if (correctLogin) {
 		const userOnCloud = usersRegistered.filter((user) => user.email === userForLogin.email);
-		saveDataInStorage("currentUser", userOnCloud);
+		console.log("Que vale userOnCloud?", userOnCloud[0]);
+		saveDataInStorage("currentUser", userOnCloud[0]);
 		saveDataInStorage("sesionIsOpen", true);
 		handleSeason(correctLogin);
 		firstRender();

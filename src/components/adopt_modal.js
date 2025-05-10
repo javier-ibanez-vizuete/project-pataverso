@@ -6,42 +6,42 @@ const calculateResponse = (animalName) =>
 		const inputHomeAlone = document.querySelector("#select-adopt-form-home-alone");
 		const inputHandleBills = document.querySelector("#select-adopt-form-handle-vet-bills");
 		const inputMorePets = document.querySelector("#select-adopt-form-more-pets");
-		let counter = 0;
+		let pointsCounter = 0;
 
 		if (inputHomeType.value === "flat") {
-			counter += 1;
+			pointsCounter += 1;
 		}
 		if (inputHomeType.value === "house") {
-			counter += 2;
+			pointsCounter += 2;
 		}
 		if (inputHomeType.value === "country-state") {
-			counter += 3;
+			pointsCounter += 3;
 		}
 		if (inputHomeAlone.value === "sometimes") {
-			counter += 1;
+			pointsCounter += 1;
 		}
 		if (inputHomeAlone.value === "almost-never") {
-			counter += 2;
+			pointsCounter += 2;
 		}
 		if (inputMorePets.value === "yes") {
-			counter += 1;
+			pointsCounter += 1;
 		}
 		if (inputHandleBills.value === "no") {
-			counter = 0;
+			pointsCounter = 0;
 		}
 		if (inputHandleBills.value === "yes") {
-			counter += 1;
+			pointsCounter += 1;
 		}
-		if (counter < 1) {
+		if (pointsCounter < 1) {
 			reject("No esta capacitado para la adopcion a traves de Pataverso. Disculpe las molestias");
 			return;
 		}
-		if (counter >= 1 && counter < 7) {
+		if (pointsCounter >= 1 && pointsCounter < 7) {
 			resolve(`Le hemos añadido a la lista de candidatos para la adopcion de ${animalName}.
             Nos pondremos en contacto con usted.
             `);
 		}
-		if (counter >= 7) {
+		if (pointsCounter >= 7) {
 			resolve(
 				"Nos ha encantado el resultado de su formulario. Nos pondremos en contacto con usted lo antes posible"
 			);
@@ -50,17 +50,10 @@ const calculateResponse = (animalName) =>
 
 const handleAdoptForm = async (animalName) => {
 	const form = document.querySelector(".adopt-form-contaier");
-	const currentUser = getDataFromStorage("currentUser")[0];
+	const currentUser = getDataFromStorage("currentUser");
 	const users = getDataFromStorage("usersData");
-	let userIndex = {};
-    console.log("QUe vale current USer", currentUser);
-    console.log("Que vale users", users);
-    console.log("Que vale userIndex", userIndex);
-	// if (users.length) {
-	// 	userIndex = users.findIndex((user) => user.email === currentUser.email);
-	// }
-
-    console.log(userIndex);
+	const currentUserIndex = users.findIndex((user) => user.email === currentUser.email);
+	console.log("¿Que vale currentUserIndex? ", currentUserIndex);
 
 	form.addEventListener("submit", async (event) => {
 		const inputHomeType = document.querySelector("#select-adopt-form-home-type");
@@ -95,9 +88,8 @@ const handleAdoptForm = async (animalName) => {
 			window.location.href = "/index.html";
 		} catch (error) {
 			alert(error);
-            // currentUser.isBanned = true;
-            // users.splice(userIndex, 1, currentUser);
-			// saveDataInStorage("usersData", users);
+			users[currentUserIndex].is_banned = true;
+			saveDataInStorage("usersData", users);
 			saveDataInStorage("sesionIsOpen", false);
 			removeFromStorage("currentUser");
 			window.location.reload();
@@ -119,7 +111,7 @@ export const createAdoptModal = (animalName) => {
     <form method="get" class="adopt-form-contaier">
         <div class="input-adopt-container">
             <label for="input-adopt-form-name">Nombre</label>
-            <input type="text" id="input-adopt-form-name" name="input-adopt-form-name" placeholder="Introduce tu nombre completo" minlength="8" maxlength="20" required></input>
+            <input type="text" id="input-adopt-form-name" name="input-adopt-form-name" placeholder="Introduce tu nombre completo" minlength="8" maxlength="40" required></input>
         </div>
         <div class="input-adopt-container">
             <label for="select-adopt-form-home-type">¿Tipo de vivienda?</label>

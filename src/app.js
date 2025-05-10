@@ -67,7 +67,7 @@ if (!getDataFromStorage("animalsData")) {
 }
 
 export let USERS_DATA = [
-	{ nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true, banned: false },
+	{ nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true, is_banned: false },
 ];
 
 if (getDataFromStorage("usersData")) {
