@@ -1,3 +1,4 @@
+import { saveDataInStorage } from "../helpers/storage.js";
 import { createAdoptModal } from "./adopt_modal.js";
 
 export const screeningAnimals = (animals) => {

@@ -53,6 +53,7 @@ const calculateResponse = (animalName) =>
 
 const handleAdoptForm = async (animalName) => {
 	const form = document.querySelector(".adopt-form-contaier");
+	const btnCancelAdoptForm = document.querySelector(".btn-reject-adopt-form");
 	const currentUser = getDataFromStorage("currentUser");
 	const users = getDataFromStorage("usersData");
 	const currentUserIndex = users.findIndex((user) => user.email === currentUser.email);
@@ -97,6 +98,13 @@ const handleAdoptForm = async (animalName) => {
 			removeFromStorage("currentUser");
 			window.location.reload();
 		}
+	});
+	btnCancelAdoptForm.addEventListener("click", (event) => {
+		const modal = document.querySelector(".bg-modal");
+		const expandedCardTitle = document.querySelector(".h2-pet-title")
+		event.preventDefault();
+		modal.remove();
+		expandedCardTitle.scrollIntoView({behavior: "smooth", block: "center"})
 	});
 };
 
