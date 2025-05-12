@@ -4,7 +4,12 @@ export const floatingButton = () => {
 	const btnGoUp = document.createElement("button");
 	btnGoUp.classList.add("btn-back-to-top");
 	btnGoUp.innerHTML = `
-    		<img src="/media/pictures/image-bond-scroll.svg" class="svgIcon">
+		<picture>
+			<source srcset="/media/pictures/image-bond-scroll/image-bond-scroll-200w.avid" type="image/avid">
+			<source srcset="/media/pictures/image-bond-scroll/image-bond-scroll-200w.webp" type="image/webp">
+			<source srcset="/media/pictures/image-bond-scroll/image-bond-scroll-200w.png" type="image/png">
+    		<img src="/media/pictures/image-bond-scroll/image-bond-scroll.png" class="svgIcon" />
+		</picture>
 `;
 	body.appendChild(btnGoUp);
 

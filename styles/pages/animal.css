@@ -27,6 +27,12 @@
 	overflow: hidden;
 }
 
+.btn-back-to-top > picture {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 body .go-up-button {
 	top: 90vh;
 }
