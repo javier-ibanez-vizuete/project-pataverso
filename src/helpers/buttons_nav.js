@@ -7,6 +7,7 @@ export const openMobileNav = () => {
 
 	btnBurgerMenu.addEventListener("click", () => {
 		mobileNav.classList.add("pop-up-mobile-nav");
+		console.log("HACIENDO CLICK");
 	});
 
 	btnCloseMobileNav.addEventListener("click", () => {

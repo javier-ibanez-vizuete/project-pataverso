@@ -1,4 +1,4 @@
-import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
+import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 import { createAdoptModal } from "./adopt_modal.js";
 
 export const screeningAnimals = (animals) => {
@@ -85,6 +85,7 @@ const createExpandButtonsContainer = (animalName) => {
 			console.log("petName", petName.textContent);
 			if (petName.textContent.toLowerCase() === petInView.toLowerCase()) {
 				petName.scrollIntoView({behavior: "smooth", block: "center" });
+				removeFromStorage("animalInView");
 			}
 		});
 	});

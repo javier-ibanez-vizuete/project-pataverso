@@ -3,6 +3,7 @@ import { createAnimalCard, screeningAnimals } from "../components/render_animals
 import { ANIMALS_DATA_BACKUP } from "../helpers/animals_backup.js";
 import { openMobileNav, linksInteraction } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
+import { floatingButton } from "../utils/floating_button.js";
 
 // export let animals = [];
 export let ANIMALS_DATA_BASE = {
@@ -130,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		renderAnimal(animal);
 	});
 
+	floatingButton();
 	handleTitlesSection();
 	handleFiltersSection();
 	loginScreenLauncher();
