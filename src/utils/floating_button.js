@@ -13,10 +13,10 @@ export const floatingButton = () => {
 
 	window.addEventListener("scroll", () => {
 		if (window.scrollY > 800) {
-			btnGoUp.style.top = "650px";
+			btnGoUp.classList.add("go-up-button")
 		}
         if (window.scrollY <= 800) {
-            btnGoUp.style.top = "1000px";
+			btnGoUp.classList.remove("go-up-button")
         }
 	});
 
