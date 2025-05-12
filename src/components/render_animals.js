@@ -1,5 +1,6 @@
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 import { createAdoptModal } from "./adopt_modal.js";
+import { createSponsorModal } from "./sponsor_modal.js";
 
 export const screeningAnimals = (animals) => {
 	const filterForm = document.querySelector(".filters-mobile-section-container");
@@ -58,12 +59,7 @@ const createExpandButtonsContainer = (animalName) => {
 	spanSponsorPet.textContent = animalName.toUpperCase();
 	btnSponsorPet.appendChild(spanSponsorPet);
 	btnSponsorPet.addEventListener("click", () => {
-		alert(`
-                    GRACIAS POR APADRINAR A ${animalName}
-            En breve nos pondremos en contacto con usted
-            a traves de su correo eléctronico para organizar
-            los tramites del apadrinamiento.
-        `);
+		createSponsorModal(animalName);
 	});
 
 	adoptSponsorBtnsContainer.append(btnAdoptPet, btnSponsorPet);

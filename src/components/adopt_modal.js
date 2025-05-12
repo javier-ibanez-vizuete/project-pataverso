@@ -119,7 +119,7 @@ export const createAdoptModal = (animalName) => {
 
 	modal.innerHTML = `
     <h2>Formulario para la adopcion de ${animalName}</h2>
-    <form method="get" class="adopt-form-contaier">
+    <form action="#" method="get" class="adopt-form-contaier">
         <div class="input-adopt-container">
             <label for="input-adopt-form-name">Nombre</label>
             <input type="text" id="input-adopt-form-name" name="input-adopt-form-name" placeholder="Introduce tu nombre completo" minlength="8" maxlength="40" required></input>

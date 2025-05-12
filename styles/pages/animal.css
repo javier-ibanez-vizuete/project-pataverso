@@ -371,6 +371,12 @@ body .go-up-button {
 	.btn-sponsor-pet {
 		flex: 1;
 	}
+
+	/* ------- adopt and sponsor form ------- */
+	.modal {
+		align-self: center;
+		max-width: 600px;
+	}
 }
 
 @media (min-width: 1024px) {
@@ -379,15 +385,14 @@ body .go-up-button {
 		width: 60px;
 		height: 60px;
 	}
-	
+
 	body .go-up-button {
 		top: 90vh;
 	}
 
 	.svgIcon {
-	width: 40px;
-}
-
+		width: 40px;
+	}
 
 	.btn-back-to-top:hover {
 		width: 140px;
@@ -465,6 +470,15 @@ body .go-up-button {
 	.p-personality-pataamigo,
 	.p-advice-pataamigo {
 		text-align: center;
+	}
+
+	/* ----- adopt and sponsor form ------ */
+
+	.btns-adopt-form-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		gap: 1rem;
 	}
 }
 
