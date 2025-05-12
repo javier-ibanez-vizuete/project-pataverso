@@ -1,4 +1,4 @@
-import { saveDataInStorage } from "../helpers/storage.js";
+import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 import { createAdoptModal } from "./adopt_modal.js";
 
 export const screeningAnimals = (animals) => {
@@ -73,12 +73,20 @@ const createExpandButtonsContainer = (animalName) => {
 	btnGoToAnimals.textContent = "VOLVER ATRAS";
 	btnGoToAnimals.addEventListener("click", () => {
 		const expandedCard = document.querySelector("#tarjeta-extendida");
-
-		console.log("QUE ES EXPANDED CARD", expandedCard);
+		const normalPetCardName = document.querySelectorAll(".title-pet-card");
+		const petInView = getDataFromStorage("animalInView")
 		expandedCard.remove();
+		console.log(normalPetCardName);
 		h1.classList.remove("dont-show");
 		filtersContainer.classList.remove("dont-show");
 		cardsContainer.classList.remove("dont-show");
+
+		normalPetCardName.forEach((petName) => {
+			console.log("petName", petName.textContent);
+			if (petName.textContent.toLowerCase() === petInView.toLowerCase()) {
+				petName.scrollIntoView({behavior: "smooth", block: "center" });
+			}
+		});
 	});
 
 	divDetailsButtonsContainer.append(adoptSponsorBtnsContainer, btnGoToAnimals);
@@ -147,7 +155,7 @@ const createExpandPetInformationContainer = (animal) => {
 	const spanAdvicePataamigo = document.createElement("span");
 	spanAdvicePataamigo.classList.add("span-advice-pataamigo");
 	spanAdvicePataamigo.textContent = cleanedAdvice ? cleanedAdvice : "Darle muchisimo amor";
-	pAdvicePataamigo.appendChild(spanAdvicePataamigo)
+	pAdvicePataamigo.appendChild(spanAdvicePataamigo);
 
 	const { nombre } = animal;
 	const expandButtonsContainer = createExpandButtonsContainer(nombre);
@@ -177,7 +185,7 @@ const createExpandPetCard = (animal) => {
 
 	const { imagen } = animal;
 	const expandImageContainer = createImageContainer(imagen);
-	// expandImageContainer.classList.add("details-pet-image-container");
+	expandImageContainer.classList.add("details-pet-image-container");
 
 	const expandPetInformationContainer = createExpandPetInformationContainer(animal);
 
@@ -203,8 +211,11 @@ const createButtonContainer = (animal) => {
 		filtersContainer.classList.add("dont-show");
 		cardsContainer.classList.add("dont-show");
 
+		saveDataInStorage("animalInView", animal.nombre.toLowerCase())
 		const petDetailsCard = createExpandPetCard(animal);
 		mainContainer.append(petDetailsCard);
+		const petImage = document.querySelector(".details-pet-image-container");
+		petImage.scrollIntoView({ behavior: "smooth", block: "center" });
 	});
 
 	divBtnContainer.append(btnForMore);
@@ -235,6 +246,7 @@ const createPetNameContainer = (name) => {
 	spanPetName.textContent = "NOMBRE:";
 
 	const petName = document.createElement("h5");
+	petName.classList.add("title-pet-card");
 	petName.textContent = name.toUpperCase();
 
 	divNameContainer.append(spanPetName, petName);

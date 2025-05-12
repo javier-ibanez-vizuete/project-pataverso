@@ -62,7 +62,6 @@ export const renderAnimal = async (animal) => {
 	const pataAmigosContainer = document.querySelector(".pataamigos-cards-container");
 	pataAmigosContainer.innerHTML = "";
 	await sendingAFetch(animal);
-	console.log(ANIMALS_DATA_BASE.conejo);
 	const filteredAnimals = screeningAnimals(ANIMALS_DATA_BASE[animalToFetch]);
 	filteredAnimals
 		.sort((animalA, animalB) => animalB.id - animalA.id)
