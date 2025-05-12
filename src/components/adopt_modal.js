@@ -107,7 +107,7 @@ const handleAdoptForm = async (animalName) => {
 	});
 };
 
-export const createAdoptModal = (animalName) => {
+export const createAdoptModal = (animal) => {
 	const body = document.querySelector("body");
 
 	const bgModal = document.createElement("div");
@@ -117,7 +117,7 @@ export const createAdoptModal = (animalName) => {
 	modal.classList.add("modal");
 
 	modal.innerHTML = `
-    <h2>Formulario para la adopcion de ${animalName}</h2>
+    <h2>Formulario para la adopcion de ${animal.nombre}</h2>
     <form action="#" method="get" class="adopt-form-contaier">
         <div class="input-adopt-container">
             <label for="input-adopt-form-name">Nombre</label>
@@ -166,5 +166,5 @@ export const createAdoptModal = (animalName) => {
 
 	bgModal.append(modal);
 	body.append(bgModal);
-	handleAdoptForm(animalName);
+	handleAdoptForm(animal.nombre);
 };

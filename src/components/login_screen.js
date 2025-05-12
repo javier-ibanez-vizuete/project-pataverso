@@ -38,16 +38,25 @@ const createUser = () => {
 	}
 
 	// export let USERS_DATA = [
-	// { nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true, is_banned: false, sponsoring: [], sponsor_details: {
-	// 	nombre_completo: "Admin Admin Admin",
-	// 	telefono: "",
-	// 	pais: "botnia",
-	// 	sponsor_reason: "",
-	// 	notification_type: true,
-	// 	colaboration_type: "payment-monthly",
-	// 	colaboration_time: "no-limit",
-	// 	participation_events: true,
-	// }},
+	// 	{
+	// 		nombre: "admin",
+	// 		email: "admin@admin.com",
+	// 		password: "adminadmin",
+	// 		allowToNewsLetter: true,
+	// 		is_banned: false,
+	// 		sponsoring: [],
+	// 		sponsor_details: {
+	// 			nombre_completo: "Admin Admin Admin",
+	// 			telefono: "",
+	// 			pais: "botnia",
+	// 			sponsor_reason: "",
+	// 			notification_type: true,
+	// 			colaboration_type: "payment-monthly",
+	// 			colaboration_time: "no-limit",
+	// 			participation_events: true,
+	// 		},
+	// 	},
+	// ];
 
 	const newUser = {
 		nombre: userName.value.trim(),

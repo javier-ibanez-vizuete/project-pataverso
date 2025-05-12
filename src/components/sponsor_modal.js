@@ -1,3 +1,38 @@
+import { getDataFromStorage } from "../helpers/storage.js";
+
+const validateDuplicateSponsor = (animal) => {
+	const currentUser = getDataFromStorage("currentUser")
+	const users = getDataFromStorage("usersData");
+	const userIndex = users.findIndex((user) => user.email === currentUser.email);
+
+		// export let USERS_DATA = [
+	// 	{
+	// 		nombre: "admin",
+	// 		email: "admin@admin.com",
+	// 		password: "adminadmin",
+	// 		allowToNewsLetter: true,
+	// 		is_banned: false,
+	// 		sponsoring: [],
+	// 		sponsor_details: {
+	// 			nombre_completo: "Admin Admin Admin",
+	// 			telefono: "",
+	// 			pais: "botnia",
+	// 			sponsor_reason: "",
+	// 			notification_type: true,
+	// 			colaboration_type: "payment-monthly",
+	// 			colaboration_time: "no-limit",
+	// 			participation_events: true,
+	// 		},
+	// 	},
+	// ];
+	
+	const isDuplicateSponsor = users[userIndex].sponsoring.find((animalSponsored) => animalSponsored.id === animal.id);
+	if (isDuplicateSponsor) {
+		alert("Ya eres padrino de este Peludito")
+		return;
+	}
+};
+
 const createAlertModal = (input) => {
 	const body = document.querySelector("body");
 	const bgAlertModal = document.createElement("div");
@@ -25,7 +60,7 @@ const createAlertModal = (input) => {
 	});
 };
 
-const handleSponsorForm = (animalName) => {
+const handleSponsorForm = (animal) => {
 	const form = document.querySelector(".sponsor-form-container");
 	const userName = document.querySelector("#input-sponsor-form-name");
 	const userTel = document.querySelector("#input-sponsor-form-tel");
@@ -40,6 +75,10 @@ const handleSponsorForm = (animalName) => {
 	const userParticipationEventsLabel = document.querySelector(".label-sponsor-form-events-participation");
 	const userParticipationEvents = document.querySelector("#select-sponsor-form-events-participation");
 	const btnRejectSponsorForm = document.querySelector(".btn-reject-sponsor-form");
+
+	const currentUser = getDataFromStorage("currentUser")
+	const users = getDataFromStorage("usersData");
+	const userIndex = users.findIndex((user) => user.email === currentUser.email);
 
 	form.addEventListener("submit", (event) => {
 		event.preventDefault();
@@ -59,9 +98,14 @@ const handleSponsorForm = (animalName) => {
 			createAlertModal(userParticipationEventsLabel);
 			return;
 		}
+
+		if (userIndex !== -1) {
+			validateDuplicateSponsor(animal);
+		}
 	});
 
-	btnRejectSponsorForm.addEventListener("click", () => {
+	btnRejectSponsorForm.addEventListener("click", (event) => {
+		event.preventDefault();
 		const modal = document.querySelector(".bg-modal");
 		const expandedCardTitle = document.querySelector(".h2-pet-title");
 
@@ -71,7 +115,7 @@ const handleSponsorForm = (animalName) => {
 	});
 };
 
-export const createSponsorModal = (animalName) => {
+export const createSponsorModal = (animal) => {
 	const body = document.querySelector("body");
 
 	const bgModal = document.createElement("div");
@@ -81,11 +125,11 @@ export const createSponsorModal = (animalName) => {
 	modal.classList.add("modal", "modal-for-sponsor");
 
 	modal.innerHTML = `
-		<h2>Formulario para Apadrinar a ${animalName}</h2>
+		<h2>Formulario para Apadrinar a ${animal.nombre}</h2>
 
 		<p>¡Gracias por querer formar parte de nuestra familia peluda!</p>
 
-		<p>Estás a punto de apadrinar a ${animalName}, así que solo necesitamos algunos datos más para hacerlo oficial:</p>
+		<p>Estás a punto de apadrinar a ${animal.nombre}, así que solo necesitamos algunos datos más para hacerlo oficial:</p>
 
 		<form action="#" method="get" class="sponsor-form-container">
 			<div class="input-sponsor-container">
@@ -104,7 +148,7 @@ export const createSponsorModal = (animalName) => {
 					maxlength="20" placeholder="Introduce tu país de residencia">
 			</div>
 			<div class="input-sponsor-container">
-				<label for="textarea-sponsor-form-reason">¿Por qué has elegido apadrinar a ${animalName}</label>
+				<label for="textarea-sponsor-form-reason">¿Por qué has elegido apadrinar a ${animal.nombre}</label>
 				<textarea name="textarea-sponsor-form-reason" id="textarea-sponsor-form-reason" required
 					placeholder="Introduce tus razones para apadrinar..."></textarea>
 			</div>
@@ -156,5 +200,5 @@ export const createSponsorModal = (animalName) => {
 
 	bgModal.append(modal);
 	body.append(bgModal);
-	handleSponsorForm(animalName);
+	handleSponsorForm(animal);
 };

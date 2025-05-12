@@ -29,7 +29,7 @@ export const screeningAnimals = (animals) => {
 	return filteredAnimals;
 };
 
-const createExpandButtonsContainer = (animalName) => {
+const createExpandButtonsContainer = (animal) => {
 	const h1 = document.querySelector(".h1-animal-page");
 	const filtersContainer = document.querySelector(".filters-mobile-section-container");
 	const cardsContainer = document.querySelector(".pataamigos-cards-container");
@@ -45,10 +45,10 @@ const createExpandButtonsContainer = (animalName) => {
 	btnAdoptPet.textContent = "ADOPTAR A";
 	const spanAdoptPet = document.createElement("span");
 	spanAdoptPet.classList.add("span-adopt-pet");
-	spanAdoptPet.textContent = animalName.toUpperCase();
+	spanAdoptPet.textContent = animal.nombre.toUpperCase();
 	btnAdoptPet.appendChild(spanAdoptPet);
 	btnAdoptPet.addEventListener("click", () => {
-		createAdoptModal(animalName);
+		createAdoptModal(animal);
 	});
 
 	const btnSponsorPet = document.createElement("button");
@@ -56,10 +56,10 @@ const createExpandButtonsContainer = (animalName) => {
 	btnSponsorPet.textContent = "APADRINAR A";
 	const spanSponsorPet = document.createElement("span");
 	spanSponsorPet.classList.add("span-sponsor.pet");
-	spanSponsorPet.textContent = animalName.toUpperCase();
+	spanSponsorPet.textContent = animal.nombre.toUpperCase();
 	btnSponsorPet.appendChild(spanSponsorPet);
 	btnSponsorPet.addEventListener("click", () => {
-		createSponsorModal(animalName);
+		createSponsorModal(animal);
 	});
 
 	adoptSponsorBtnsContainer.append(btnAdoptPet, btnSponsorPet);
@@ -154,8 +154,7 @@ const createExpandPetInformationContainer = (animal) => {
 	spanAdvicePataamigo.textContent = cleanedAdvice ? cleanedAdvice : "Darle muchisimo amor";
 	pAdvicePataamigo.appendChild(spanAdvicePataamigo);
 
-	const { nombre } = animal;
-	const expandButtonsContainer = createExpandButtonsContainer(nombre);
+	const expandButtonsContainer = createExpandButtonsContainer(animal);
 
 	divExtendedInformationContainer.append(
 		pAgePet,
