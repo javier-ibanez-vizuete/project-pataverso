@@ -4,23 +4,20 @@ export const floatingButton = () => {
 	const btnGoUp = document.createElement("button");
 	btnGoUp.classList.add("btn-back-to-top");
 	btnGoUp.innerHTML = `
-    		<svg class="svgIcon" viewBox="0 0 384 512">
-				<path
-					d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z">
-				</path>
-			</svg>`;
+    		<img src="/media/pictures/image-bond-scroll.svg" class="svgIcon">
+`;
 	body.appendChild(btnGoUp);
 
 	window.addEventListener("scroll", () => {
 		if (window.scrollY > 800) {
-			btnGoUp.classList.add("go-up-button")
+			btnGoUp.classList.add("go-up-button");
 		}
-        if (window.scrollY <= 800) {
-			btnGoUp.classList.remove("go-up-button")
-        }
+		if (window.scrollY <= 800) {
+			btnGoUp.classList.remove("go-up-button");
+		}
 	});
 
-    btnGoUp.addEventListener("click", () => {
-        window.scrollTo(0,0)
-    })
+	btnGoUp.addEventListener("click", () => {
+		window.scrollTo(0, 0);
+	});
 };

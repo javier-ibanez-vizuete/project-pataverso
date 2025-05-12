@@ -101,10 +101,10 @@ const handleAdoptForm = async (animalName) => {
 	});
 	btnCancelAdoptForm.addEventListener("click", (event) => {
 		const modal = document.querySelector(".bg-modal");
-		const expandedCardTitle = document.querySelector(".h2-pet-title")
+		const expandedCardTitle = document.querySelector(".h2-pet-title");
 		event.preventDefault();
 		modal.remove();
-		expandedCardTitle.scrollIntoView({behavior: "smooth", block: "center"})
+		expandedCardTitle.scrollIntoView({ behavior: "smooth", block: "center" });
 	});
 };
 

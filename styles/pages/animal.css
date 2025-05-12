@@ -32,8 +32,7 @@ body .go-up-button {
 }
 
 .svgIcon {
-	width: 12px;
-	transition-duration: 0.3s;
+	width: 32px;
 }
 
 .svgIcon path {
@@ -43,7 +42,7 @@ body .go-up-button {
 .btn-back-to-top::before {
 	position: absolute;
 	bottom: -20px;
-	content: "Back to Top";
+	content: "Volver a arriba";
 	color: var(--bg-color);
 	font-size: 0px;
 }
@@ -379,6 +378,11 @@ body .go-up-button {
 		top: 90vh;
 	}
 
+	.svgIcon {
+	width: 40px;
+}
+
+
 	.btn-back-to-top:hover {
 		width: 140px;
 		border-radius: 50px;
@@ -389,7 +393,7 @@ body .go-up-button {
 
 	.btn-back-to-top:hover .svgIcon {
 		transition-duration: 0.3s;
-		transform: translateY(-200%);
+		transform: translateY(-300%);
 	}
 
 	.btn-back-to-top:hover::before {
