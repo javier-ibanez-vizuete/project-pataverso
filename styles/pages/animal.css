@@ -294,6 +294,7 @@ body .go-up-button {
 	background-color: var(--accent-bg-color);
 	padding: var(--spacing-sm);
 	border-radius: var(--border-card);
+	overflow-y: auto;
 }
 
 .modal h2 {
@@ -315,6 +316,16 @@ body .go-up-button {
 	gap: 0.8rem;
 }
 
+.input-adopt-container > input,
+.input-adopt-container > select {
+	color: var(--primary-text-color);
+	background-color: var(--bg-color);
+	outline: none;
+}
+.input-adopt-container > input::placeholder {
+	color: var(--primary-text-color);
+}
+
 .btns-adopt-form-container {
 	display: flex;
 	flex-direction: column;
@@ -326,6 +337,48 @@ body .go-up-button {
 	background-color: var(--btn-xtra-color);
 }
 
+/* ----- sponsor modal ------ */
+.modal-for-sponsor {
+	gap: 0rem;
+}
+
+.sponsor-form-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	gap: 0.5rem;
+}
+
+.input-sponsor-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	gap: 0.5rem;
+}
+
+.input-sponsor-container > input,
+.input-sponsor-container > select,
+.input-sponsor-container > textarea {
+	color: var(--primary-text-color);
+	background-color: var(--bg-color);
+	outline: none;
+}
+
+.input-sponsor-container > input::placeholder,
+.input-sponsor-container > textarea::placeholder {
+	color: var(--primary-text-color);
+}
+
+.sponsor-btns-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.btn-reject-sponsor-form {
+	color: var(--secondary-text-color);
+	background-color: var(--btn-xtra-color);
+}
 /* ----- RESPONSIVE - ANIMAL.HTML ----- */
 
 @media (min-width: 481px) {
