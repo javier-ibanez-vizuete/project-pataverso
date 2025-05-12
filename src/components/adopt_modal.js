@@ -57,7 +57,6 @@ const handleAdoptForm = async (animalName) => {
 	const currentUser = getDataFromStorage("currentUser");
 	const users = getDataFromStorage("usersData");
 	const currentUserIndex = users.findIndex((user) => user.email === currentUser.email);
-	console.log("¿Que vale currentUserIndex? ", currentUserIndex);
 
 	form.addEventListener("submit", async (event) => {
 		const inputHomeType = document.querySelector("#select-adopt-form-home-type");
