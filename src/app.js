@@ -67,7 +67,24 @@ export const firstRender = async () => {
 };
 
 export let USERS_DATA = [
-	{ nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true, is_banned: false },
+	{
+		nombre: "admin",
+		email: "admin@admin.com",
+		password: "adminadmin",
+		allowToNewsLetter: true,
+		is_banned: false,
+		sponsoring: [],
+		sponsor_details: {
+			nombre_completo: "Admin Admin Admin",
+			telefono: "",
+			pais: "botnia",
+			sponsor_reason: "",
+			notification_type: true,
+			colaboration_type: "payment-monthly",
+			colaboration_time: "no-limit",
+			participation_events: true,
+		},
+	},
 ];
 
 if (getDataFromStorage("usersData")) {

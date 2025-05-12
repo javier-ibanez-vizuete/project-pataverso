@@ -37,12 +37,35 @@ const createUser = () => {
 		return alert("Email no valido.");
 	}
 
+	// export let USERS_DATA = [
+	// { nombre: "admin", email: "admin@admin.com", password: "adminadmin", allowToNewsLetter: true, is_banned: false, sponsoring: [], sponsor_details: {
+	// 	nombre_completo: "Admin Admin Admin",
+	// 	telefono: "",
+	// 	pais: "botnia",
+	// 	sponsor_reason: "",
+	// 	notification_type: true,
+	// 	colaboration_type: "payment-monthly",
+	// 	colaboration_time: "no-limit",
+	// 	participation_events: true,
+	// }},
+
 	const newUser = {
 		nombre: userName.value.trim(),
 		email: userEmail.value.trim().toLowerCase(),
 		password: userPassword.value.trim(),
 		allowToNewsLetter: checkboxNewsLetter.checked,
 		is_banned: false,
+		sponsoring: [],
+		sponsor_details: {
+			nombre_completo: "",
+			telefono: "",
+			pais: "",
+			sponsor_reason: "",
+			notification_type: false,
+			colaboration_type: "",
+			colaboration_time: "",
+			participation_events: false,
+		},
 	};
 	verificationUser(newUser);
 };
