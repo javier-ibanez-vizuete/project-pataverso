@@ -13,10 +13,10 @@
 
 	position: fixed;
 	top: 1000px;
-	right: 20px;
+	right: 10px;
 
-	width: 40px;
-	height: 40px;
+	width: 48px;
+	height: 48px;
 	border-radius: 50%;
 	background-color: var(--btn-primary-color);
 	border: none;
@@ -34,11 +34,11 @@
 }
 
 body .go-up-button {
-	top: 80vh;
+	top: 88vh;
 }
 
 .svgIcon {
-	width: 32px;
+	width: 36px;
 }
 
 .svgIcon path {
@@ -410,6 +410,34 @@ body .go-up-button {
 
 .btn-close-alert-modal {
 	align-self: stretch;
+}
+
+/* ------ CONGRATS MODAL -------- */
+.bg-congrats-modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	padding: var(--spacing-2xl);
+	background-color: var(--bg-color);
+}
+
+.congrats-modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+
+	background-color: var(--accent-bg-color);
+	padding: var(--spacing-lg);
+	border-radius: var(--border-card);
 }
 
 /* ----- RESPONSIVE - ANIMAL.HTML ----- */

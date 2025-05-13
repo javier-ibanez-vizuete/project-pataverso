@@ -1,11 +1,42 @@
-import { getDataFromStorage } from "../helpers/storage.js";
+import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
-const validateDuplicateSponsor = (animal) => {
-	const currentUser = getDataFromStorage("currentUser")
+const congratulationForSponsoring = (userName, animalName) => {
+	const body = document.querySelector("body");
+	const sponsorForm = document.querySelector(".bg-modal");
+
+	const bgModal = document.createElement("div");
+	bgModal.classList.add("bg-congrats-modal");
+
+	const modal = document.createElement("div");
+	modal.classList.add("congrats-modal");
+
+	modal.innerHTML = `
+		<h4>Muchisimas gracias ${userName}</h4>
+		<p>por apadrinar a ${animalName}.</p>
+		<small>Desde Pataverso.com le deseamos un Maravilloso dia</small>
+	`;
+	bgModal.appendChild(modal);
+	body.append(bgModal);
+
+	setTimeout(() => {
+		bgModal.remove();
+		sponsorForm.remove();
+	}, 5000);
+};
+
+const handleUserContent = (response, animal, userIndex) => {
 	const users = getDataFromStorage("usersData");
-	const userIndex = users.findIndex((user) => user.email === currentUser.email);
+	const user = users[userIndex];
+	const details = user.sponsor_details;
 
-		// export let USERS_DATA = [
+	user.sponsoring.push(animal);
+	console.log("Respuesta", response);
+	console.log("animal", animal);
+	console.log("users", users);
+	console.log("user", user);
+	console.log("details", details);
+
+	// 	export let USERS_DATA = [
 	// 	{
 	// 		nombre: "admin",
 	// 		email: "admin@admin.com",
@@ -25,13 +56,48 @@ const validateDuplicateSponsor = (animal) => {
 	// 		},
 	// 	},
 	// ];
-	
-	const isDuplicateSponsor = users[userIndex].sponsoring.find((animalSponsored) => animalSponsored.id === animal.id);
-	if (isDuplicateSponsor) {
-		alert("Ya eres padrino de este Peludito")
-		return;
-	}
+	Object.entries({
+		nombre_completo: response.user_name,
+		telefono: response.user_tel,
+		pais: response.user_country,
+		sponsor_reason: response.user_reason,
+		notification_type: response.user_reason,
+		colaboration_type: response.user_donation,
+		colaboration_time: response.user_donation_frecuency,
+		participation_events: response.user_participation,
+	}).forEach(([key, value]) => {
+		if (!details[key]) {
+			details[key] = value;
+		}
+	});
+
+	saveDataInStorage("usersData", users);
+	const { user_name } = response;
+	const { nombre } = animal;
+	congratulationForSponsoring(user_name, nombre);
 };
+
+const validateDuplicateSponsor = (animal) =>
+	new Promise((resolve, reject) => {
+		const currentUser = getDataFromStorage("currentUser");
+		const users = getDataFromStorage("usersData");
+		const userIndex = users.findIndex((user) => {
+			console.log("currentUser.email", currentUser.email);
+			console.log("user.email", user.email);
+			return user.email === currentUser.email;
+		});
+		if (userIndex === -1) return reject("Usuario No Encontrado");
+		const isDuplicateSponsor = users[userIndex].sponsoring?.some(
+			(animalSponsored) => animalSponsored.id === animal.id
+		);
+		if (isDuplicateSponsor) {
+			const sponsorForm = document.querySelector(".bg-modal");
+			sponsorForm.remove();
+			reject("Ya eres padrino de este Peludito");
+			return;
+		}
+		resolve(userIndex);
+	});
 
 const createAlertModal = (input) => {
 	const body = document.querySelector("body");
@@ -66,7 +132,6 @@ const handleSponsorForm = (animal) => {
 	const userTel = document.querySelector("#input-sponsor-form-tel");
 	const userCountry = document.querySelector("#input-sponsor-form-country");
 	const userSponsorReason = document.querySelector("#textarea-sponsor-form-reason");
-	const userWantNotificationLabel = document.querySelector(".label-sponsor-form-pet-notification");
 	const userWantNotification = document.querySelector("#select-sponsor-form-pet-notification");
 	const userDonationTypeLabel = document.querySelector(".label-sponsor-form-donation-type");
 	const userDonationType = document.querySelector("#select-sponsor-form-donation-type");
@@ -76,16 +141,12 @@ const handleSponsorForm = (animal) => {
 	const userParticipationEvents = document.querySelector("#select-sponsor-form-events-participation");
 	const btnRejectSponsorForm = document.querySelector(".btn-reject-sponsor-form");
 
-	const currentUser = getDataFromStorage("currentUser")
+	const currentUser = getDataFromStorage("currentUser");
 	const users = getDataFromStorage("usersData");
 	const userIndex = users.findIndex((user) => user.email === currentUser.email);
 
-	form.addEventListener("submit", (event) => {
+	form.addEventListener("submit", async (event) => {
 		event.preventDefault();
-		if (userWantNotification.value === "disabled") {
-			createAlertModal(userWantNotificationLabel);
-			return;
-		}
 		if (userDonationType.value === "disabled") {
 			createAlertModal(userDonationTypeLabel);
 			return;
@@ -99,8 +160,26 @@ const handleSponsorForm = (animal) => {
 			return;
 		}
 
+		const results = {
+			user_name: userName.value,
+			user_tel: userTel.value,
+			user_country: userCountry.value ? userCountry.value : "Desconocido",
+			user_reason: userSponsorReason.value,
+			user_notification: userWantNotification.value === "disabled" ? false : userWantNotification.value,
+			user_donation: userDonationType.value,
+			user_donation_frecuency: userDonationFrecuency.value,
+			user_participation: userParticipationEvents.value,
+		};
+
 		if (userIndex !== -1) {
-			validateDuplicateSponsor(animal);
+			try {
+				const userIndex = await validateDuplicateSponsor(animal);
+				handleUserContent(results, animal, userIndex);
+				form.reset();
+			} catch (error) {
+				alert(error);
+				return;
+			}
 		}
 	});
 
@@ -111,7 +190,7 @@ const handleSponsorForm = (animal) => {
 
 		form.reset();
 		modal.remove();
-		expandedCardTitle.scrollIntoView({behavior: "smooth", block: "center"})
+		expandedCardTitle.scrollIntoView({ behavior: "smooth", block: "center" });
 	});
 };
 

@@ -91,9 +91,6 @@ const handleRegisterForm = () => {
 const validationLogin = (userForLogin) => {
 	const usersRegistered = getDataFromStorage("usersData");
 	const userBanned = usersRegistered.filter((user) => user.email === userForLogin.email);
-	if (userBanned[0].is_banned) {
-		return alert("Su cuenta esta temporalmente en revisión");
-	}
 	const correctLogin = usersRegistered.find((user) => {
 		const email = user.email === userForLogin.email;
 		const password = user.password === userForLogin.password;
@@ -101,6 +98,9 @@ const validationLogin = (userForLogin) => {
 	});
 	if (!correctLogin) {
 		return alert("Email o contraseña incorrectos");
+	}
+	if (userBanned[0].is_banned) {
+		return alert("Su cuenta esta temporalmente en revisión");
 	}
 	if (correctLogin) {
 		const userOnCloud = usersRegistered.filter((user) => user.email === userForLogin.email);
