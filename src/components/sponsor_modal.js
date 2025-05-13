@@ -11,16 +11,23 @@ const congratulationForSponsoring = (userName, animalName) => {
 	modal.classList.add("congrats-modal");
 
 	modal.innerHTML = `
-		<h4>Muchisimas gracias ${userName}</h4>
-		<p>por apadrinar a ${animalName}.</p>
-		<small>Desde Pataverso.com le deseamos un Maravilloso dia</small>
+		<div class="logo-header-modal">
+			<picture>
+				<source srcset="/media/logos/logo-pataverso-200w.avif" type="image/avif">
+				<source srcset="/media/logos/logo-pataverso-200w.webp" type="image/webp">
+				<source srcset="/media/logos/logo-pataverso-200w.png" type="image/png">
+				<img src="/media/logos/logo-pataverso.png"/>
+			</picture>
+		</div>
+		<h3>Muchisimas gracias ${userName}</h3>
+		<h4>por apadrinar a ${animalName}.</h4>
+		<p>Desde Pataverso.com le deseamos un Maravilloso dia</p>
 	`;
 	bgModal.appendChild(modal);
 	body.append(bgModal);
 
 	setTimeout(() => {
-		bgModal.remove();
-		sponsorForm.remove();
+		window.location.reload();
 	}, 5000);
 };
 

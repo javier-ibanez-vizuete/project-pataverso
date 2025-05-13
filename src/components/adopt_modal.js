@@ -90,6 +90,7 @@ const handleAdoptForm = async (animalName) => {
 			alert(response);
 			window.location.href = "/index.html";
 		} catch (error) {
+			alertModal();
 			alert(error);
 			users[currentUserIndex].is_banned = true;
 			saveDataInStorage("usersData", users);
