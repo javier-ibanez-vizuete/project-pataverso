@@ -68,6 +68,7 @@ export const firstRender = async () => {
 
 export let USERS_DATA = [
 	{
+		id: 1,
 		nombre: "admin",
 		email: "admin@admin.com",
 		password: "adminadmin",

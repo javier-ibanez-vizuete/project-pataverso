@@ -489,7 +489,7 @@ button:hover {
 }
 
 .image-burger-menu-container {
-	width: 80px;
+	width: 60px;
 }
 
 .image-burger-menu-container,
@@ -519,7 +519,7 @@ button:hover {
 
 #header .pop-up-mobile-nav {
 	width: auto;
-	padding: var(--spacing-md);
+	padding: var(--spacing-sm);
 }
 
 .mobile-nav-links-container {

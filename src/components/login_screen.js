@@ -60,6 +60,7 @@ const createUser = () => {
 	// ];
 
 	const newUser = {
+		id: Date.now(),
 		nombre: userName.value.trim(),
 		email: userEmail.value.trim().toLowerCase(),
 		password: userPassword.value.trim(),
