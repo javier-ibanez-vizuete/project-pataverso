@@ -1,13 +1,14 @@
 import { firstRender, USERS_DATA } from "../app.js";
-
+import { handleAlertOnLogin } from "../helpers/alerts.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
+
 const verificationUser = async (newUser) => {
 	let currentUserLogged = newUser;
 	const users = await getDataFromStorage("usersData");
 	const userDuplicate = users.some((user) => user.email === newUser.email);
 
 	if (userDuplicate) {
-		return alert("El correo electronico introducido ya esta registrado");
+		return handleAlertOnLogin("El correo electrónico introducido ya esta registrado");
 	}
 	if (!userDuplicate) {
 		USERS_DATA.push(newUser);
@@ -26,15 +27,15 @@ const createUser = () => {
 	const checkboxNewsLetter = document.querySelector("#input-checkbox-register-form");
 
 	if (!userName.value) {
-		return alert("NOMBRE REQUERIDO");
+		return handleAlertOnLogin("Nombre requerido");
 	}
 
 	if (!userEmail.value) {
-		return alert("EMAIL REQUERIDO");
+		return handleAlertOnLogin("Email Requerido");
 	}
 
 	if (!userEmail.value.includes("@") || !userEmail.value.includes(".")) {
-		return alert("Email no valido.");
+		return handleAlertOnLogin("Email no valido");
 	}
 
 	// export let USERS_DATA = [
@@ -97,10 +98,10 @@ const validationLogin = (userForLogin) => {
 		return email && password;
 	});
 	if (!correctLogin) {
-		return alert("Email o contraseña incorrectos");
+		return handleAlertOnLogin("Email o contraseña incorrectos");
 	}
 	if (userBanned[0].is_banned) {
-		return alert("Su cuenta esta temporalmente en revisión");
+		return handleAlertOnLogin("Su cuenta esta temporalmente en revisión");
 	}
 	if (correctLogin) {
 		const userOnCloud = usersRegistered.filter((user) => user.email === userForLogin.email);
@@ -115,15 +116,15 @@ const loginUser = () => {
 	const userEmail = document.querySelector(".input-email-login-form");
 	const userPassword = document.querySelector(".input-password-login-form");
 	if (!userEmail.value) {
-		return alert("EMAIL REQUERIDO");
+		return handleAlertOnLogin("Email Requerido");
 	}
 
 	if (!userEmail.value.includes("@") || !userEmail.value.includes(".")) {
-		return alert("Email no valido.");
+		return handleAlertOnLogin("Email no valido");
 	}
 
 	if (!userPassword.value) {
-		return alert("CONTRASEÑA INCORRECTA");
+		return handleAlertOnLogin("Contraseña Requerida");
 	}
 
 	const currentUser = {

@@ -115,6 +115,14 @@ const createAlertModal = (input) => {
 	alertModal.classList.add("alert-modal");
 
 	alertModal.innerHTML = `
+		<div class="logo-header-modal">
+			<picture>
+				<source srcset="/media/logos/logo-pataverso-200w.avif" type="image/avif">
+				<source srcset="/media/logos/logo-pataverso-200w.webp" type="image/webp">
+				<source srcset="/media/logos/logo-pataverso-200w.png" type="image/png">
+				<img src="/media/logos/logo-pataverso.png"/>
+			</picture>
+		</div>
 		<h3>ATENCIÓN</h3>
 		<h5>Campo obligatorio:</h5>
 		<p>${input.textContent}</p>

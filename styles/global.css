@@ -415,6 +415,35 @@ button:hover {
 	animation: walk 12s linear forwards infinite;
 }
 
+/*  ------- Alert modal on login ------- */
+.bg-alert-login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	padding: var(--spacing-2xl);
+	background-color: var(--bg-color);
+}
+
+.alert-login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+	gap: 0.5rem;
+
+	padding: var(--spacing-lg);
+	background-color: var(--accent-bg-color);
+	border-radius: var(--border-card);
+}
+
 /* -------- header ------- */
 #header {
 	display: flex;

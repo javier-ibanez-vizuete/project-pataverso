@@ -8,7 +8,7 @@ export const floatingButton = () => {
 			<source srcset="/media/pictures/image-bond-scroll/image-bond-scroll-200w.avid" type="image/avid">
 			<source srcset="/media/pictures/image-bond-scroll/image-bond-scroll-200w.webp" type="image/webp">
 			<source srcset="/media/pictures/image-bond-scroll/image-bond-scroll-200w.png" type="image/png">
-    		<img src="/media/pictures/image-bond-scroll/image-bond-scroll.png" class="svgIcon" />
+    		<img src="/media/pictures/image-bond-scroll/image-bond-scroll.png" class="svgIcon"/>
 		</picture>
 `;
 	body.appendChild(btnGoUp);

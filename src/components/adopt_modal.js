@@ -1,5 +1,35 @@
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
+const createAlertModal = (messageError) => {
+	const body = document.querySelector("body");
+
+	const bgModal = document.createElement("div");
+	bgModal.classList.add("bg-banned-alert-modal");
+
+	const modal = document.createElement("div");
+	modal.classList.add("banned-alert-modal");
+
+	modal.innerHTML = `
+		<div class="logo-header-modal">
+			<picture>
+				<source srcset="/media/logos/logo-pataverso-200w.avif" type="image/avif">
+				<source srcset="/media/logos/logo-pataverso-200w.webp" type="image/webp">
+				<source srcset="/media/logos/logo-pataverso-200w.png" type="image/png">
+				<img src="/media/logos/logo-pataverso.png"/>
+			</picture>
+		</div>
+		<h3>Disculpe</h3>
+		<h5>Desde Pataverso.com queremos comunicarle que</h5>
+		<p>${messageError}</p>
+	`;
+	bgModal.appendChild(modal);
+	body.appendChild(bgModal);
+
+	setTimeout(() => {
+		window.location.reload();
+	}, 6000);
+};
+
 const calculateResponse = (animalName) =>
 	new Promise((resolve, reject) => {
 		const currentUser = getDataFromStorage("currentUser");
@@ -90,13 +120,11 @@ const handleAdoptForm = async (animalName) => {
 			alert(response);
 			window.location.href = "/index.html";
 		} catch (error) {
-			alertModal();
-			alert(error);
 			users[currentUserIndex].is_banned = true;
 			saveDataInStorage("usersData", users);
 			saveDataInStorage("sesionIsOpen", false);
 			removeFromStorage("currentUser");
-			window.location.reload();
+			createAlertModal(error);
 		}
 	});
 	btnCancelAdoptForm.addEventListener("click", (event) => {
