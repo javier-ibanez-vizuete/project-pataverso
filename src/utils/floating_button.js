@@ -23,6 +23,6 @@ export const floatingButton = () => {
 	});
 
 	btnGoUp.addEventListener("click", () => {
-		window.scrollTo(0, 0);
+		window.scrollTo({ top: 0, behavior: "smooth" });
 	});
 };
