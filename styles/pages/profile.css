@@ -1,0 +1,18 @@
+.house-dog-container-toloco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 400px;
+
+}
+
+body #svg1 {
+    /* background-color: red; */
+}
+
+#nombre {
+	font-size: 22px;
+	fill: #AC6533;
+    font-family: "bodyfont";
+}

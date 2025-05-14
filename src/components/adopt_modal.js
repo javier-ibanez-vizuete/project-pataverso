@@ -86,7 +86,7 @@ const handleAdoptForm = async (animalName) => {
 	const btnCancelAdoptForm = document.querySelector(".btn-reject-adopt-form");
 	const currentUser = getDataFromStorage("currentUser");
 	const users = getDataFromStorage("usersData");
-	const currentUserIndex = users.findIndex((user) => user.email === currentUser.email);
+	const currentUserIndex = users.findIndex((user) => user.id === currentUser.id);
 
 	form.addEventListener("submit", async (event) => {
 		const inputHomeType = document.querySelector("#select-adopt-form-home-type");

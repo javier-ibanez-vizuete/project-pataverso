@@ -5,7 +5,7 @@ import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 const verificationUser = async (newUser) => {
 	let currentUserLogged = newUser;
 	const users = await getDataFromStorage("usersData");
-	const userDuplicate = users.some((user) => user.email === newUser.email);
+	const userDuplicate = users.some((user) => user.id === newUser.id);
 
 	if (userDuplicate) {
 		return handleAlertOnLogin("El correo electrónico introducido ya esta registrado");
@@ -98,6 +98,7 @@ const validationLogin = (userForLogin) => {
 		const password = user.password === userForLogin.password;
 		return email && password;
 	});
+
 	if (!correctLogin) {
 		return handleAlertOnLogin("Email o contraseña incorrectos");
 	}
@@ -105,7 +106,13 @@ const validationLogin = (userForLogin) => {
 		return handleAlertOnLogin("Su cuenta esta temporalmente en revisión");
 	}
 	if (correctLogin) {
-		const userOnCloud = usersRegistered.filter((user) => user.email === userForLogin.email);
+		const currentUser = usersRegistered.filter((user) => {
+			const email = user.email === userForLogin.email;
+			const password = user.password === userForLogin.password;
+			return email && password;
+		});
+		const userOnCloud = usersRegistered.filter((user) => user.id === currentUser[0].id);
+		console.log("userOnCloud", userOnCloud);
 		saveDataInStorage("currentUser", userOnCloud[0]);
 		saveDataInStorage("sesionIsOpen", true);
 		handleSeason(correctLogin);
