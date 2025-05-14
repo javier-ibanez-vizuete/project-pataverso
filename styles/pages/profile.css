@@ -86,6 +86,10 @@ main #h1-profile-page {
 
 /*  --------- sponsored animals section ------- */
 .sponsored-animals-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
 	height: 0;
 	overflow: hidden;
     transition-duration: 0.5s;
@@ -95,6 +99,12 @@ main #h1-profile-page {
     height: auto;
     transition-duration: 0.5s;
 }
+
+.h4-no-pet-message {
+    color: var(--secondary-text-color);
+    text-align: center;
+}
+
 /*  ---------- User details Section ------- */
 
 .form-user-details {
