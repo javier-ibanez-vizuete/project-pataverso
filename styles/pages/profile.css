@@ -1,18 +1,31 @@
+/* ------- ESTILOS PARA LA CASETA DE PERFIL ---------- */
+
 .house-dog-container-toloco {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    width: 400px;
+    position: relative;
 
+    width: 100px;
 }
 
-body #svg1 {
-    /* background-color: red; */
+#svg-dog-house {
+    z-index: 2;
+}
+
+#door-house-dog {
+    position: absolute;
+    right: 0;
+    bottom: 14%;
+    left: 0;
+    z-index: 0;
+
+    height: 80%;
 }
 
 #nombre {
 	font-size: 22px;
-	fill: #AC6533;
+	fill: #45190b;
     font-family: "bodyfont";
 }
