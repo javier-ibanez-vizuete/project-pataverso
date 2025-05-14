@@ -1,31 +1,118 @@
 /* ------- ESTILOS PARA LA CASETA DE PERFIL ---------- */
-
 .house-dog-container-toloco {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-    position: relative;
+	position: relative;
 
-    width: 100px;
+	width: 100px;
 }
 
 #svg-dog-house {
-    z-index: 2;
+	z-index: 2;
 }
 
 #door-house-dog {
-    position: absolute;
-    right: 0;
-    bottom: 14%;
-    left: 0;
-    z-index: 0;
+	position: absolute;
+	right: 0;
+	bottom: 14%;
+	left: 0;
+	z-index: 0;
 
-    height: 80%;
+	height: 80%;
 }
 
 #nombre {
 	font-size: 22px;
 	fill: #45190b;
-    font-family: "bodyfont";
+	font-family: "bodyfont";
+}
+
+main #h1-profile-page {
+    justify-content: center;
+    text-align: center;
+}
+
+/* ----- header section styles ------- */
+
+.title-section-profile-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    transform: rotate(0);
+    transition: all 1s ease-in-out;
+}
+
+.icon-arrow-container {
+	width: 18px;
+    transition-duration: 0.5s;
+}
+
+.title-section-profile-container h2 {
+    color: var(--secondary-text-color);
+}
+
+.icon-arrow-container-opened {
+	transform: rotate(180deg);
+    transition-duration: 0.5s;
+}
+
+.icon-arrow-container,
+.icon-arrow-container picture {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.title-user-details {
+	text-align: center;
+}
+
+/* ----------- sections styles ---------- */
+.section-sponsored-animals,
+.section-user-details {
+	display: flex;
+	flex-direction: column;
+
+	padding: var(--spacing-lg);
+	background-color: var(--accent-bg-color);
+	border-radius: var(--border-card);
+}
+
+.profile-section-opened {
+    gap: 1rem;
+}
+
+/*  --------- sponsored animals section ------- */
+.sponsored-animals-cards-container {
+	height: 0;
+	overflow: hidden;
+    transition-duration: 0.5s;
+}
+
+.sponsored-animals-cards-container-opened {
+    height: auto;
+    transition-duration: 0.5s;
+}
+/*  ---------- User details Section ------- */
+
+.form-user-details {
+	height: 0;
+	overflow: hidden;
+    transition-duration: 1s;
+}
+
+.form-user-details-opened {
+    height: auto;
+    transition-duration: 1s;
+}
+
+/* ----------- link go home styles ------- */
+.return-to-home {
+    text-align: center;
+    color: var(--secondary-text-color);
+	padding: var(--spacing-lg);
+	background-color: var(--accent-bg-color);
+	border-radius: var(--border-card);
 }

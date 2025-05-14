@@ -177,13 +177,9 @@ small {
 .span-v,
 .span-e,
 .span-r,
-.span-s {
-	font-family: "cattyfont", "poppins";
-}
-
+.span-s,
 .span-t {
-	font-family: "bunnyfont", "poppins";
-	font-weight: 100;
+	font-family: "cattyfont", "poppins";
 }
 
 .span-o {
@@ -196,10 +192,6 @@ small {
 	font-size: 3.5rem;
 	line-height: 1;
 	vertical-align: bottom;
-}
-
-.pata-title-nav .pata-letter {
-	font-size: 1.6rem;
 }
 
 .landing-word .pata-letter {
@@ -537,7 +529,8 @@ button:hover {
 .gaticornios-nav-container,
 .conejaurios-nav-container,
 .cerrar-sesion,
-.pataamigos-rescued-container {
+.pataamigos-rescued-container,
+.profile-link-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
