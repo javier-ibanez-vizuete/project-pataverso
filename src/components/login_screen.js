@@ -4,7 +4,7 @@ import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
 /**
  * Checks for duplicate users and registers a new user if none exists.
- * 
+ *
  * This asynchronous function retrieves existing users from storage,
  * verifies that the new user's ID/EMAIL is not already registered,
  * and if unique:
@@ -14,7 +14,7 @@ import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
  *   4. Calls 'handleSeason' to adjust the UI for the logged-in state.
  *   5. Calls 'firstRender' to fetch initial data for user.
  * If a duplicate is fond, it displays an alert indicating the email is already registered.
- * 
+ *
  * @async
  * @function verificationUser
  * @param {Object} newUser - The user object to verify and register.
@@ -48,11 +48,11 @@ const verificationUser = async (newUser) => {
 
 /**
  * Validates registration form inputs and constructs a new user object.
- * 
+ *
  * This function checks that the name and email fields are populated and that the email
  * has a basic valid format. It then gathers values from the name, email, password, and newsletter checkbox input to build a 'newUser' object with default sponsorship data,
  * and passes it to 'verificationUser' for further checks and storage.
- * 
+ *
  * @function createUser
  */
 const createUser = () => {
@@ -118,11 +118,11 @@ const createUser = () => {
 
 /**
  * Attaches submission handling to the registration form's submit button.
- * 
+ *
  * This function prevents the default form submission behavior,
  * invokes the 'createUser' funtion to register a new user,
  * and then resets the registration form fields.
- * 
+ *
  * @function handleRegisterForm
  */
 const handleRegisterForm = () => {
@@ -137,7 +137,7 @@ const handleRegisterForm = () => {
 
 /**
  * Validates user credentials, handles banned status, and initializes session on succes.
- * 
+ *
  * This funtion retrieves all registered users from storage and:
  *  1. Check for a matching email/password combination.
  *  2. If no match is found, shows an 'incorrect email or password' alert.
@@ -147,7 +147,7 @@ const handleRegisterForm = () => {
  *    - Marks the session as open ('sesionIsOpen' = true).
  *    - Calls 'handleSeason' to adjust UI based on login state.
  *    - Calls 'firstRender' to fetch any initial data.
- * 
+ *
  * @function validationLogin
  * @param {{ email: string, password: string }} userForLogin - The credentials entered by the user.
  */

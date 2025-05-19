@@ -2,6 +2,20 @@ import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../hel
 import { createAdoptModal } from "./adopt_modal.js";
 import { createSponsorModal } from "./sponsor_modal.js";
 
+/**
+ * Filters a list of animals based on selected criteria: genre, vaccination, and sterilization.
+ * 
+ * This function retrieves filter values from the DOM, applioes each active filter
+ * sequentially, and returns the subset of animals matching all selected criteria.
+ * If no animals match, it alerts the user, reset the filter form, adn returns the original list.
+ * 
+ * @function screeningAnimals
+ * @param {Array} animals - The array of animal objects to filter.
+ * @param {string} animals[].genero - The genre of the animal.
+ * @param {number} animals[].vacunas - Vaccination status (1 for vaccinated, 0 for not).
+ * @param {number} animals[].esterilizado - Sterilization status (1 for sterilized, 0 for not).
+ * @returns {Array} The filtered array of animals, or the original array if no matches.
+ */
 export const screeningAnimals = (animals) => {
 	const filterForm = document.querySelector(".filters-mobile-section-container");
 	const genreFilter = document.querySelector("#genre-filter-select");
@@ -29,6 +43,20 @@ export const screeningAnimals = (animals) => {
 	return filteredAnimals;
 };
 
+/**
+ * Create a container with action buttons for adopting, sponsoring, and returning to the pet list.
+ * 
+ * This function builds a button panel that includes:
+ *  - An 'Adopt' button which opens the adoption modal for the given animal.
+ *  - A 'Sponsor' button which opens the sponsorship modal for the given animal.
+ *  - A 'Back' button which closes the expanded view and scrolls the original pet card into view.
+ * It also handles showing and hidding relevant page sections.
+ * 
+ * @function createExpandButtonsContainer
+ * @param {Object} animal - The data object representing the pet.
+ * @param {string} animal.nombre - The pet's name (used in button labels).
+ * @returns {HTMLElement} A <div> element containing the action buttons.
+ */
 const createExpandButtonsContainer = (animal) => {
 	const h1 = document.querySelector(".h1-animal-page");
 	const filtersContainer = document.querySelector(".filters-mobile-section-container");
@@ -70,7 +98,7 @@ const createExpandButtonsContainer = (animal) => {
 	btnGoToAnimals.addEventListener("click", () => {
 		const expandedCard = document.querySelector("#tarjeta-extendida");
 		const normalPetCardName = document.querySelectorAll(".title-pet-card");
-		const petInView = getDataFromStorage("animalInView")
+		const petInView = getDataFromStorage("animalInView");
 		expandedCard.remove();
 		console.log(normalPetCardName);
 		h1.classList.remove("dont-show");
@@ -80,7 +108,7 @@ const createExpandButtonsContainer = (animal) => {
 		normalPetCardName.forEach((petName) => {
 			console.log("petName", petName.textContent);
 			if (petName.textContent.toLowerCase() === petInView.toLowerCase()) {
-				petName.scrollIntoView({behavior: "smooth", block: "center" });
+				petName.scrollIntoView({ behavior: "smooth", block: "center" });
 				removeFromStorage("animalInView");
 			}
 		});
@@ -91,6 +119,25 @@ const createExpandButtonsContainer = (animal) => {
 	return divDetailsButtonsContainer;
 };
 
+/**
+ * Creates a DOM element containing detailed information about pet.
+ *
+ * This function builds a container with structured paragraphs and spans to display
+ * the pet's age, genre, sterilization status, vaccination status, physical description,
+ * personality traits, and additional notes. It also appends a button container for
+ * interactive actions using a helper function.
+ *
+ * @function createExpandPetInformationContainer
+ * @param {Object} animal - The animal data used to populate the container.
+ * @param {string} animal.edad - The pet's age.
+ * @param {string} animal.genero - The pet's genre.
+ * @param {boolean} animal.esterilizado - Whether the pet is sterilized.
+ * @param {boolean} animal.vacunas - Whether the pet is vaccinated.
+ * @param {string} animal.desc_fisica - Physical description in HTML string format.
+ * @param {string} animal.desc_personalidad - Personality description in HTML string format.
+ * @param {string} animal.desc_adicional - Additional advice or notes in HTML string format.
+ * @returns {HTMLElement} The DOM element containing all structured pet information.
+ */
 const createExpandPetInformationContainer = (animal) => {
 	const divExtendedInformationContainer = document.createElement("div");
 	divExtendedInformationContainer.classList.add("details-pet-information-container");
@@ -170,6 +217,18 @@ const createExpandPetInformationContainer = (animal) => {
 	return divExtendedInformationContainer;
 };
 
+/**
+ * Creates a detailed (expanded) pet card DOM element based on the given animal data.
+ *
+ * This function builds a structure HTML section containing the pet's name,
+ * image, and detailed information. It uses helper functions to generate the image container and the pet information section.
+ *
+ * @function createExpandPetCard
+ * @param {Object} animal - The animal data used to populate the card.
+ * @param {string} animal.nombre - The name of the animal.
+ * @param {string} animal.imagen - The URL or path to the animal's image.
+ * @returns {HTMLElement} The complete DOM element representing the expanded pet card.
+ */
 const createExpandPetCard = (animal) => {
 	const expandCardContainer = document.createElement("section");
 	expandCardContainer.classList.add("expand-pet-container");
@@ -190,6 +249,20 @@ const createExpandPetCard = (animal) => {
 	return expandCardContainer;
 };
 
+/**
+ * Creates a button contianer for interacting with an animal card.
+ *
+ * This function builds a <div> element containing a 'Know Me' button that:
+ *   1. Hides the main animal listing elements (title, filters, cards).
+ *   2. Stores the selected animal in local storage under 'animaInView'.
+ *   3. Appends an expanded pet details card to the main container.
+ *   4. Scrolls the expanded image into view smoothly.
+ *
+ * @function createButtonContainer
+ * @param {Object} animal - The animal object containing its details.
+ * @param {string} animal.nombre - The name of the animal.
+ * @returns {HTMLElement} A <div> element containing the action button for the animal card.
+ */
 const createButtonContainer = (animal) => {
 	const mainContainer = document.querySelector(".main-container");
 	const h1 = document.querySelector(".h1-animal-page");
@@ -207,7 +280,7 @@ const createButtonContainer = (animal) => {
 		filtersContainer.classList.add("dont-show");
 		cardsContainer.classList.add("dont-show");
 
-		saveDataInStorage("animalInView", animal.nombre.toLowerCase())
+		saveDataInStorage("animalInView", animal.nombre.toLowerCase());
 		const petDetailsCard = createExpandPetCard(animal);
 		mainContainer.append(petDetailsCard);
 		const petImage = document.querySelector(".details-pet-image-container");
@@ -219,6 +292,17 @@ const createButtonContainer = (animal) => {
 	return divBtnContainer;
 };
 
+/**
+ * Creates a container element displaying the pet's genre (sex).
+ *
+ * This function generates a <div> with a CSS class for styling, containing:
+ *   - A <span> label 'SEXO:' (sex).
+ *   - An <h5> element with the pet's genre in uppercase.
+ *
+ * @function createPetGenreContainer
+ * @param {string} genre - The pet's genre/sex.
+ * @returns {HTMLElement} A <div> element containing the labeled pet genre, ready for DOM insertion.
+ */
 const createPetGenreContainer = (genre) => {
 	const divGenreContainer = document.createElement("div");
 	divGenreContainer.classList.add("genre-pet-container");
@@ -234,6 +318,17 @@ const createPetGenreContainer = (genre) => {
 	return divGenreContainer;
 };
 
+/**
+ * Creates a container element displaying the pet's name.
+ *
+ * This function generates a <div> with a CSS class for styling, containing:
+ *   - A <span> label 'NOMBRE:' (name).
+ *   - An <h5> element with the pet's name in uppercase.
+ *
+ * @function createPetNameContainer
+ * @param {string} name - The pet's name.
+ * @returns {HTMLElement} A <div> element containing the labeled pet name, ready for DOM insertion.
+ */
 const createPetNameContainer = (name) => {
 	const divNameContainer = document.createElement("div");
 	divNameContainer.classList.add("name-pet-container");
@@ -250,6 +345,20 @@ const createPetNameContainer = (name) => {
 	return divNameContainer;
 };
 
+/**
+ * Creates a container element with an animal's information (name, genre, and action button).
+ *
+ * This function generates a <div> with a specified CSS class appends:
+ *   - A name container built by 'createPetNameContainer'.
+ *   - A genre container built by 'createPetGenreContainer'.
+ *   - A button container built by 'createButtonContianer'.
+ *
+ * @function createInformationContainer
+ * @param {Object} animal - The animal object containing its details.
+ * @param {string} animal.nombre - The animal's name.
+ * @param {string} animal.genero - The animal's genre.
+ * @returns {HTMLElement} A <div> element containing the animal's information, ready for DOM insertion.
+ */
 const createInformationContainer = (animal) => {
 	const divInformationContainer = document.createElement("div");
 	divInformationContainer.classList.add("information-pet-container");
@@ -267,6 +376,16 @@ const createInformationContainer = (animal) => {
 	return divInformationContainer;
 };
 
+/**
+ * Creates a container element for an animal image.
+ *
+ * This function generates a <div> with specified CSS class and appends
+ * an <img> element with the provided image source.
+ *
+ * @function createImageContainer
+ * @param {string} image - The URL or path of the animal image.
+ * @returns {HTMLElement} A <div> element containing the image, ready for DOM insertion.
+ */
 const createImageContainer = (image) => {
 	const divImageContainer = document.createElement("div");
 	divImageContainer.classList.add("image-pet-container");
@@ -279,6 +398,20 @@ const createImageContainer = (image) => {
 	return divImageContainer;
 };
 
+/**
+ * Creates a visual card element for an animal with its image and information.
+ *
+ * This function generates an <article> HTML element containing:
+ *   - An image container with the animal's image.
+ *   - An information container with the animal's details.
+ *
+ * Both parts are built using helper funtions: 'createImageContainer' and 'createInformationContainer'.
+ *
+ * @function createAnimalCard
+ * @param {Object} animal - Object representing an animal.
+ * @param {string} animal.imagen - The image path or URL of the animal.
+ * @returns {HTMLElement} An <article> element ready to be appended to the DOM.
+ */
 export const createAnimalCard = (animal) => {
 	const animalCard = document.createElement("article");
 	animalCard.classList.add("card-pet-container");
