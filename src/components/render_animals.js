@@ -4,11 +4,11 @@ import { createSponsorModal } from "./sponsor_modal.js";
 
 /**
  * Filters a list of animals based on selected criteria: genre, vaccination, and sterilization.
- * 
+ *
  * This function retrieves filter values from the DOM, applioes each active filter
  * sequentially, and returns the subset of animals matching all selected criteria.
  * If no animals match, it alerts the user, reset the filter form, adn returns the original list.
- * 
+ *
  * @function screeningAnimals
  * @param {Array} animals - The array of animal objects to filter.
  * @param {string} animals[].genero - The genre of the animal.
@@ -45,13 +45,13 @@ export const screeningAnimals = (animals) => {
 
 /**
  * Create a container with action buttons for adopting, sponsoring, and returning to the pet list.
- * 
+ *
  * This function builds a button panel that includes:
  *  - An 'Adopt' button which opens the adoption modal for the given animal.
  *  - A 'Sponsor' button which opens the sponsorship modal for the given animal.
  *  - A 'Back' button which closes the expanded view and scrolls the original pet card into view.
  * It also handles showing and hidding relevant page sections.
- * 
+ *
  * @function createExpandButtonsContainer
  * @param {Object} animal - The data object representing the pet.
  * @param {string} animal.nombre - The pet's name (used in button labels).

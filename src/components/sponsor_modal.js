@@ -1,5 +1,16 @@
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
+/**
+ * Displays a thank-you modal after a succesful sponsorship.
+ * 
+ * This function creates an overlay modal with a personalized message
+ * thanking the user by name for sponsoring the specified animal.
+ * It then automatically reloads the page after 5 seconds.
+ * 
+ * @function congratulationForSponsoring
+ * @param {string} userName - The full name of the sponsoring user.
+ * @param {string} animalName - The name of the animal sponsored.
+ */
 const congratulationForSponsoring = (userName, animalName) => {
 	const body = document.querySelector("body");
 	const sponsorForm = document.querySelector(".bg-modal");
@@ -31,6 +42,29 @@ const congratulationForSponsoring = (userName, animalName) => {
 	}, 5000);
 };
 
+/**
+ * Updates user data with new sponsorship`details and persists changes.
+ *
+ * This function retrieves the stored users array, adds the specified animal
+ * to the current user's sponsoring list, merges any missing sponsor details
+ * from the form response, saves the updated users array back to storage,
+ * and triggers a congratulatory message.
+ *
+ * @function handleUserContent
+ * @param {Object} response - The form data submitted by the user.
+ * @param {string} response.user_name - Full name of the sponsor.
+ * @param {string} response.user_tel - Contact telephone number.
+ * @param {string} response.user_country - Country of residence.
+ * @param {string} response.user_reason - Reason for sponsoring.
+ * @param {string|boolean} response.user_notification - Notification preference or false.
+ * @param {string} response.user_donation - Type of donation selected.
+ * @param {string} response.user_donation_frecuency - Sponsorship duration selected.
+ * @param {string|boolean} response.user_participation - Event participation preference or false.
+ * @param {Object} animal - The animal object being sponsored.
+ * @param {number|string} animal.id - Unique identifier of the animal.
+ * @param {string} animal.nombre - Name o the animal (used in confirmation).
+ * @param {number} userIndex - Index of the current user in the stored users array.
+ */
 const handleUserContent = (response, animal, userIndex) => {
 	const users = getDataFromStorage("usersData");
 	const user = users[userIndex];
@@ -84,6 +118,21 @@ const handleUserContent = (response, animal, userIndex) => {
 	congratulationForSponsoring(user_name, nombre);
 };
 
+/**
+ * Checks if current user has already sponsored the specified animal.
+ *
+ * This function retrieves the current user and all users's data from storage,
+ * finds the user index, and determines if the user has already sponsored the
+ * given animal. If the user is not found, the promise is rejected with an error.
+ * If the user has already sponsored the animal, the modal is closed and the
+ * promise is rejected with a duplicate a duplicate sponsorship message. Otherwise,
+ * the promise resolves with the user's index.
+ *
+ * @function validateDuplicateSponsor
+ * @param {Object} animal - The animal object to check sponsorship against.
+ * @param {number|string} animal.id - The unique identifier of the animal.
+ * @returns {promise} A promise that resolve with the current user's index or rejects with an error message.
+ */
 const validateDuplicateSponsor = (animal) =>
 	new Promise((resolve, reject) => {
 		const currentUser = getDataFromStorage("currentUser");
@@ -106,6 +155,17 @@ const validateDuplicateSponsor = (animal) =>
 		resolve(userIndex);
 	});
 
+/**
+ * Display a temporary alert modal highlighting a required form field.
+ *
+ * This function creates an overlay modal containing a logo header, title,
+ * message indicating the missing or invalid field (using the provided input's
+ * text content), and a close button. The modal automatically disappears afer
+ * 4 seconds or can be closed manually by the user.
+ *
+ * @function createAlertModal
+ * @param {HTMLElement} input - The form input element whose label/text is shown in the alert.
+ */
 const createAlertModal = (input) => {
 	const body = document.querySelector("body");
 	const bgAlertModal = document.createElement("div");
@@ -141,6 +201,20 @@ const createAlertModal = (input) => {
 	});
 };
 
+/**
+ * Attaches handlers to the sponsor form for validation, submision, and cancellation.
+ *
+ * This function selects the sponsorship form and its inputs elements, retrieves
+ * the current user and stored users data, and set up:
+ *   - A submit listener that validates required select fields, gather form data,
+ *     check for duplicate sponsorship, processes the submission, and reset the form.
+ *   - A cancel listener on the rejection button that closes the modal, reset the form,
+ *     and scrolls the expanded pet title back into view.
+ *
+ * @function handleSponsorForm
+ * @param {Object} animal - The animal object being sponsored.
+ * @param {string} animal.nombre - The name of the animal (used in duplicate validation).
+ */
 const handleSponsorForm = (animal) => {
 	const form = document.querySelector(".sponsor-form-container");
 	const userName = document.querySelector("#input-sponsor-form-name");
@@ -209,6 +283,19 @@ const handleSponsorForm = (animal) => {
 	});
 };
 
+/**
+ * Creates and display a modal form for sponsoring a specific animal.
+ *
+ * This function dynamically builds a modal overlay containing a detailed
+ * sponsorship form personalized with the animal's name. The form collects
+ * personal details, motivation for sponsoring, and preferences such as update notifications and type of support.
+ *
+ * Once rendered, the modal is appended to the DOM, and a handler is attached to manage form behavior (submision, cancellation, etc...).
+ *
+ * @function createSponsorModal
+ * @param {Object} animal - The animal object containing data for personalization.
+ * @param {string} animal.nombre - The name of the animal to include in the form content.
+ */
 export const createSponsorModal = (animal) => {
 	const body = document.querySelector("body");
 
