@@ -2,7 +2,7 @@ import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../hel
 
 const createAnimalInfoContainer = (animal) => {
 	const infoContainer = document.createElement("div");
-	infoContainer.classList.add("sponsored-animal-info-cotnainer");
+	infoContainer.classList.add("sponsored-animal-info-container");
 
 	const name = document.createElement("h4");
 	name.innerHTML = `NOMBRE: <span>${animal.nombre}</span>`;
