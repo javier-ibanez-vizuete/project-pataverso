@@ -81,7 +81,7 @@
                                     id="path2" />
                                 <path style="fill: black; fill-opacity: 1" d="m 70 650 l 360 650 l 360 800 l 280 800 z"
                                     id="path1" />
-                                <text id="nombre" x="52" y="78" text-anchor="start" dominant-baseline="middle"
+                                <text id="nombre-dog-house" x="52" y="78" text-anchor="start" dominant-baseline="middle"
                                     textlength="68" lengthAdjust="spacingAndGlyphs">
                                 </text>
 
@@ -96,7 +96,7 @@
             <div class="main-container container">
                 <h1 id="h1-profile-page">Tu Perfil</h1>
                 <section class="section-sponsored-animals">
-                    <div class="title-section-profile-container">
+                    <div class="title-section-profile-container sponsored-animal-title">
                         <div class="icon-arrow-container">
                             <picture>
                                 <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.avif" type="image/avif">
@@ -105,7 +105,7 @@
                                 <img src="/media/icons/icon-arrows/icon-arrow-pink.png" alt="icon pink arrow">
                             </picture>
                         </div>
-                        <h2>MASCOTAS APADRINADOS</h2>
+                        <h2>MASCOTAS APADRINADAS</h2>
                         <div class="icon-arrow-container">
                             <picture>
                                 <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.avif" type="image/avif">
@@ -120,7 +120,7 @@
                 </section>
 
                 <section class="section-user-details">
-                    <div class="title-section-profile-container">
+                    <div class="title-section-profile-container user-details-title">
                         <div class="icon-arrow-container">
                             <picture>
                                 <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.avif" type="image/avif">
@@ -141,24 +141,29 @@
                     </div>
                     <form action="#" method="get" class="form-user-details">
                         <div class="change-user-details-container">
-                            <label for="input-change-user-name" class="label-change-user-name">Nombre</label>
-                            <input type="text" name="input-change-user-name" id="input-change-user-name">
+                            <label for="input-change-user-name" class="label-change-user-name">Nombre <span
+                                    class="span-old-name"></span></label>
+                            <input type="text" name="input-change-user-name" id="input-change-user-name"
+                                placeholder="Introduce nuevo nombre de usuario..." minlength="4" maxlength="20">
                         </div>
 
                         <div class="change-user-details-container">
                             <label for="input-change-user-email" class="label-change-user-email">Correo
-                                Electronico</label>
-                            <input type="email" name="input-change-user-email" id="input-change-user-email">
+                                Electronico <span class="span-old-email"></span></label>
+                            <input type="email" name="input-change-user-email" id="input-change-user-email"
+                                placeholder="Introduce un nuevo Email..." minlength="10" maxlength="40">
                         </div>
                         <div class="change-user-details-container">
                             <label for="input-old-user-password" class="label-old-user-password">Antigua
                                 Contraseña</label>
-                            <input type="password" name="input-old-user-password" id="input-old-user-password" required>
+                            <input type="password" name="input-old-user-password" id="input-old-user-password"
+                                placeholder="Introduce la contraseña antigua..." minlength="8" maxlength="40" required>
                         </div>
                         <div class="change-user-details-container">
                             <label for="input-change-user-password" class="label-change-user-password">Nueva
                                 Contraseña</label>
-                            <input type="password" name="input-change-user-password" id="input-change-user-password">
+                            <input type="password" name="input-change-user-password" id="input-change-user-password"
+                                placeholder="Introduce la nueva contraseña..." minlength="8" maxlength="40">
                         </div>
                         <div class="btn-change-user-details-container">
                             <button class="apply-change-user-details btn-style">Guardar Cambios</button>

@@ -1,5 +1,6 @@
 /* ------ header ------ */
 .header-container {
+
 	flex: 1;
 	gap: 2rem;
 	padding: var(--spacing-sm);
@@ -7,6 +8,13 @@
 
 .logo-header-container {
 	width: 60px;
+}
+
+.header-container .pataverso-word .pata-letter {
+	display: inline-block;
+	font-size: 1.8rem;
+	line-height: 1;
+	vertical-align: bottom;
 }
 
 /*  ------ main ------ */
