@@ -112,7 +112,6 @@ const validationLogin = (userForLogin) => {
 			return email && password;
 		});
 		const userOnCloud = usersRegistered.filter((user) => user.id === currentUser[0].id);
-		console.log("userOnCloud", userOnCloud);
 		saveDataInStorage("currentUser", userOnCloud[0]);
 		saveDataInStorage("sesionIsOpen", true);
 		handleSeason(correctLogin);

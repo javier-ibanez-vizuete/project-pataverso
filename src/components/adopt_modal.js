@@ -1,5 +1,13 @@
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
-
+/**
+ * Displays an alert modal informing the user they have been banned or encountered a critical error.
+ * 
+ * This function creates and appends a full-screen overlay modal with a branded header,
+ * apology message, and the provided error message. After 6 seconds, the page automatically reloads.
+ * 
+ * @function createAlertModal
+ * @param {string} messageError - The error or ban message to display inside the modal.
+ */
 const createAlertModal = (messageError) => {
 	const body = document.querySelector("body");
 
@@ -29,7 +37,23 @@ const createAlertModal = (messageError) => {
 		window.location.reload();
 	}, 6000);
 };
-
+/**
+ * Calculates the adoption eligibility response based on the user's form answers.
+ *
+ * This function reads the current user's stored data and values of several dropdown inputs in the adoption form.
+ * It awards points according to the type of home, hours the home is empty, ability to cover veterinary bills,
+ * and whether the user has other pets. Based on the total score:
+ *  - If points < 1: the promise is rejected with a "not elegible" message.
+ *  - If 1 <= points < 7: the promise is resolved with a "placed on candidated list" message.
+ *  - If points >= 7: the promise is resolved with an "approved" message.
+ * 
+ * @function calculateResponse
+ * @param {string} animalName - The name of the animal for which adoption is requested.
+ * @returns {Promise}
+ *  A promise that:
+ *  - Resolves with a succes or waitlist message including the user's name/email and animal name.
+ *  - Rejects with an message including the user's name.
+ */
 const calculateResponse = (animalName) =>
 	new Promise((resolve, reject) => {
 		const currentUser = getDataFromStorage("currentUser");
@@ -80,7 +104,24 @@ const calculateResponse = (animalName) =>
 			`);
 		}
 	});
-
+/**
+ * Handles the Submission and cancellation of the adoption form for a specific animal.
+ *
+ * This Function adds event listeners to the adoption form and its cancel button. It:
+ * - Validates user input to ensure all dropdowns are selected.
+ * - Calls 'calculateResponse' to process the adoption if validation passes.
+ * - Redirects the user to the homepage upon succes.
+ * - if an error occurs (adoption denied, etc...), it:
+ *  - Flags the current user as banned,
+ *  - Logs the user out by clearing session data,
+ *  - Displays an alert modal with the error message.
+ *
+ * The cancel button removes the modal and scrolls back to the expanded pet card view.
+ *
+ * @async
+ * @function handleAdoptForm
+ * @param {string} animalName - The name oif the animal being adopted, used in the adoption evaliation logic.
+ */
 const handleAdoptForm = async (animalName) => {
 	const form = document.querySelector(".adopt-form-contaier");
 	const btnCancelAdoptForm = document.querySelector(".btn-reject-adopt-form");
@@ -135,7 +176,18 @@ const handleAdoptForm = async (animalName) => {
 		expandedCardTitle.scrollIntoView({ behavior: "smooth", block: "center" });
 	});
 };
-
+/**
+ * Creates and displays a modal form for adopting a specific animal.
+ *
+ * Generates a modal element with a form containing questions relevant to the adoption process (name, house type, time house is empty, etc...).
+ * Modal is appended to the body of the document and is specific to the given animal.
+ *
+ * The function also initializes form handling via 'handleAdoptForm' passing the animal's name.
+ *
+ * @function createAdoptModal
+ * @param {Object} animal - The animal object to be adopted.
+ * @param {string} animal.nombre - The name of the animal to display in the form heading.
+ */
 export const createAdoptModal = (animal) => {
 	const body = document.querySelector("body");
 

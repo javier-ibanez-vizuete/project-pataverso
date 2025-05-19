@@ -1,4 +1,5 @@
 import { loginScreenLauncher } from "./components/login_screen.js";
+import { ANIMALS_DATA_BACKUP } from "./helpers/animals_backUp.js";
 import { linksInteraction, openMobileNav } from "./helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
 
@@ -22,7 +23,24 @@ if (getDataFromStorage("animalsData")) {
 if (!getDataFromStorage("animalsData")) {
 	saveDataInStorage("animalsData", ANIMALS_DATA_BASE);
 }
-
+/**
+ * Asynchronously fetches and initializes animal data (dogs, cats, rabbits) on the first render.
+ *
+ * This function checks if the local `ANIMALS_DATA_BASE` is empty for each animal type.
+ * If so, it performs a fetch request to the API for that specific type (`perro`, `gato`, or `conejo`).
+ * The fetched data is then stored in `ANIMALS_DATA_BASE` and persisted using `saveDataInStorage`.
+ *
+ * Animal Types handled:
+ *  - perro (dog)
+ *  - cat (cat)
+ *  - conejo (rabbit)
+ *
+ * On failure of any fetch operation an error is logged to the console and use ANIMALS_DATA_BACKUP as back up.
+ *
+ * @async
+ * @function firstRender
+ * @returns Resolve once all necessary data has benn fetched and storage.
+ */
 export const firstRender = async () => {
 	try {
 		if (!ANIMALS_DATA_BASE.perro.length) {
@@ -63,6 +81,8 @@ export const firstRender = async () => {
 		}
 	} catch (error) {
 		console.error("there is an error on first render ", error);
+		ANIMALS_DATA_BASE = ANIMALS_DATA_BACKUP;
+		saveDataInStorage("animalsData", ANIMALS_DATA_BASE);
 	}
 };
 
