@@ -1,5 +1,17 @@
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
+/**
+ * Creates and returns a DOM element that displays detailed information
+ * about a fiven animal, including name, genre, age, and type.
+ * 
+ * @function createAnimalInfoContainer
+ * @param {Object} animal - The animal object containing its information.
+ * @param {string} animal.nombre - The name of the animal.
+ * @param {string} animal.genero - The genre of the animal (macho, hembra).
+ * @param {string} animal.edad - The age of the animal.
+ * @param {string} animal.tipo - The type of pet (perro, gato, conejo).
+ * @returns {HTMLDivElement} A <div> element containing the formatted animal information.
+ */
 const createAnimalInfoContainer = (animal) => {
 	const infoContainer = document.createElement("div");
 	infoContainer.classList.add("sponsored-animal-info-container");
@@ -21,16 +33,43 @@ const createAnimalInfoContainer = (animal) => {
 	return infoContainer;
 };
 
+/**
+ * Creates a DOM element wrapping an image for a sponsored animal.
+ * 
+ * This function builds a '<div>' container with the class
+ * 'sponsored-animal-image-container', creates an '<img>' element
+ * using the provided image URL, appends the image to the container,
+ * and returns the container element.
+ * 
+ * @function createAnimalImage
+ * @param {string} imagen - The URL of the animal's image.
+ * @returns {HTMLElement} a <div> element containing the image.
+ */
 const createAnimalImage = (imagen) => {
 	const imageContainer = document.createElement("div");
 	imageContainer.classList.add("sponsored-animal-image-container");
 	const image = document.createElement("img");
+	image.setAttribute("loading", "lazy");
 	image.src = imagen;
 	imageContainer.appendChild(image);
 
 	return imageContainer;
 };
 
+/**
+ * Generates and renders sponsor animal cards within the sponsored animals container.
+ * 
+ * This function:
+ *  1. Selects the '.sponsored-animals-cards-container' element (if not found, return).
+ *  2. Clears any existing content in the container.
+ *  3. If the provided 'animals' array is empty, displays a message indicating no sponsored pets.
+ *  4. Otherwise, iterates over each animal, creates a card with its image and info,
+ *     and appends it to the container.
+ * 
+ * @function createAnimalCard
+ * @param {Array} animals - An array of animal objects to render as cards.
+ * @param {string} animals[].imagen - The URL of the animal's image.
+ */
 const createAnimalCard = (animals) => {
 	const cardsContainer = document.querySelector(".sponsored-animals-cards-container");
 	if (!cardsContainer) {
@@ -55,6 +94,19 @@ const createAnimalCard = (animals) => {
 	});
 };
 
+/**
+ * Render the list of animals the current user is sponsoring.
+ * 
+ * This function:
+ *  1. Retrieves the current user and all users from local storage.
+ *  2. Finds the index of the current user.
+ *  3. Retrieves the array of sponsored animals for the user.
+ *  4. Calls 'createAnimalCard' for each sponsored animal to display its card.
+ * 
+ * Logs a message if the current user or their sponsorship array cannot be found.
+ * 
+ * @function renderSponsoredAnimals
+ */
 const renderSponsoredAnimals = () => {
 	const currentUser = getDataFromStorage("currentUser");
 
@@ -72,6 +124,20 @@ const renderSponsoredAnimals = () => {
 	createAnimalCard(animals);
 };
 
+/**
+ * Sets up click handlers to toggle the display and icon state of profile sections.
+ * 
+ * This function binds click listener to:
+ *  1. The 'Sponsored Animals' section title - toggles its expansion, arrow icon rotation,
+ *     and the visibility of the sponsored animals cards container.
+ *  2. The 'User Details' section title - toggles its expansion, arrow icon rotation,
+ *     and the visibility of the user details form.
+ * 
+ * It ensures that if the target container or icons are not found, it logs a console waring
+ * and safely exists without throwing an error.
+ * 
+ * @function sectionsAnimations
+ */
 const sectionsAnimations = () => {
 	const sponsoredSection = document.querySelector(".section-sponsored-animals");
 	const userDetailsSection = document.querySelector(".section-user-details");
@@ -108,6 +174,20 @@ const sectionsAnimations = () => {
 	});
 };
 
+/**
+ * Initializes and handles the user details update form.
+ *
+ * This function:
+ *  1. Loads users and the current user from local storage, validating their existence.
+ *  2. Finds the current user's index and populates span elements with their existing name and email.
+ *  3. Attaches a submit listener to the details form that:
+ *    - Verifies the old password matches.
+ *    - Updates name, email, and/or password if new values are provided.
+ *    - Persists changes to local storage.
+ *    - Updates the displayed current user name in the UI.
+ *
+ * @function handleUserDetailsForm
+ */
 const handleUserDetailsForm = () => {
 	const users = getDataFromStorage("usersData");
 	if (!users.length) {
@@ -188,6 +268,19 @@ const handleUserDetailsForm = () => {
 	});
 };
 
+/**
+ * Verifies session status and attaches a logout listener.
+ *
+ * This function check if a user session is open by reading from local storage.
+ *  - If no session is active, it redirects to the login page.
+ *  - If logout button or current user data is missing, it logs and error.
+ *  - Otherwise, it binds a click handler to the logout button that:
+ *    1. Sets the session flag to false.
+ *    2. Removes the current user from storage.
+ *    3. Reloads the page.
+ *
+ * @function handleUserSesion
+ */
 const handleUserSesion = () => {
 	const sesionOpen = getDataFromStorage("sesionIsOpen");
 	const btnLogOut = document.querySelector(".house-dog-container-toloco");

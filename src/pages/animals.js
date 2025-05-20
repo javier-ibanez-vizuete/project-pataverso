@@ -1,6 +1,6 @@
 import { loginScreenLauncher } from "../components/login_screen.js";
 import { createAnimalCard, screeningAnimals } from "../components/render_animals.js";
-import { ANIMALS_DATA_BACKUP } from "/helpers/animals_backup.js";
+import { ANIMALS_DATA_BACKUP } from "../helpers/animals_backUp.js";
 import { openMobileNav, linksInteraction } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 import { floatingButton } from "../utils/floating_button.js";
