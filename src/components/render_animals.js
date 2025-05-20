@@ -97,21 +97,26 @@ const createExpandButtonsContainer = (animal) => {
 	btnGoToAnimals.textContent = "VOLVER ATRAS";
 	btnGoToAnimals.addEventListener("click", () => {
 		const expandedCard = document.querySelector("#tarjeta-extendida");
-		const normalPetCardName = document.querySelectorAll(".title-pet-card");
+		const normalPetCardName = document.querySelectorAll(".title-pet-card"); // Intentar asociarlo a la ID en vez de al nombre
 		const petInView = getDataFromStorage("animalInView");
 		expandedCard.remove();
-		console.log(normalPetCardName);
+		// console.log(normalPetCardName);
 		h1.classList.remove("dont-show");
 		filtersContainer.classList.remove("dont-show");
 		cardsContainer.classList.remove("dont-show");
 
-		normalPetCardName.forEach((petName) => {
-			console.log("petName", petName.textContent);
-			if (petName.textContent.toLowerCase() === petInView.toLowerCase()) {
-				petName.scrollIntoView({ behavior: "smooth", block: "center" });
-				removeFromStorage("animalInView");
-			}
-		});
+		const animalInList = document.querySelector(`[data-animal-id="${petInView.id}"]`);
+		console.log(animalInList);
+		animalInList.scrollIntoView({block: "start", inline: "nearest", behavior: "instant"})
+		// normalPetCardName.forEach((petName) => {
+		// 	console.log("petName", petName);
+		// 	console.log("petName", petName.textContent);
+		// 	console.log("petName", petName.dataset);
+		// 	if (petName.dataset.animalId == petInView.id) {
+		// 		petName.scrollIntoView({ block: "center" });
+		// 		removeFromStorage("animalInView");
+		// 	}
+		// });
 	});
 
 	divDetailsButtonsContainer.append(adoptSponsorBtnsContainer, btnGoToAnimals);
@@ -280,11 +285,13 @@ const createButtonContainer = (animal) => {
 		filtersContainer.classList.add("dont-show");
 		cardsContainer.classList.add("dont-show");
 
-		saveDataInStorage("animalInView", animal.nombre.toLowerCase());
+		saveDataInStorage("animalInView", animal);
+		console.log("ANIMAL ID", animal.id);
+		console.log("ANIMAL NOMBRE", animal.nombre);
 		const petDetailsCard = createExpandPetCard(animal);
 		mainContainer.append(petDetailsCard);
 		const petImage = document.querySelector(".details-pet-image-container");
-		petImage.scrollIntoView({ behavior: "smooth", block: "center" });
+		mainContainer.scrollIntoView({ behavior: "smooth", block: "start" });
 	});
 
 	divBtnContainer.append(btnForMore);
@@ -329,7 +336,7 @@ const createPetGenreContainer = (genre) => {
  * @param {string} name - The pet's name.
  * @returns {HTMLElement} A <div> element containing the labeled pet name, ready for DOM insertion.
  */
-const createPetNameContainer = (name) => {
+const createPetNameContainer = (name, id) => {
 	const divNameContainer = document.createElement("div");
 	divNameContainer.classList.add("name-pet-container");
 
@@ -337,6 +344,7 @@ const createPetNameContainer = (name) => {
 	spanPetName.textContent = "NOMBRE:";
 
 	const petName = document.createElement("h5");
+	// petName.setAttribute("data-animal-id", id);
 	petName.classList.add("title-pet-card");
 	petName.textContent = name.toUpperCase();
 
@@ -363,8 +371,8 @@ const createInformationContainer = (animal) => {
 	const divInformationContainer = document.createElement("div");
 	divInformationContainer.classList.add("information-pet-container");
 
-	const { nombre } = animal;
-	const nameContainer = createPetNameContainer(nombre);
+	const { nombre, id } = animal;
+	const nameContainer = createPetNameContainer(nombre, id);
 
 	const { genero } = animal;
 	const genreContainer = createPetGenreContainer(genero);
@@ -391,6 +399,7 @@ const createImageContainer = (image) => {
 	divImageContainer.classList.add("image-pet-container");
 
 	const petImage = document.createElement("img");
+	petImage.setAttribute("loading", "lazy");
 	petImage.src = image;
 
 	divImageContainer.append(petImage);
@@ -414,6 +423,7 @@ const createImageContainer = (image) => {
  */
 export const createAnimalCard = (animal) => {
 	const animalCard = document.createElement("article");
+	animalCard.setAttribute("data-animal-id", animal.id)
 	animalCard.classList.add("card-pet-container");
 
 	const { imagen } = animal;
