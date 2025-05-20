@@ -2,6 +2,7 @@ import { loginScreenLauncher } from "./components/login_screen.js";
 import { ANIMALS_DATA_BACKUP } from "./helpers/animals_backUp.js";
 import { linksInteraction, openMobileNav } from "./helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
+import { handleNavViews } from "./utils/handle-aria.js";
 
 export let sesionIsOpen = false;
 
@@ -115,6 +116,9 @@ if (!getDataFromStorage("usersData")) {
 	saveDataInStorage("usersData", USERS_DATA);
 }
 
+document.addEventListener("load", handleNavViews);
+document.addEventListener("resize", handleNavViews);
+
 document.addEventListener("DOMContentLoaded", () => {
 	// const btnResetStorage = document.querySelector(".clear-storage");
 	const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
@@ -129,4 +133,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	loginScreenLauncher();
 	openMobileNav();
 	linksInteraction();
+	handleNavViews();
 });

@@ -1,3 +1,12 @@
+/**
+ * Displayes a temporary login alert message modal.
+ *
+ * This function creates an overlay containing a styled alert box with a logo header and
+ * the provided message. The alert automatically disappears after 2.5 seconds.
+ *
+ * @function handleAlertOnLogin
+ * @param {string} message - The alert message to display in the modal.
+ */
 export const handleAlertOnLogin = (message) => {
 	const body = document.querySelector("body");
 	const bgAlert = document.createElement("div");
@@ -20,10 +29,10 @@ export const handleAlertOnLogin = (message) => {
         <p>${message}</p>
     `;
 
-    bgAlert.appendChild(alert)
-    body.appendChild(bgAlert);
+	bgAlert.appendChild(alert);
+	body.appendChild(bgAlert);
 
-    setTimeout(() => {
-        bgAlert.remove();
-    }, 2500);
+	setTimeout(() => {
+		bgAlert.remove();
+	}, 2500);
 };

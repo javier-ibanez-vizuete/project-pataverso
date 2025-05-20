@@ -1,6 +1,6 @@
 import { loginScreenLauncher } from "../components/login_screen.js";
 import { createAnimalCard, screeningAnimals } from "../components/render_animals.js";
-import { ANIMALS_DATA_BACKUP } from "../helpers/animals_backup.js";
+import { ANIMALS_DATA_BACKUP } from "/helpers/animals_backup.js";
 import { openMobileNav, linksInteraction } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 import { floatingButton } from "../utils/floating_button.js";
@@ -19,6 +19,20 @@ if (getDataFromStorage("animalsData")) {
 }
 let animalToFetch = getDataFromStorage("animalFetch");
 
+/**
+ * Fetches and caches animal data for a given type if not already loaded.
+ * 
+ * This asynchronous function determines the target animal type (from the
+ * provided parameter or local storage), checks the in-memory cache
+ * ('ANIMALS_DATA_BASE'), and if empty, performs a network request to
+ * retrieve the data. On success, it populates the cache and persists it
+ * to local storage. On failure, it logs the error and restores the backup data.
+ * 
+ * @function sendingAFetch
+ * @param {string} animal - The animal type to fetch (perro, gato, conejo).
+ *    If omitted, retrieves the type from local storage key "animalFetch".
+ * @returns {Promise} A promise that resolves once fetching and catching are complete.
+ */
 export const sendingAFetch = async (animal) => {
 	animalToFetch = animal ? animal : getDataFromStorage("animalFetch");
 	try {
@@ -59,6 +73,21 @@ if (getDataFromStorage("pataAnimalName")) {
 if (!getDataFromStorage("pataAnimalName")) {
 	saveDataInStorage("pataAnimalName", pataAnimalName);
 }
+
+/**
+ * Fetches, filters, sort, and renders pet cards for a given animal type.
+ *
+ * This asynchronous function:
+ *   1. Clears the current list of rendered pet cards.
+ *   2. Sends a fetch request to load data for the specified animal type.
+ *   3. Applies the screening filters to the loaded data.
+ *   4. Sorts the filtered animals by descending ID.
+ *   5. Creates and appends a card for each resulting animal.
+ *
+ * @function renderAnimal
+ * @param {string} animal - The key identifying which animal dataset to render (perro, gato, conejo).
+ * @returns {Promise} A promise that resolves once all pet cards have been rendered.
+ */
 export const renderAnimal = async (animal) => {
 	const pataAmigosContainer = document.querySelector(".pataamigos-cards-container");
 	pataAmigosContainer.innerHTML = "";
@@ -72,6 +101,15 @@ export const renderAnimal = async (animal) => {
 		});
 };
 
+/**
+ * Updates the visible count of active filters.
+ *
+ * This function selects all filter inputs with the class '.filter-counter',
+ * counts how many have a value other than '"disabled"', and sets that number
+ * as the text content of the '.span-filters-counter' element.
+ *
+ * @function recalculateFilters
+ */
 const recalculateFilters = () => {
 	const spanFiltersActivated = document.querySelector(".span-filters-counter");
 	const filterElements = document.querySelectorAll(".filter-counter");
@@ -85,6 +123,16 @@ const recalculateFilters = () => {
 	spanFiltersActivated.textContent = numberOFFilter;
 };
 
+/**
+ * Attaches event listeners to control the filter UI and actions.
+ *
+ * This function sets up:
+ *   - A toggle button to show or hide the filter container.
+ *   - A listener on the filter form to recalculate displayed animals when any filter changes.
+ *   - A reset button to clear all filters, recalculate, re-render the current animal list, and hide the filters.
+ *
+ * @function handleFiltersSection
+ */
 const handleFiltersSection = () => {
 	const btnOpenCloseFilters = document.querySelector(".btn-open-close-filter-container");
 	const containerFilters = document.querySelector(".expand-filters-menu");
@@ -107,6 +155,16 @@ const handleFiltersSection = () => {
 	});
 };
 
+/**
+ * Updates the page title and the H1 heading to reflect the currently selected animal.
+ *
+ * This asynchronous function retrieves the stored animal name from local storage,
+ * converts it to uppercase, and applies it both to the document's title and to
+ * the text content of the H1 element with class 'h1-animal-page'.
+ *
+ * @function handleTitlesSection
+ * @returns {Promise} A promise that resolves once the title and heading have benn update.
+ */
 const handleTitlesSection = async () => {
 	const h1 = document.querySelector(".h1-animal-page");
 	const currentAnimal = await getDataFromStorage("pataAnimalName");

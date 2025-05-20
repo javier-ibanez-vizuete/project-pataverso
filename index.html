@@ -53,12 +53,12 @@
                 </h2>
 
                 <div class="btns-select-forms-container">
-                    <button class="btn-open-login-form btn-login-screen selected-btn-form">INICIAR SESIÓN</button>
+                    <button class="btn-open-login-form btn-login-screen selected-btn-form" aria-controls="login-form register form">INICIAR SESIÓN</button>
                     <button class="btn-open-register-form btn-login-screen">REGISTRARSE</button>
                 </div>
 
                 <div class="forms-container">
-                    <form action="#" method="get" class="form-login-user selected-login-form">
+                    <form action="#" method="get" class="form-login-user selected-login-form" id="login-form">
                         <div class="email-login-container">
                             <label for="input-email-login-form" class="label-email-login-form">EMAIL</label>
                             <input type="email" name="input-email-login-form" id="input-email-login-form"
@@ -80,7 +80,7 @@
                         </small>
                     </form>
 
-                    <form action="#" method="get" class="form-register-user">
+                    <form action="#" method="get" class="form-register-user" id="register-form">
                         <div class="name-register-container">
                             <label for="input-name-register-form" class="label-name-register-form">NOMBRE</label>
                             <input type="text" name="input-name-register-form" id="input-name-register-form"
@@ -123,7 +123,7 @@
             </div>
         </div>
 
-        <header id="header" class="dont-show">
+        <header id="header" class="dont-show" role="banner">
             <div class="header-container container">
                 <div class="logo-header-container">
                     <a href="/index.html" class="logo-image-container">
@@ -134,20 +134,9 @@
                             <img src="/media/logos/logo-pataverso.png" alt="Pataverso Logo">
                         </picture>
                     </a>
-                    <!-- <h4 class="pataverso-word pata-title-nav">
-                        <span class="pata-letter span-p">P</span>
-                        <span class="pata-letter span-a">a</span>
-                        <span class="pata-letter span-t">t</span>
-                        <span class="pata-letter span-a">a</span>
-                        <span class="pata-letter span-v">v</span>
-                        <span class="pata-letter span-e">e</span>
-                        <span class="pata-letter span-r">r</span>
-                        <span class="pata-letter span-s">s</span>
-                        <span class="pata-letter span-o">o</span>
-                    </h4> -->
                 </div>
 
-                <div class="image-burger-menu-container not-on-desktop">
+                <div class="image-burger-menu-container not-on-desktop" role="button" aria-controls="mobile-navigator" aria-haspopup="true">
                     <picture>
                         <source srcset="/media/icons/icon-dog-footprint-200w.avif" type="image/avif">
                         <source srcset="/media/icons/icon-dog-footprint-200w.webp" type="image/webp">
@@ -156,7 +145,7 @@
                     </picture>
                 </div>
 
-                <nav id="mobile-navigator" class="not-on-desktop">
+                <nav id="mobile-navigator" class="not-on-desktop" role="navigation" aria-label="Navegación Principal" aria-expanded="false">
                     <div class="mobile-nav-links-container">
                         <a href="/Pages/animal.html" class="perrichuchos-nav-container">
                             <span>PERRICHUCHOS</span>
@@ -216,7 +205,7 @@
                         <a href="/Pages/rescued_animal.html" class="pataamigos-rescued-container">¿PATAAMIGO
                             RESCATADO?</a>
                     </div>
-                    <button class="btn-closing-mobile-nav">
+                    <button class="btn-closing-mobile-nav" aria-controls="mobile-navigator">
                         <div class="btn-closing-mobile-nav-icon-container">
                             <picture>
                                 <source srcset="/media/icons/icon-close-navigation-menu-200w.avif" type="image/avif">
@@ -229,7 +218,7 @@
                     </button>
                 </nav>
 
-                <nav id="desktop-navigator" class="only-on-desktop">
+                <nav id="desktop-navigator" class="only-on-desktop" role="navigation" aria-label="Navegacion principal">
                     <a href="/Pages/animal.html" class="perrichuchos-nav-desktop-container">
                         PERRICHUCHOS
                     </a>
@@ -251,7 +240,7 @@
                 </nav>
             </div>
         </header>
-        <main id="main" class="dont-show">
+        <main id="main" class="dont-show" role="main">
             <div class="main-container container">
                 <div class="image-homepage-container">
                     <picture>
@@ -310,7 +299,7 @@
                 </article>
             </div>
         </main>
-        <footer id="footer" class="dont-show">
+        <footer id="footer" class="dont-show" role="contentinfo">
             <div class="footer-container container">
                 <div class="footer-links-container">
                     <section class="help-links-list">

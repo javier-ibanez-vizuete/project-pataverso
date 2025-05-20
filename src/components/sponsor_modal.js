@@ -13,7 +13,7 @@ import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
  */
 const congratulationForSponsoring = (userName, animalName) => {
 	const body = document.querySelector("body");
-	const sponsorForm = document.querySelector(".bg-modal");
+	// const sponsorForm = document.querySelector(".bg-modal");
 
 	const bgModal = document.createElement("div");
 	bgModal.classList.add("bg-congrats-modal");
