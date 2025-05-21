@@ -72,7 +72,7 @@ main #h1-profile-page {
 
 /* ----------- sections styles ---------- */
 .section-sponsored-animals,
-.section-user-details {
+.section-user-details, .section-charitable-donation {
 	display: flex;
 	flex-direction: column;
 
