@@ -1,5 +1,6 @@
 import { firstRender, USERS_DATA } from "../app.js";
 import { handleAlertOnLogin } from "../helpers/alerts.js";
+import { petsCounter } from "../helpers/pets_counter.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
 /**
@@ -42,7 +43,8 @@ const verificationUser = async (newUser) => {
 		saveDataInStorage("usersData", USERS_DATA);
 		saveDataInStorage("sesionIsOpen", true);
 		handleSeason();
-		firstRender();
+		await firstRender();
+		petsCounter();
 	}
 };
 
