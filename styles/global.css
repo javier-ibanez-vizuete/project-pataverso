@@ -95,7 +95,7 @@ body {
 :root {
 	--bg-color: #e0b7b7;
 	--accent-bg-color: #aa4465;
-	--primary-text-color: #2f2f2f;
+	--primary-text-color: black;
 	--secondary-text-color: #e0b7b7;
 	--links-text-color: #94bfa7;
 	--btn-primary-color: #ffc43d;
@@ -544,7 +544,7 @@ button:hover {
 }
 
 .icon-nav-container {
-	width: 100px;
+	width: 60px;
 }
 
 .icon-nav-container,

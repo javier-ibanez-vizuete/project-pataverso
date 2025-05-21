@@ -1,9 +1,10 @@
+import { linksInteraction, openMobileNav } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
 /**
  * Creates and returns a DOM element that displays detailed information
  * about a fiven animal, including name, genre, age, and type.
- * 
+ *
  * @function createAnimalInfoContainer
  * @param {Object} animal - The animal object containing its information.
  * @param {string} animal.nombre - The name of the animal.
@@ -35,12 +36,12 @@ const createAnimalInfoContainer = (animal) => {
 
 /**
  * Creates a DOM element wrapping an image for a sponsored animal.
- * 
+ *
  * This function builds a '<div>' container with the class
  * 'sponsored-animal-image-container', creates an '<img>' element
  * using the provided image URL, appends the image to the container,
  * and returns the container element.
- * 
+ *
  * @function createAnimalImage
  * @param {string} imagen - The URL of the animal's image.
  * @returns {HTMLElement} a <div> element containing the image.
@@ -58,14 +59,14 @@ const createAnimalImage = (imagen) => {
 
 /**
  * Generates and renders sponsor animal cards within the sponsored animals container.
- * 
+ *
  * This function:
  *  1. Selects the '.sponsored-animals-cards-container' element (if not found, return).
  *  2. Clears any existing content in the container.
  *  3. If the provided 'animals' array is empty, displays a message indicating no sponsored pets.
  *  4. Otherwise, iterates over each animal, creates a card with its image and info,
  *     and appends it to the container.
- * 
+ *
  * @function createAnimalCard
  * @param {Array} animals - An array of animal objects to render as cards.
  * @param {string} animals[].imagen - The URL of the animal's image.
@@ -96,15 +97,15 @@ const createAnimalCard = (animals) => {
 
 /**
  * Render the list of animals the current user is sponsoring.
- * 
+ *
  * This function:
  *  1. Retrieves the current user and all users from local storage.
  *  2. Finds the index of the current user.
  *  3. Retrieves the array of sponsored animals for the user.
  *  4. Calls 'createAnimalCard' for each sponsored animal to display its card.
- * 
+ *
  * Logs a message if the current user or their sponsorship array cannot be found.
- * 
+ *
  * @function renderSponsoredAnimals
  */
 const renderSponsoredAnimals = () => {
@@ -126,16 +127,16 @@ const renderSponsoredAnimals = () => {
 
 /**
  * Sets up click handlers to toggle the display and icon state of profile sections.
- * 
+ *
  * This function binds click listener to:
  *  1. The 'Sponsored Animals' section title - toggles its expansion, arrow icon rotation,
  *     and the visibility of the sponsored animals cards container.
  *  2. The 'User Details' section title - toggles its expansion, arrow icon rotation,
  *     and the visibility of the user details form.
- * 
+ *
  * It ensures that if the target container or icons are not found, it logs a console waring
  * and safely exists without throwing an error.
- * 
+ *
  * @function sectionsAnimations
  */
 const sectionsAnimations = () => {
@@ -283,29 +284,10 @@ const handleUserDetailsForm = () => {
  */
 const handleUserSesion = () => {
 	const sesionOpen = getDataFromStorage("sesionIsOpen");
-	const btnLogOut = document.querySelector(".house-dog-container-toloco");
-	const currentUser = getDataFromStorage("currentUser");
-
-	console.log("Que vale sesion is open", sesionOpen);
-
 	if (!sesionOpen) {
 		window.location.href = "/index.html";
 		return;
 	}
-	if (!btnLogOut) {
-		console.error("No se encontro el boton de logout");
-		return;
-	}
-	if (!currentUser) {
-		console.error("No se encontro usuario Activo");
-		return;
-	}
-
-	btnLogOut.addEventListener("click", () => {
-		saveDataInStorage("sesionIsOpen", false);
-		removeFromStorage("currentUser");
-		window.location.reload();
-	});
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -324,4 +306,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	sectionsAnimations();
 	renderSponsoredAnimals();
 	handleUserDetailsForm();
+	openMobileNav();
+	linksInteraction();
 });

@@ -1,3 +1,4 @@
+import { linksInteraction, openMobileNav } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
 let ANIMALS_DATA_BASE = {
@@ -226,5 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	handleLogin();
 	handleForms();
 
-	console.log(ANIMALS_DATA_BASE);
+	openMobileNav();
+	linksInteraction();
 });

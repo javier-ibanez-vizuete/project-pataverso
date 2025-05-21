@@ -2,6 +2,7 @@ import { loginScreenLauncher } from "./components/login_screen.js";
 import { ANIMALS_DATA_BACKUP } from "./helpers/animals_backUp.js";
 import { linksInteraction, openMobileNav } from "./helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
+import { getProducts } from "./utils/fetch.js";
 import { handleNavViews } from "./utils/handle-aria.js";
 
 export let sesionIsOpen = false;
@@ -134,4 +135,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	openMobileNav();
 	linksInteraction();
 	handleNavViews();
+	getProducts();
 });
