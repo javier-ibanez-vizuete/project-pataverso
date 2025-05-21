@@ -232,6 +232,16 @@ main #h1-profile-page {
 	gap: 0.4rem;
 }
 
+.label-donation-quantity {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.label-donation-quantity::after {
+	content: "(No se admiten decimales '€')";
+}
+
 .charitable-donation-input-container input {
 	background-color: var(--bg-color);
 	border: none;

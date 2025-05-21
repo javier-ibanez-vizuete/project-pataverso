@@ -67,9 +67,8 @@ export const handleAlertOnForm = (message) => {
 	}, 2500);
 };
 
-
 export const congratsAlert = (petName, userName) => {
-		const body = document.querySelector("body");
+	const body = document.querySelector("body");
 	const bgAlert = document.createElement("div");
 	bgAlert.classList.add("bg-alert");
 
@@ -97,4 +96,3 @@ export const congratsAlert = (petName, userName) => {
 		bgAlert.remove();
 	}, 4000);
 };
-

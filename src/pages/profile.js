@@ -317,6 +317,36 @@ const recalculateDonations = (user) => {
 	spanForDonations.textContent = user.donated;
 };
 
+const donationThanksModal = (quantity, user) => {
+	const body = document.querySelector("body");
+	const bgAlert = document.createElement("div");
+	bgAlert.classList.add("bg-alert");
+
+	const alert = document.createElement("div");
+	alert.classList.add("div-alert");
+
+	alert.innerHTML = `
+    	<div class="logo-header-modal">
+			<picture>
+				<source srcset="/media/logos/logo-pataverso-200w.avif" type="image/avif">
+				<source srcset="/media/logos/logo-pataverso-200w.webp" type="image/webp">
+				<source srcset="/media/logos/logo-pataverso-200w.png" type="image/png">
+				<img src="/media/logos/logo-pataverso.png"/>
+			</picture>
+		</div>
+
+        <h2>Gracias ${user.nombre}</h2>
+        <p>Los ${quantity}€ donados seran utilizados para mejorar la calidad de vida de nuestras mascotas</p>
+    `;
+
+	bgAlert.appendChild(alert);
+	body.appendChild(bgAlert);
+
+	setTimeout(() => {
+		bgAlert.remove();
+	}, 4000);
+};
+
 const handleUserDonation = () => {
 	const donationForm = document.querySelector(".form-charitable-donation");
 	if (!donationForm) {
@@ -359,6 +389,7 @@ const handleUserDonation = () => {
 		event.target.reset();
 		saveDataInStorage("usersData", users);
 		recalculateDonations(user);
+		donationThanksModal(quantity, user);
 	});
 	recalculateDonations(user);
 };
