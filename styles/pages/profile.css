@@ -190,12 +190,8 @@ main #h1-profile-page {
 
 /*  -------------- charitable donation section styles */
 .container-charitable-donation {
-	/* ---BORRAR EL DISPLAY */
-	display: flex;
-	flex-direction: column;
-
-	/* height: 0;
-	overflow: hidden; */
+	height: 0;
+	overflow: hidden;
 	transition-duration: 1s;
 }
 

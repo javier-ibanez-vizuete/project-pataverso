@@ -143,9 +143,11 @@ const renderSponsoredAnimals = () => {
 const sectionsAnimations = () => {
 	const sponsoredSection = document.querySelector(".section-sponsored-animals");
 	const userDetailsSection = document.querySelector(".section-user-details");
+	const donationSection = document.querySelector(".section-charitable-donation");
 
 	const sponsoredSectionTitle = document.querySelector(".sponsored-animal-title");
 	const userDetailsTitle = document.querySelector(".user-details-title");
+	const donationTitle = document.querySelector(".charitable-donation-title");
 
 	sponsoredSectionTitle.addEventListener("click", () => {
 		const arrowIcons = sponsoredSection.querySelectorAll(".icon-arrow-container");
@@ -173,6 +175,20 @@ const sectionsAnimations = () => {
 		}
 		userDetailsSection.classList.toggle("profile-section-opened");
 		sectionFormDetails.classList.toggle("form-user-details-opened");
+	});
+
+	donationTitle.addEventListener("click", () => {
+		const arrowIcons = donationSection.querySelectorAll(".icon-arrow-container");
+		const donationContainer = document.querySelector(".container-charitable-donation");
+		if (arrowIcons.length) {
+			arrowIcons.forEach((icon) => icon.classList.toggle("icon-arrow-container-opened"));
+		}
+		if (!donationContainer) {
+			console.error("No se encontró Donation Container");
+			return;
+		}
+		donationSection.classList.toggle("profile-section-opened");
+		donationContainer.classList.toggle("container-charitable-donation-opened")
 	});
 };
 
@@ -292,6 +308,10 @@ const handleUserSesion = () => {
 	}
 };
 
+const handleUserDonation = () => {
+	
+};
+
 document.addEventListener("DOMContentLoaded", () => {
 	handleUserSesion();
 	const nombreDogHouse = document.getElementById("nombre-dog-house");
@@ -310,4 +330,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	handleUserDetailsForm();
 	openMobileNav();
 	linksInteraction();
+	handleUserDonation();
 });
