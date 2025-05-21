@@ -1,3 +1,4 @@
+import { handleAlertOnForm } from "../helpers/alerts.js";
 import { linksInteraction, openMobileNav } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 
@@ -242,7 +243,8 @@ const handleUserDetailsForm = () => {
 			return;
 		}
 		if (oldPass.value !== user.password) {
-			alert("La antigua contraseña no es correcta");
+			console.log("ENTRANDO EN EL IF");
+			handleAlertOnForm("La antigua contraseña no es correcta");
 			form.reset();
 			return;
 		}

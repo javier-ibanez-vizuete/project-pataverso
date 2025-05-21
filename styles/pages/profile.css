@@ -221,8 +221,7 @@ main #h1-profile-page {
 }
 
 @media (min-width: 1440px) {
-		.sponsored-animals-cards-container-opened {
+	.sponsored-animals-cards-container-opened {
 		grid-template-columns: repeat(3, 1fr);
 	}
-
 }

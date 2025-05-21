@@ -1,6 +1,7 @@
 import { loginScreenLauncher } from "./components/login_screen.js";
 import { ANIMALS_DATA_BACKUP } from "./helpers/animals_backUp.js";
 import { linksInteraction, openMobileNav } from "./helpers/buttons_nav.js";
+import { petsCounter } from "./helpers/pets_counter.js";
 import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
 import { getProducts } from "./utils/fetch.js";
 import { handleNavViews } from "./utils/handle-aria.js";
@@ -136,4 +137,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	linksInteraction();
 	handleNavViews();
 	getProducts();
+	petsCounter();
 });

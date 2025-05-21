@@ -1,15 +1,18 @@
+import { handleAlertOnForm } from "../helpers/alerts.js";
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 /**
  * Displays an alert modal informing the user they have been banned or encountered a critical error.
- * 
+ *
  * This function creates and appends a full-screen overlay modal with a branded header,
  * apology message, and the provided error message. After 6 seconds, the page automatically reloads.
- * 
+ *
  * @function createAlertModal
  * @param {string} messageError - The error or ban message to display inside the modal.
  */
-const createAlertModal = (messageError) => {
+export const createAlertModal = (messageError) => {
+	console.log("ENTRANDO EN LA FUNCION");
 	const body = document.querySelector("body");
+	console.log("QUE VALE BODY", body);
 
 	const bgModal = document.createElement("div");
 	bgModal.classList.add("bg-banned-alert-modal");
@@ -46,7 +49,7 @@ const createAlertModal = (messageError) => {
  *  - If points < 1: the promise is rejected with a "not elegible" message.
  *  - If 1 <= points < 7: the promise is resolved with a "placed on candidated list" message.
  *  - If points >= 7: the promise is resolved with an "approved" message.
- * 
+ *
  * @function calculateResponse
  * @param {string} animalName - The name of the animal for which adoption is requested.
  * @returns {Promise}
@@ -137,28 +140,28 @@ const handleAdoptForm = async (animalName) => {
 		event.preventDefault();
 
 		if (inputHomeType.value === "disabled") {
-			alert("Por favor elija un tipo de casa");
+			handleAlertOnForm("Por favor elija un tipo de vivienda");
 			inputHomeType.scrollIntoView({ behavior: "smooth", block: "center" });
 			return;
 		}
 		if (inputHomeAlone.value === "disabled") {
-			alert("Necesita elegir cuanto tiempo esta la casa vacia.");
+			handleAlertOnForm("Necesita elegir cuanto tiempo esta la casa vacia.");
 			inputHomeAlone.scrollIntoView({ behavior: "smooth", block: "center" });
 			return;
 		}
 		if (inputHandleBills.value === "disabled") {
-			alert("Por favor debe rellenar el campo - Afrontar gastos veterinarios");
+			handleAlertOnForm("Por favor debe rellenar el campo - Afrontar gastos veterinarios");
 			inputHandleBills.scrollIntoView({ behavior: "smooth", block: "center" });
 			return;
 		}
 		if (inputMorePets.value === "disabled") {
-			alert("Debe elegir si tiene más mascotas en casa");
+			handleAlertOnForm("Debe elegir si tiene más mascotas en casa");
 			inputMorePets.scrollIntoView({ behavior: "smooth", block: "center" });
 			return;
 		}
 		try {
 			const response = await calculateResponse(animalName);
-			alert(response);
+			handleAlertOnForm(response);
 			window.location.href = "/index.html";
 		} catch (error) {
 			users[currentUserIndex].is_banned = true;
