@@ -188,7 +188,7 @@ const sectionsAnimations = () => {
 			return;
 		}
 		donationSection.classList.toggle("profile-section-opened");
-		donationContainer.classList.toggle("container-charitable-donation-opened")
+		donationContainer.classList.toggle("container-charitable-donation-opened");
 	});
 };
 
@@ -308,8 +308,59 @@ const handleUserSesion = () => {
 	}
 };
 
+const recalculateDonations = (user) => {
+	const spanForDonations = document.querySelector(".span-donation-counter");
+	if (!spanForDonations) {
+		console.error("No se encontró .span-donation-counter");
+		return;
+	}
+	spanForDonations.textContent = user.donated;
+};
+
 const handleUserDonation = () => {
-	
+	const donationForm = document.querySelector(".form-charitable-donation");
+	if (!donationForm) {
+		console.error("No se encontro la etiqueta <form> en profile.html");
+		return;
+	}
+	const users = getDataFromStorage("usersData");
+	if (!users) {
+		console.error("No se encontró usersData en localstorage");
+		return;
+	}
+	if (!users.length) {
+		console.error("El array users esta vacio");
+		return;
+	}
+	const currentUser = getDataFromStorage("currentUser");
+	if (!currentUser) {
+		console.error("No se encontró currentUser en localStorage");
+		return;
+	}
+	const userIndex = users.findIndex((user) => user.id === currentUser.id);
+	if (userIndex === -1) {
+		console.error("No se encontro userIndex por ID.");
+		return;
+	}
+	const user = users[userIndex];
+
+	donationForm.addEventListener("submit", (event) => {
+		event.preventDefault();
+		const quantityToDonate = document.querySelector("#input-donation-quantity");
+		const confirmationPass = document.querySelector("#input-donation-password-confirmation");
+
+		if (confirmationPass.value !== user.password) {
+			handleAlertOnForm("La contraseña es incorrecta");
+			event.target.reset();
+			return;
+		}
+		const quantity = Number(quantityToDonate.value);
+		user.donated += quantity;
+		event.target.reset();
+		saveDataInStorage("usersData", users);
+		recalculateDonations(user);
+	});
+	recalculateDonations(user);
 };
 
 document.addEventListener("DOMContentLoaded", () => {

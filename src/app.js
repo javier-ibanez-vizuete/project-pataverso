@@ -108,6 +108,7 @@ export let USERS_DATA = [
 			colaboration_time: "no-limit",
 			participation_events: true,
 		},
+		donated: 0,
 	},
 ];
 

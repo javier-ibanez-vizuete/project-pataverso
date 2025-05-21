@@ -114,6 +114,7 @@ const createUser = () => {
 			colaboration_time: "",
 			participation_events: false,
 		},
+		donated: 0,
 	};
 	verificationUser(newUser);
 };
