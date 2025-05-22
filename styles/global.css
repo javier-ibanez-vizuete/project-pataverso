@@ -525,7 +525,8 @@ button:hover {
 .conejaurios-nav-container,
 .cerrar-sesion,
 .pataamigos-rescued-container,
-.profile-link-container {
+.profile-link-container,
+.merchandising-mobile-nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -652,8 +653,6 @@ button:hover {
 	font-size: 1.5rem;
 	font-weight: 900;
 }
-
-
 
 /*  -------------- alert modal ------- */
 .bg-alert {

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description" content="Pagina ficticia de Protectora Veterinaria. | Ejercicio didactico.">
     <meta property="og:title" content="Pataverso.com">
     <meta property="og:description" content="Pagina ficticia de Protectora Veterinaria. | Ejercicio didactico.">
@@ -21,11 +22,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="shortcut icon" href="/media/favicon-pataverso.png" type="image/x-icon">
     <link rel="stylesheet" href="/styles/index.css" />
-    <link rel="stylesheet" href="/styles/pages/profile.css">
+    <link rel="stylesheet" href="/styles/pages/merchandising.css" />
 
-    <script src="/src/pages/profile.js" defer type="module"></script>
-
-    <title>Perfil | Pataverso.com</title>
+    <script src="/src/pages/merchandising.js" defer type="module"></script>
+    <title>Tienda | Pataverso.com</title>
 </head>
 
 <body>
@@ -205,7 +205,7 @@
                     <a href="/Pages/animal.html" class="conejaurios-nav-desktop-container">CONEJAURIOS</a>
                     <a href="/Pages/rescued_animal.html" class="pataamigos-rescued-desktop-container">¿PATAAMIGO
                         RESCATADO?</a>
-                        <a href="/Pages/merchandising.html">Pata Tienda</a>
+                    <a href="/Pages/merchandising.html">Pata Tienda</a>
                     <button class="cerrar-sesion">
                         <div class="logout-image-container icon-nav-container">
                             <picture>
@@ -222,128 +222,76 @@
         </header>
         <main id="main">
             <div class="main-container container">
-                <h1 id="h1-profile-page">Tu Perfil</h1>
-                <section class="section-sponsored-animals">
-                    <div class="title-section-profile-container sponsored-animal-title">
-                        <div class="icon-arrow-container">
-                            <picture>
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.avif" type="image/avif">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.webp" type="image/webp">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.png" type="image/png">
-                                <img src="/media/icons/icon-arrows/icon-arrow-pink.png" alt="icon pink arrow">
-                            </picture>
-                        </div>
-                        <h2>MASCOTAS APADRINADAS</h2>
-                        <div class="icon-arrow-container">
-                            <picture>
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.avif" type="image/avif">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.webp" type="image/webp">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.png" type="image/png">
-                                <img src="/media/icons/icon-arrows/icon-arrow-pink.png" alt="icon pink arrow">
-                            </picture>
-                        </div>
+                <div class="patatienda-title-container">
+                    <div class="patatienda-icon-container">
+                        <picture>
+                            <source srcset="/media/icons/icon_patatienda/icon-patatienda-200w.avif" type="image/avif">
+                            <source srcset="/media/icons/icon_patatienda/icon-patatienda-200w.webp" type="image/webp">
+                            <source srcset="/media/icons/icon_patatienda/icon-patatienda-200w.png" type="image/png">
+                            <img src="/media/icons/icon_patatienda/icon-patatienda.png" alt="Icon of a Shop">
+                        </picture>
                     </div>
-                    <div class="sponsored-animals-cards-container">
-                    </div>
-                </section>
-
-                <section class="section-user-details">
-                    <div class="title-section-profile-container user-details-title">
-                        <div class="icon-arrow-container">
-                            <picture>
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.avif" type="image/avif">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.webp" type="image/webp">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.png" type="image/png">
-                                <img src="/media/icons/icon-arrows/icon-arrow-pink.png" alt="icon pink arrow">
-                            </picture>
+                    <h1>Pata Tienda</h1>
+                </div>
+                <section class="products-filters-sectioin">
+                    <h3>Filtrar</h3>
+                    <form action="#" method="get" class="products-filter-form">
+                        <div class="input-filter-product-container">
+                            <label for="input-filter-product-name" class="label-filter-product-name">Buscar
+                                Producto</label>
+                            <input type="search" name="input-filter-product-name" id="input-filter-product-name">
                         </div>
-                        <h2 class="title-user-details">DATOS DE USUARIO</h2>
-                        <div class="icon-arrow-container">
-                            <picture>
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.avif" type="image/avif">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.webp" type="image/webp">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.png" type="image/png">
-                                <img src="/media/icons/icon-arrows/icon-arrow-pink.png" alt="icon pink arrow">
-                            </picture>
-                        </div>
-                    </div>
-                    <form action="#" method="get" class="form-user-details">
-                        <div class="change-user-details-container">
-                            <label for="input-change-user-name" class="label-change-user-name">Nombre <span
-                                    class="span-old-name"></span></label>
-                            <input type="text" name="input-change-user-name" id="input-change-user-name"
-                                placeholder="Introduce nuevo nombre de usuario..." minlength="4" maxlength="20">
-                        </div>
-
-                        <div class="change-user-details-container">
-                            <label for="input-change-user-email" class="label-change-user-email">Correo
-                                Electronico <span class="span-old-email"></span></label>
-                            <input type="email" name="input-change-user-email" id="input-change-user-email"
-                                placeholder="Introduce un nuevo Email..." minlength="10" maxlength="40">
-                        </div>
-                        <div class="change-user-details-container">
-                            <label for="input-old-user-password" class="label-old-user-password">Antigua
-                                Contraseña</label>
-                            <input type="password" name="input-old-user-password" id="input-old-user-password"
-                                placeholder="Introduce la contraseña antigua..." minlength="8" maxlength="40" required>
-                        </div>
-                        <div class="change-user-details-container">
-                            <label for="input-change-user-password" class="label-change-user-password">Nueva
-                                Contraseña</label>
-                            <input type="password" name="input-change-user-password" id="input-change-user-password"
-                                placeholder="Introduce la nueva contraseña..." minlength="8" maxlength="40">
-                        </div>
-                        <div class="btn-change-user-details-container">
-                            <button class="apply-change-user-details btn-style">Guardar Cambios</button>
+                        <div class="input-filter-product-container">
+                            <label for="select-filter-product-type" class="label-filter-product-type">Categoria</label>
+                            <select name="select-filter-product-type" id="select-filter-product-type"></select>
                         </div>
                     </form>
                 </section>
 
-                <section class="section-charitable-donation">
-                    <div class="title-section-profile-container charitable-donation-title">
-                        <div class="icon-arrow-container">
-                            <picture>
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.avif" type="image/avif">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.webp" type="image/webp">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.png" type="image/png">
-                                <img src="/media/icons/icon-arrows/icon-arrow-pink.png" alt="icon pink arrow">
-                            </picture>
+                <div class="products-container">
+                    <div class="product-card">
+                        <div class="img-product-container">
+                            <img src="/media/pictures/images-merchandising/resized/image-cat-feeder.png"
+                                alt="Red Cat Feeder">
                         </div>
-                        <h2 class="title-user-details">DONACIONES</h2>
-                        <div class="icon-arrow-container">
-                            <picture>
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.avif" type="image/avif">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.webp" type="image/webp">
-                                <source srcset="/media/icons/icon-arrows/icon-arrow-pink-200w.png" type="image/png">
-                                <img src="/media/icons/icon-arrows/icon-arrow-pink.png" alt="icon pink arrow">
-                            </picture>
+                        <div class="info-product-container">
+                            <div class="details-product-container">
+                                <h4 class="product-name">Comedor rojo Luxury</h4>
+                                <h4>Categoria:<span class="span-product-category">Comedero</span></h4>
+                                <h4>Precio:<span class="span-product-price">35</span>€</h4>
+                            </div>
+                            <button class="btn-buy-product btn-style">COMPRAR</button>
                         </div>
                     </div>
-                    <div class="container-charitable-donation">
-                        <div class="container-donation-counter">
-                            <h5><span class="span-donation-counter">0</span>€ Donados</h5>
+                    <div class="product-card">
+                        <div class="img-product-container">
+                            <img src="/media/pictures/images-merchandising/resized/image-cat-feeder.png"
+                                alt="Red Cat Feeder">
                         </div>
-
-                        <form action="#" class="form-charitable-donation" method="get">
-                            <div class="charitable-donation-input-container">
-                                <label for="input-donation-quantity" class="label-donation-quantity">Cantidad a
-                                    donar:</label>
-                                <input type="number" name="input-donation-quantity" id="input-donation-quantity" min="0"
-                                    required placeholder="Indique una cantidad en euros...">
+                        <div class="info-product-container">
+                            <div class="details-product-container">
+                                <h4 class="product-name">Comedor rojo Luxury</h4>
+                                <h4>Categoria:<span class="span-product-category">Comedero</span></h4>
+                                <h4>Precio:<span class="span-product-price">35</span>€</h4>
                             </div>
-                            <div class="charitable-donation-input-container">
-                                <label for="input-donation-password-confirmation"
-                                    class="label-donation-password-confirmation">Confirmar contraseña:</label>
-                                <input type="password" name="input-donation-password-confirmation"
-                                    id="input-donation-password-confirmation" required
-                                    placeholder="Introduzca su contraseña de usuario...">
-                            </div>
-                            <button class="btn-apply-charitable-donation btn-style">Donar</button>
-                        </form>
+                            <button class="btn-buy-product btn-style">COMPRAR</button>
+                        </div>
                     </div>
-                </section>
-
-                <a href="/index.html" class="return-to-home">Volver a la pagina principal</a>
+                    <div class="product-card">
+                        <div class="img-product-container">
+                            <img src="/media/pictures/images-merchandising/resized/image-cat-feeder.png"
+                                alt="Red Cat Feeder">
+                        </div>
+                        <div class="info-product-container">
+                            <div class="details-product-container">
+                                <h4 class="product-name">Comedor rojo Luxury</h4>
+                                <h4>Categoria:<span class="span-product-category">Comedero</span></h4>
+                                <h4>Precio:<span class="span-product-price">35</span>€</h4>
+                            </div>
+                            <button class="btn-buy-product btn-style">COMPRAR</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
         <footer id="footer">
