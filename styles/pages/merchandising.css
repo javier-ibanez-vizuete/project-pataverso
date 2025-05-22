@@ -23,6 +23,46 @@ h1 {
 	font-size: 2.5rem;
 }
 
+/*  ------------- FILTERS CONTAINER ------------ */
+
+.products-filters-section {
+	display: flex;
+	flex-direction: column;
+	
+	background-color: var(--accent-bg-color);
+	padding: var(--spacing-lg);
+	border-radius: var(--border-card);
+}
+
+.products-filters-section h3 {
+	align-self: center;
+	font-family: "cattyfont";
+	font-weight: 500;
+}
+
+.products-filter-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.input-filter-product-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.input-filter-product-container > input, .input-filter-product-container > select {
+	background-color: var(--bg-color);
+	color: var(--primary-text-color);
+	border: none;
+	outline: none;
+}
+
+.input-filter-product-container > input::placeholder {
+	color: var(--primary-text-color);
+}
+
 /*  ---------- PRODUCTS CONTAINER ------------- */
 .products-container {
 	display: flex;

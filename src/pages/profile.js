@@ -1,6 +1,7 @@
 import { handleAlertOnForm } from "../helpers/alerts.js";
 import { linksInteraction, logoutprofile, openMobileNav } from "../helpers/buttons_nav.js";
-import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
+import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
+import { handleUserSesion } from "../utils/handle_login.js";
 import { imageFixer } from "../utils/image_fixer.js";
 
 /**
@@ -288,26 +289,6 @@ const handleUserDetailsForm = () => {
 	});
 };
 
-/**
- * Verifies session status and attaches a logout listener.
- *
- * This function check if a user session is open by reading from local storage.
- *  - If no session is active, it redirects to the login page.
- *  - If logout button or current user data is missing, it logs and error.
- *  - Otherwise, it binds a click handler to the logout button that:
- *    1. Sets the session flag to false.
- *    2. Removes the current user from storage.
- *    3. Reloads the page.
- *
- * @function handleUserSesion
- */
-const handleUserSesion = () => {
-	const sesionOpen = getDataFromStorage("sesionIsOpen");
-	if (!sesionOpen) {
-		window.location.href = "/index.html";
-		return;
-	}
-};
 
 const recalculateDonations = (user) => {
 	const spanForDonations = document.querySelector(".span-donation-counter");

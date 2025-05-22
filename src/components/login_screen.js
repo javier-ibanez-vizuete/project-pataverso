@@ -115,6 +115,7 @@ const createUser = () => {
 			participation_events: false,
 		},
 		donated: 0,
+		products_bought: [],
 	};
 	verificationUser(newUser);
 };

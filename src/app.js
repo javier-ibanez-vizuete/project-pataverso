@@ -109,6 +109,7 @@ export let USERS_DATA = [
 			participation_events: true,
 		},
 		donated: 0,
+		products_bought: [],
 	},
 ];
 

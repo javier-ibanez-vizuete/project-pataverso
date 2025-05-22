@@ -96,3 +96,34 @@ export const congratsAlert = (petName, userName) => {
 		bgAlert.remove();
 	}, 4000);
 };
+
+export const handleBuyingModal = (product, user) => {
+	const body = document.querySelector("body");
+	const bgAlert = document.createElement("div");
+	bgAlert.classList.add("bg-alert");
+
+	const alert = document.createElement("div");
+	alert.classList.add("div-alert");
+
+	alert.innerHTML = `
+    	<div class="logo-header-modal">
+			<picture>
+				<source srcset="/media/logos/logo-pataverso-200w.avif" type="image/avif">
+				<source srcset="/media/logos/logo-pataverso-200w.webp" type="image/webp">
+				<source srcset="/media/logos/logo-pataverso-200w.png" type="image/png">
+				<img src="/media/logos/logo-pataverso.png"/>
+			</picture>
+		</div>
+
+        <h2>Gracias ${user.nombre} por comprar</h2>
+		<p>${product.nombre}</p>
+        <p>El 100% del importe de la compra (${product.precio}€) sera destinado para el cuidado y mejora de nuestras mascotas e instalaciones</p>
+    `;
+
+	bgAlert.appendChild(alert);
+	body.appendChild(bgAlert);
+
+	setTimeout(() => {
+		bgAlert.remove();
+	}, 6000);
+};
