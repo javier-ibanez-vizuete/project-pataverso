@@ -1,6 +1,7 @@
 import { handleAlertOnForm } from "../helpers/alerts.js";
-import { linksInteraction, openMobileNav } from "../helpers/buttons_nav.js";
+import { linksInteraction, logoutprofile, openMobileNav } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
+import { imageFixer } from "../utils/image_fixer.js";
 
 /**
  * Creates and returns a DOM element that displays detailed information
@@ -395,6 +396,7 @@ const handleUserDonation = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+	imageFixer();
 	handleUserSesion();
 	const nombreDogHouse = document.getElementById("nombre-dog-house");
 
@@ -413,4 +415,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	openMobileNav();
 	linksInteraction();
 	handleUserDonation();
+	logoutprofile();
 });

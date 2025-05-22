@@ -1,4 +1,4 @@
-import { saveDataInStorage } from "./storage.js";
+import { removeFromStorage, saveDataInStorage } from "./storage.js";
 
 /**
  * Sets up event listeners to open and close the movile navigation menu.
@@ -80,4 +80,20 @@ export const linksInteraction = () => {
 		saveDataInStorage("pataAnimalName", "Conejaurios");
 		window.location.href = "/pages/animal.html";
 	});
+};
+
+export const logoutprofile = () => {
+	const logout = document.querySelectorAll(".cerrar-sesion");
+	if (!logout.length) {
+		console.error("No se encontro '.cerrar-sesion'");
+		return
+	}
+
+	logout.forEach((button) => {
+		button.addEventListener("click", () => {
+			saveDataInStorage("sesionIsOpen", false);
+			removeFromStorage("currentUser");
+			window.location.href = "/index.html";
+		})
+	})
 };

@@ -4,6 +4,7 @@ import { ANIMALS_DATA_BACKUP } from "../helpers/animals_backUp.js";
 import { openMobileNav, linksInteraction } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../helpers/storage.js";
 import { floatingButton } from "../utils/floating_button.js";
+import { imageFixer } from "../utils/image_fixer.js";
 
 // export let animals = [];
 export let ANIMALS_DATA_BASE = {
@@ -21,13 +22,13 @@ let animalToFetch = getDataFromStorage("animalFetch");
 
 /**
  * Fetches and caches animal data for a given type if not already loaded.
- * 
+ *
  * This asynchronous function determines the target animal type (from the
  * provided parameter or local storage), checks the in-memory cache
  * ('ANIMALS_DATA_BASE'), and if empty, performs a network request to
  * retrieve the data. On success, it populates the cache and persists it
  * to local storage. On failure, it logs the error and restores the backup data.
- * 
+ *
  * @function sendingAFetch
  * @param {string} animal - The animal type to fetch (perro, gato, conejo).
  *    If omitted, retrieves the type from local storage key "animalFetch".
@@ -174,6 +175,7 @@ const handleTitlesSection = async () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+	imageFixer();
 	const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
 	const btnApplyFilters = document.querySelector(".btn-apply-filters");
 

@@ -1,6 +1,7 @@
 import { congratsAlert, handleAlertOnForm } from "../helpers/alerts.js";
-import { linksInteraction, openMobileNav } from "../helpers/buttons_nav.js";
+import { linksInteraction, logoutprofile, openMobileNav } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
+import { imageFixer } from "../utils/image_fixer.js";
 
 let ANIMALS_DATA_BASE = {
 	perro: [],
@@ -228,9 +229,11 @@ const handleForms = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+	imageFixer();
 	handleLogin();
 	handleForms();
 
 	openMobileNav();
 	linksInteraction();
+	logoutprofile();
 });

@@ -3,8 +3,8 @@ import { ANIMALS_DATA_BACKUP } from "./helpers/animals_backUp.js";
 import { linksInteraction, openMobileNav } from "./helpers/buttons_nav.js";
 import { petsCounter } from "./helpers/pets_counter.js";
 import { getDataFromStorage, saveDataInStorage } from "./helpers/storage.js";
-import { getProducts } from "./utils/fetch.js";
 import { handleNavViews } from "./utils/handle-aria.js";
+import { imageFixer } from "./utils/image_fixer.js";
 
 export let sesionIsOpen = false;
 
@@ -123,7 +123,7 @@ document.addEventListener("load", handleNavViews);
 document.addEventListener("resize", handleNavViews);
 
 document.addEventListener("DOMContentLoaded", () => {
-	// const btnResetStorage = document.querySelector(".clear-storage");
+	imageFixer();
 	const btnCloseProfile = document.querySelectorAll(".cerrar-sesion");
 
 	// btnResetStorage.addEventListener("click", deleteLocalStorage);
@@ -137,6 +137,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	openMobileNav();
 	linksInteraction();
 	handleNavViews();
-	getProducts();
 	petsCounter();
 });
