@@ -23,7 +23,7 @@ export const petsObjects = [
 	{
 		id: 3,
 		nombre: "Pienso Natural para Perros",
-		precio: 13.50,
+		precio: 13.5,
 		tipo: "Pienso",
 		imagen: "/media/pictures/images-merchandising/resized/image-natural-dog-food.png",
 	},
@@ -55,25 +55,39 @@ export const petsObjects = [
 		tipo: "Identificador Mascota",
 		imagen: "/media/pictures/images-merchandising/resized/image-cat-id-tag.png",
 	},
-    {
-        id: 8,
-        nombre: "Comedero Luxury unisex blanco de ceramica",
-        precio: 15,
-        tipo: "Comedero",
-        imagen: "/media/pictures/images-merchandising/resized/image-dog-feeder.png"
-    },
-    {
-        id: 9,
-        nombre: "Comedero Artesano unisex de ceramica",
-        precio: 22,
-        tipo: "Comedero",
-        imagen: "/media/pictures/images-merchandising/resized/image-dog-feeder-orange.png"
-    },
-    {
-        id: 10,
-        nombre: "Comedero Luxury rojo Metalico",
-        precio: 18,
-        tipo: "Comedero",
-        imagen: "/media/pictures/images-merchandising/resized/image-cat-feeder.png"
-    },
+	{
+		id: 8,
+		nombre: "Comedero Luxury unisex blanco de ceramica",
+		precio: 15,
+		tipo: "Comedero",
+		imagen: "/media/pictures/images-merchandising/resized/image-dog-feeder.png",
+	},
+	{
+		id: 9,
+		nombre: "Comedero Artesano unisex de ceramica",
+		precio: 22,
+		tipo: "Comedero",
+		imagen: "/media/pictures/images-merchandising/resized/image-dog-feeder-orange.png",
+	},
+	{
+		id: 10,
+		nombre: "Comedero Luxury rojo Metalico",
+		precio: 18,
+		tipo: "Comedero",
+		imagen: "/media/pictures/images-merchandising/resized/image-cat-feeder.png",
+	},
+	{
+		id: 11,
+		nombre: "Mordedor Goma Verde para Perros",
+		precio: 16,
+		tipo: "Juguete",
+		imagen: "/media/pictures/images-merchandising/resized/image-dog-toy-green.png/",
+	},
+	{
+		id: 12,
+		nombre: "Juguete Goma Amarilla para Gatos",
+		precio: 14,
+		tipo: "Juguete",
+		imagen: "/media/pictures/images-merchandising/resized/image-cat-toy-yellow.png/",
+	},
 ];
