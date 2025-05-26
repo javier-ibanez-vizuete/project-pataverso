@@ -1,6 +1,6 @@
 import { petsObjects } from "../components/pets_objects.js";
 import { handleBuyingModal } from "../helpers/alerts.js";
-import { linksInteraction, openMobileNav } from "../helpers/buttons_nav.js";
+import { linksInteraction, logoutprofile, openMobileNav } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 import { imageFixer } from "../utils/image_fixer.js";
 
@@ -76,8 +76,12 @@ const createInfoContainer = (product) => {
 			handleBuyingModal(product, user);
 			return;
 		}
-		const productSelected = userProducts.filter((productbought) => productbought.id === product.id);
-		productSelected.quantity += 1;
+		const productSelectedIndex = userProducts.findIndex((productbought) => productbought.id === product.id);
+		if (productSelectedIndex === -1) {
+			console.error("No hemos encontrado el producto Por ID");
+			return;
+		}
+		userProducts[productSelectedIndex].quantity += 1;
 		saveDataInStorage("usersData", users);
 		handleBuyingModal(product, user);
 		console.log("Que vale userProduct despues de comprar", userProducts);
@@ -151,7 +155,7 @@ const renderProducts = async (currentSearch = "") => {
         `;
 		return;
 	}
-	if (currentSearch) {
+	if (search) {
 		products = petsObjects.filter((product) => product.nombre.toLowerCase().includes(search));
 	}
 	if (select.value !== select.options[0].value) {
@@ -190,6 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	openMobileNav();
 	linksInteraction();
 	renderProducts();
-
+	logoutprofile();
     handleSearch();
 });
