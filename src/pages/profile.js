@@ -5,6 +5,14 @@ import { floatingButton } from "../utils/floating_button.js";
 import { handleUserSesion } from "../utils/handle_login.js";
 import { imageFixer } from "../utils/image_fixer.js";
 
+/**
+ * @description
+ * Renders the list of products purchased by the current user.
+ * If no purchases are found, displays a message and a link to the store.
+ *
+ * @function renderProductsBought
+ * @returns {void}
+ */
 const renderProductsBought = () => {
 	const users = getDataFromStorage("usersData");
 	const currentUser = getDataFromStorage("currentUser");
@@ -355,6 +363,15 @@ const handleUserDetailsForm = () => {
 	});
 };
 
+/**
+ * @description
+ * Updates the on-page donation counter to reflect the total amount donated by the user.
+ *
+ * @function recalculateDonations
+ * @param {Object} user            - The user object.
+ * @param {number} user.donated    - The total amount the user has donated.
+ * @returns {void}
+ */
 const recalculateDonations = (user) => {
 	const spanForDonations = document.querySelector(".span-donation-counter");
 	if (!spanForDonations) {
@@ -364,6 +381,16 @@ const recalculateDonations = (user) => {
 	spanForDonations.textContent = user.donated;
 };
 
+/**
+ * @description
+ * Creates and displays a thank-you modal when a user completes a donation.
+ *
+ * @function donationThanksModal
+ * @param {number} amount      - The amount of money donated.
+ * @param {Object} user        - The user object representing the donor.
+ * @param {string} user.nombre - The name of the user, used to personalize the message.
+ * @returns {void}
+ */
 const donationThanksModal = (quantity, user) => {
 	const body = document.querySelector("body");
 	const bgAlert = document.createElement("div");
@@ -394,6 +421,29 @@ const donationThanksModal = (quantity, user) => {
 	}, 4000);
 };
 
+/**
+ * @description
+ * Initializes and manages the user donation workflow on the profile page.
+ * Attaches a submit listener to the donation form, validates the user’s password,
+ * updates the user’s donated amount, persists changes to localStorage,
+ * updates the on-page donation counter, and displays a thank-you modal.
+*
+* @dependencies
+* - DOM elements:
+*   • A `<form>` with class `.form-charitable-donation`.
+*   • An `<input>` with ID `#input-donation-quantity` for the donation amount.
+*   • An `<input>` with ID `#input-donation-password-confirmation` for password confirmation.
+*   • A `<span>` with class `.span-donation-counter` for displaying total donations.
+* - Storage helpers:
+*   • `getDataFromStorage(key: string): any`
+*   • `saveDataInStorage(key: string, value: any): void`
+* - Utility functions:
+*   • `handleAlertOnForm(message: string): void` — displays validation alerts.
+*   • `recalculateDonations(user: Object): void` — updates the donation counter.
+*   • `donationThanksModal(amount: number, user: Object): void` — shows a thank-you modal.
+ * @function handleUserDonation
+ * @returns {void}
+ */
 const handleUserDonation = () => {
 	const donationForm = document.querySelector(".form-charitable-donation");
 	if (!donationForm) {

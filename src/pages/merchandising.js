@@ -5,6 +5,21 @@ import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
 import { floatingButton } from "../utils/floating_button.js";
 import { imageFixer } from "../utils/image_fixer.js";
 
+/**
+ * @description
+ * Creates and returns a DOM element containing detailed product information,
+ * including name, category, and price. The returned container is structured
+ * with semantic headings and spans for styling and accesibility.
+ *
+ * @function createDetailsContainer
+ * @param {string} name - The name of the product.
+ * @param {string} category - The category to which the product belongs.
+ * @param {number} price - The price of the product in euros.
+ * @returns {HTMLDivElement} A '<div>' element with the class 'details-product-container' containing:
+ *   - An '<h4>' with class 'product-name' for the product.
+ *   - An '<h4>' with a nested '<span>' with the class 'span-product-category' displaying the category.
+ *   - An '<h4>' with a nested '<span>' with the class 'span-product-price' displaying the price suffixed with '€'.
+ */
 const createDetailsContainer = (name, category, price) => {
 	const detailsContainer = document.createElement("div");
 	detailsContainer.classList.add("details-product-container");
@@ -32,6 +47,27 @@ const createDetailsContainer = (name, category, price) => {
 	return detailsContainer;
 };
 
+/**
+ * @description
+ * Constructs and returns a product info container including details and a purchase button.
+ *  - Retrieves all users and the current user from localStorage.
+ *  - Displays product name, category, and price via 'createDetailsContainer'.
+ *  - Configures a 'buy' button that:
+ *    1. changes to 'buy Again' if the product was previously purchased.
+ *    2. Adds the product to the user's 'products_bought' array (initially with quantity 1) or
+ *       increments its quantity if already present.
+ *    3. Persists updates to localStorage and triggers the 'handleBuyingModal'.
+ *
+ * @function createInfoContainer
+ * @param {Object} product - The Product Object from the Array
+ * @param {string} product.id - Unique identifier for the product.
+ * @param {string} product.nombre - Product name.
+ * @param {string} product.tipo - Product Category.
+ * @param {number} product.precio - Product price.
+ * @returns {HTMLDivElement} A '<div>' with class 'info-product-container' containing:
+ *   - A details section (from 'createDetailsContainer').
+ *   - A purchase '<button>' with class 'btn-buy-product-btn-style'.
+ */
 const createInfoContainer = (product) => {
 	const users = getDataFromStorage("usersData");
 	const currentUser = getDataFromStorage("currentUser");
@@ -94,6 +130,15 @@ const createInfoContainer = (product) => {
 	return infoContainer;
 };
 
+/**
+ * @description
+ * Creates and returns a container `<div>` element wrapping a lazily-loaded product image.
+ *
+ * @function createProductImage
+ * @param {string} image - The URL source of the product image.
+ * @returns {HTMLDivElement} A `<div>` element with class `img-product-container` containing:
+ *  - An `<img>` element with `loading="lazy"` and `src` set to the provided URL.
+ */
 const createProductImage = (image) => {
 	const imageContainer = document.createElement("div");
 	imageContainer.classList.add("img-product-container");
@@ -107,6 +152,22 @@ const createProductImage = (image) => {
 	return imageContainer;
 };
 
+/**
+ * @description
+ * Builds and returns a complete product card element composed of an image section and
+ * an information section. Utilizes helper functions to construct each sub-component.
+ *
+ * @function createProductCard
+ * @param {Object} product
+ * @param {string} product.imagen - URL of the product image.
+ * @param {string} product.id     - Unique identifier for the product.
+ * @param {string} product.nombre - Name of the product.
+ * @param {string} product.tipo   - Category/type of the product.
+ * @param {number} product.precio - Price of the product in euros.
+ * @returns {HTMLDivElement} A `<div>` element with class `product-card` containing:
+ *  1. An image container (`.img-product-container`) with a lazy-loaded `<img>`.
+ *  2. An info container (`.info-product-container`) with details and purchase logic.
+ */
 const createProductCard = (product) => {
 	const cardContainer = document.createElement("div");
 	cardContainer.classList.add("product-card");
@@ -121,6 +182,15 @@ const createProductCard = (product) => {
 	return cardContainer;
 };
 
+/**
+ * @description
+ * Populates a `<select>` element with unique product categories derived from the global `petsObjects` array.
+ * Clears any existing options and inserts a default placeholder, then adds one `<option>` per distinct `tipo`.
+ *
+ * @function handleOptionsOnFilter
+ * @param {void}
+ * @returns {void}
+ */
 const handleOptionsOnFilter = () => {
 	const select = document.querySelector("#select-filter-product-type");
 	const Objects = petsObjects;
@@ -143,6 +213,16 @@ const handleOptionsOnFilter = () => {
 	});
 };
 
+/**
+ * @description
+ * Renders product cards in the `.products-container` element based on an optional search term
+ * and the selected category filter from the `<select>` element with ID `select-filter-product-type`.
+ * If no products are found after filtering, an appropriate message is displayed.
+ *
+ * @function renderProducts
+ * @param {string} [currentSearch=""] - Optional search query to filter products by name.
+ * @returns {Promise<void>}
+ */
 const renderProducts = async (currentSearch = "") => {
 	const productsContainer = document.querySelector(".products-container");
 	productsContainer.innerHTML = "";
@@ -174,20 +254,29 @@ const renderProducts = async (currentSearch = "") => {
 	});
 };
 
+/**
+ * @description
+ * Sets up event listeners on the product filter form inputs to dynamically update
+ * the displayed product list based on the user's search query and category selection.
+ * When the user types in the search input or changes the category select, the product list is filtered accordingly.
+ *
+ * @function handleSearch
+ * @returns {void}
+ */
 const handleSearch = () => {
-    const select = document.querySelector("#select-filter-product-type")
-    const inputSearch = document.querySelector("#input-filter-product-name");
+	const select = document.querySelector("#select-filter-product-type");
+	const inputSearch = document.querySelector("#input-filter-product-name");
 
-    select.addEventListener("change", () => {
-        renderProducts(inputSearch.value);
-        return
-    })
+	select.addEventListener("change", () => {
+		renderProducts(inputSearch.value);
+		return;
+	});
 
-    inputSearch.addEventListener("keyup", (event) => {
-        const search = event.target.value;
-        renderProducts(search);
-    })
-}
+	inputSearch.addEventListener("keyup", (event) => {
+		const search = event.target.value;
+		renderProducts(search);
+	});
+};
 
 document.addEventListener("DOMContentLoaded", () => {
 	imageFixer();
@@ -196,6 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	linksInteraction();
 	renderProducts();
 	logoutprofile();
-    handleSearch();
+	handleSearch();
 	floatingButton();
 });

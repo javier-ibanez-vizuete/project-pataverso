@@ -48,7 +48,7 @@ export const saveDataInStorage = (key, data) => {
 export const deleteLocalStorage = () => {
 	localStorage.clear();
 	window.location.reload();
-};
+}; //ACTUALMENTE NO SE USA 'SE USO AL PRINCIPIO DEL PROYECTO'
 
 /**
  * Removes an item from localStorage if it exists.

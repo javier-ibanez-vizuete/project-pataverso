@@ -1,5 +1,15 @@
 import { getDataFromStorage } from "./storage.js";
 
+/**
+ * @description
+ * Retrieves the array of animals from localStorage and updates a DOM element
+ * with the total count of all pets (Dogs, Cats, and Rabbits). If the display
+ * element or stored data is missing, logs an error or aborts silently.
+ * 
+ * @function petsCounter
+ * @param {void}
+ * @returns {void}
+ */
 export const petsCounter = () => {
 	const counterdisplay = document.querySelector(".span-counter-pet-display");
 	const animals = getDataFromStorage("animalsData");

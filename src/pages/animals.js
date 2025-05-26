@@ -6,7 +6,6 @@ import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../hel
 import { floatingButton } from "../utils/floating_button.js";
 import { imageFixer } from "../utils/image_fixer.js";
 
-// export let animals = [];
 export let ANIMALS_DATA_BASE = {
 	perro: [],
 	gato: [],
