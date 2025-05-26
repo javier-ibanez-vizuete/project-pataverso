@@ -5,10 +5,10 @@ export const floatingButton = () => {
 	btnGoUp.classList.add("btn-back-to-top");
 	btnGoUp.innerHTML = `
 		<picture>
-			<source srcset="/media/pictures/image-bond-scroll/image-bond-scroll-200w.avid" type="image/avid">
-			<source srcset="/media/pictures/image-bond-scroll/image-bond-scroll-200w.webp" type="image/webp">
-			<source srcset="/media/pictures/image-bond-scroll/image-bond-scroll-200w.png" type="image/png">
-    		<img src="/media/pictures/image-bond-scroll/image-bond-scroll.png" class="svgIcon"/>
+			<source srcset="/media/icons/icon-scroll-up/icon-scroll-up-200w.avif" type="image/avif">
+			<source srcset="/media/icons/icon-scroll-up/icon-scroll-up-200w.webp" type="image/webp">
+			<source srcset="/media/icons/icon-scroll-up/icon-scroll-up-200w.png" type="image/png">
+    		<img src="/media/icons/icon-scroll-up/icon-scroll-up.png" class="svgIcon"/>
 		</picture>
 `;
 	body.appendChild(btnGoUp);

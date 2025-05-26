@@ -2,6 +2,7 @@ import { petsObjects } from "../components/pets_objects.js";
 import { handleBuyingModal } from "../helpers/alerts.js";
 import { linksInteraction, logoutprofile, openMobileNav } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
+import { floatingButton } from "../utils/floating_button.js";
 import { imageFixer } from "../utils/image_fixer.js";
 
 const createDetailsContainer = (name, category, price) => {
@@ -196,4 +197,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	renderProducts();
 	logoutprofile();
     handleSearch();
+	floatingButton();
 });

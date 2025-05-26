@@ -1,8 +1,70 @@
 import { handleAlertOnForm } from "../helpers/alerts.js";
 import { linksInteraction, logoutprofile, openMobileNav } from "../helpers/buttons_nav.js";
 import { getDataFromStorage, saveDataInStorage } from "../helpers/storage.js";
+import { floatingButton } from "../utils/floating_button.js";
 import { handleUserSesion } from "../utils/handle_login.js";
 import { imageFixer } from "../utils/image_fixer.js";
+
+const renderProductsBought = () => {
+	const users = getDataFromStorage("usersData");
+	const currentUser = getDataFromStorage("currentUser");
+	if (!users.length) {
+		console.error("No se encontro usersData en localStorage");
+		return;
+	}
+	if (!currentUser) {
+		console.error("No se encontro currentUser en localStorage");
+		return;
+	}
+	const userIndex = users.findIndex((user) => user.id === currentUser.id);
+	if (userIndex === -1) {
+		console.error("No se ha encontrado el indice de user por ID");
+		return;
+	}
+	const user = users[userIndex];
+	const products = user.products_bought;
+	const productsContainer = document.querySelector(".products-bought-container");
+	if (!productsContainer) {
+		console.error("No hemos encontrado la clase '.products-bought-container'");
+		return;
+	}
+	productsContainer.innerHTML = "";
+	if (!products.length) {
+		productsContainer.innerHTML = `
+		<h4 class="no-products-title">Aun no ha comprado ningun producto</h4>
+		<a href="/pages/merchandising.html" class="no-products-link">TIENDA</a>
+		`;
+	}
+	products.forEach((product, index, array) => {
+		const productCard = document.createElement("div");
+		const lastElement = array.length - 1;
+		productCard.classList.add("product-bought-card");
+		productCard.innerHTML = `
+		<div class="product-bought-image-container">
+			<img src="${product.imagen}" loading="lazy" />
+		</div>
+		<div class="product-bought-info-container">
+			<h4>${product.nombre}</h4>
+			<h5>PRECIO: <span class="span-product-bought-price">${product.precio}€</span></h5>
+			<h5>CANTIDAD COMPRADA: <span class="span-product-bought-quantity">${product.quantity}</span></h5>
+			<h5>TOTAL APORTADO: <span class="span-product-bought-contributed">${product.quantity * product.precio}€</span></h5>
+		</div>
+		`;
+		productsContainer.appendChild(productCard);
+		if (index === lastElement) {
+			const cantidadTotalGastada = products.reduce((acc, product) => {
+				acc += product.precio * product.quantity;
+				return acc;
+			}, 0);
+			const productCounter = document.createElement("div");
+			productCounter.classList.add("product-bought-counter");
+			productCounter.innerHTML = `
+			<h6>CANTIDAD TOTAL APORTADA EN TIENDA: <span>${cantidadTotalGastada}€</span></h6>
+			`;
+			productsContainer.appendChild(productCounter);
+		}
+	});
+};
 
 /**
  * Creates and returns a DOM element that displays detailed information
@@ -146,10 +208,12 @@ const sectionsAnimations = () => {
 	const sponsoredSection = document.querySelector(".section-sponsored-animals");
 	const userDetailsSection = document.querySelector(".section-user-details");
 	const donationSection = document.querySelector(".section-charitable-donation");
+	const productsSection = document.querySelector(".section-products-bought");
 
 	const sponsoredSectionTitle = document.querySelector(".sponsored-animal-title");
 	const userDetailsTitle = document.querySelector(".user-details-title");
 	const donationTitle = document.querySelector(".charitable-donation-title");
+	const productsTitle = document.querySelector(".products-bought-title");
 
 	sponsoredSectionTitle.addEventListener("click", () => {
 		const arrowIcons = sponsoredSection.querySelectorAll(".icon-arrow-container");
@@ -191,6 +255,21 @@ const sectionsAnimations = () => {
 		}
 		donationSection.classList.toggle("profile-section-opened");
 		donationContainer.classList.toggle("container-charitable-donation-opened");
+	});
+
+	productsTitle.addEventListener("click", () => {
+		const arrowIcons = productsSection.querySelectorAll(".icon-arrow-container");
+		const productsContainer = document.querySelector(".products-bought-container");
+
+		if (arrowIcons.length) {
+			arrowIcons.forEach((icon) => icon.classList.toggle("icon-arrow-container-opened"));
+		}
+		if (!productsContainer) {
+			console.error("No hemos encontrado '.products-bought-container'");
+			return;
+		}
+		productsSection.classList.toggle("profile-section-opened");
+		productsContainer.classList.toggle("products-bought-container-opened");
 	});
 };
 
@@ -288,7 +367,6 @@ const handleUserDetailsForm = () => {
 		console.log("Users after changes", users);
 	});
 };
-
 
 const recalculateDonations = (user) => {
 	const spanForDonations = document.querySelector(".span-donation-counter");
@@ -392,9 +470,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	sectionsAnimations();
 	renderSponsoredAnimals();
+	renderProductsBought();
 	handleUserDetailsForm();
 	openMobileNav();
 	linksInteraction();
 	handleUserDonation();
 	logoutprofile();
+	floatingButton();
 });

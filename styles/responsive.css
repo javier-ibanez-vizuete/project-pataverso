@@ -111,11 +111,45 @@
 		border-radius: var(--border-card);
 	}
 
-
 	.help-links-list,
 	.credits-list,
 	.help-list {
 		gap: 1rem;
+	}
+
+	/* --------styles for btn BackToTop-------- */
+	.btn-back-to-top {
+		width: 60px;
+		height: 60px;
+	}
+
+	body .go-up-button {
+		right: 20px;
+		bottom: 10px;
+	}
+
+	.svgIcon {
+		width: 40px;
+	}
+
+	.btn-back-to-top:hover {
+		width: 140px;
+		border-radius: 50px;
+		transition-duration: 0.3s;
+		background-color: var(--btn-xtra-color);
+		align-items: center;
+	}
+
+	.btn-back-to-top:hover .svgIcon {
+		transition-duration: 0.3s;
+		transform: translateY(-300%);
+	}
+
+	.btn-back-to-top:hover::before {
+		font-size: 13px;
+		opacity: 1;
+		bottom: unset;
+		transition-duration: 0.3s;
 	}
 }
 
