@@ -25,44 +25,44 @@ Por Javier Ibáñez Vizuete
 
 -   Functional registration and login forms.
 
-## Capturas de Pantalla
+## Screenshots
 
-### Página Principal (Inicio)
+### Landing Page
 
 ![Login Page](/media/pictures/screenshots/view_login_pataverso.jpg)
 
-### Apadrinamiento
+### Adopt section
 
 ![Animals section](/media/pictures/screenshots/view-animals-pataverso.jpg)
 
-### Iconografía Personalizada
+### Logo
 
 ![Logo](/media/logos/logo-pataverso.png)
 
-## Tecnologías Utilizadas
+## Technologies Used
 
--   **HTML5:** Estructura semántica del sitio.
--   **CSS3:** Estilos responsivos y personalizados.
--   **JavaScript:** Interacciones básicas para formularios y comportamiento dinámico.
--   **Prettier:** Herramienta para mantener el estilo del código.
--   **Imágenes optimizadas:** AVIF, WebP, PNG (todas pasadas por Squoosh).
--   **Tipografías personalizadas:** Fuentes amigables y alegres para reforzar la identidad.
+-   **HTML5:** Semantic structure of the site.
+-   **CSS3:** Responsive and custom styles.
+-   **JavaScript:** Basic interactions for forms and dynamic behavior.
+-   **Prettier:** Tool to maintain code style.
+-   **Optimized images:** AVIF, WebP, PNG (all processed with Squoosh).
+-   **Custom fonts:**  Friendly and cheerful fonts to reinforce identity.
 
-## Uso
+## Use
 
-**1.** Clona el repositorio:
+**1.** Clone the Repository:
 
 ```bash
 git clone https://github.com/javier-ibanez-vizuete/project-pataverso.git
 ```
 
-**2.** Abre el archivo `index.html` en tu navegador, o usa Live Server si estás en VS Code.
+**2.** Open the `index.html` in your browser, or use Live Server if you are using Visual Studio.
 
-**3.** Navega por las secciones disponibles: Perfil, Perrichuchos, Gaticornios, Conejaurios, Pata Tienda, PataAmigo Rescatado.
+**3.** Browse the available sections: Profile, Perrichuchos, Gaticornios, Conejaurios, Pata Tienda, PataAmigo Rescatado.
 
-## Estructura del Proyecto
+## Project Structure
 
-El proyecto esta estructurado de la siguiente manera:
+The project is structured as follows:
 
 <details>
 <sumary>
@@ -109,24 +109,24 @@ El proyecto esta estructurado de la siguiente manera:
 </sumary>
 </details>
 
-## Créditos
+## Credits
 
-**Autor:** Javier Ibáñez Vizuete
+**Author:** Javier Ibáñez Vizuete
 
 -   [LinkedIn](https://www.linkedin.com/in/javier-ibanez-vizuete/)
 -   [Instagram](https://www.instagram.com/eljaviersiclaro/)
 
-Recursos adicionales:
--   Imágenes creadas con IA y editadas con herramientas como remove.bg, Squoosh.
--   Ilustraciones generadas con estilo cartoon para mantener una estética amigable.
+Additional resources:
+-   Images created with AI and edited with tools like remove.bg, Squoosh.
+-   Illustrations generated in a cartoon style to maintain a friendly aesthetic.
 
-## Recursos Útiles
+## Useful Resources
 
--   **Squoosh:** Optimización de imágenes sin pérdida visible.
--   **Remove.bg:** Eliminación de fondo en PNGs.
+-   **Squoosh:** Image optimization without visible loss.
+-   **Remove.bg:** Background removing on PNG's.
 
-## Licencia
+## License
 
-Este proyecto está bajo la **Licencia MIT.**
-Puedes usar, modificar y distribuir este software libremente siempre que mantengas la atribución al autor original.
-Para más detalles, consulta el archivo [LICENSE](LICENSE).
+This project is under the **Licencia MIT.**
+You are free to use, modify, and distribute this software as long as you keep the original author attribution.
+For more details, see the [LICENSE](LICENSE).
