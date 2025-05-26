@@ -370,6 +370,7 @@ main #h1-profile-page {
 		flex: 1;
 	}
 
+	/* ---------Products-bought-section -------- */
 	.products-bought-container-opened {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
@@ -382,7 +383,14 @@ main #h1-profile-page {
 }
 
 @media (min-width: 1440px) {
+	/* ---------sponsored-animals-section ------- */
 	.sponsored-animals-cards-container-opened {
 		grid-template-columns: repeat(3, 1fr);
 	}
+
+		/* ---------Products-bought-section -------- */
+	.products-bought-container-opened {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
 }

@@ -37,6 +37,16 @@ export const handleAlertOnLogin = (message) => {
 	}, 2500);
 };
 
+/**
+ * @description
+ * Display a transient modal-style alert overlay on the page with a branded header and custom message.
+ * Creates and appends a semi-opaque background layer and an alert box containing the Pataverso logo,
+ * a heading, and the provided message. Automatically removes the overlay after 2.5 seconds.
+ *
+ * @function handleAlertOnForm
+ * @param {string} message - The text message to display inside the alert.
+ * @returns {void}
+ */
 export const handleAlertOnForm = (message) => {
 	const body = document.querySelector("body");
 	const bgAlert = document.createElement("div");
@@ -67,6 +77,18 @@ export const handleAlertOnForm = (message) => {
 	}, 2500);
 };
 
+/**
+ * @description
+ * Displays a branded, full-screen succes alert overlay thanking the user by name
+ * and confirming the arrangements will be made for pet pickup. The alert includes
+ * the PataVerso logo header, a personalized greeting, and message mentioning the pet name.
+ * Automatically dismisses after 4 seconds.
+ *
+ * @function congratsAlert
+ * @param {string} petName - The name of the pet for which pickup is being arranged.
+ * @param {string} userName - The name of the user to thank in the alert heading.
+ * @returns {void}
+ */
 export const congratsAlert = (petName, userName) => {
 	const body = document.querySelector("body");
 	const bgAlert = document.createElement("div");
@@ -97,6 +119,21 @@ export const congratsAlert = (petName, userName) => {
 	}, 4000);
 };
 
+/**
+ * @description
+ * Displays a branded, full-screen purchase confirmation modal overlay thanking the user
+ * by name, summarizing the purchased product, and explaining that 100% of the purchased price
+ * will be used for care and improvement of the pets and facilities. Automatically
+ * dismisses after 6 seconds.
+ * 
+ * @function handleBuyingModal
+ * @param {Object} product - The product that was purchased.
+ * @param {string} product.nombre - The name of the purchased product.
+ * @param {number} product.precio - The price of the purchased product in euros.
+ * @param {Object} user - The user who made the purchase.
+ * @param {string} user.nombre - The name of the purchasing user.
+ * @returns {void}
+ */
 export const handleBuyingModal = (product, user) => {
 	const body = document.querySelector("body");
 	const bgAlert = document.createElement("div");

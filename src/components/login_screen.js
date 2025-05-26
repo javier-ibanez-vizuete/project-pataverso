@@ -56,6 +56,7 @@ const verificationUser = async (newUser) => {
  * and passes it to 'verificationUser' for further checks and storage.
  *
  * @function createUser
+ * @returns {void}
  */
 const createUser = () => {
 	const userName = document.querySelector("#input-name-register-form");
@@ -154,6 +155,7 @@ const handleRegisterForm = () => {
  *
  * @function validationLogin
  * @param {{ email: string, password: string }} userForLogin - The credentials entered by the user.
+ * @returns {void}
  */
 const validationLogin = (userForLogin) => {
 	const usersRegistered = getDataFromStorage("usersData");

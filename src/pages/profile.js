@@ -35,9 +35,8 @@ const renderProductsBought = () => {
 		<a href="/pages/merchandising.html" class="no-products-link">TIENDA</a>
 		`;
 	}
-	products.forEach((product, index, array) => {
+	products.forEach((product) => {
 		const productCard = document.createElement("div");
-		const lastElement = array.length - 1;
 		productCard.classList.add("product-bought-card");
 		productCard.innerHTML = `
 		<div class="product-bought-image-container">
@@ -51,18 +50,6 @@ const renderProductsBought = () => {
 		</div>
 		`;
 		productsContainer.appendChild(productCard);
-		if (index === lastElement) {
-			const cantidadTotalGastada = products.reduce((acc, product) => {
-				acc += product.precio * product.quantity;
-				return acc;
-			}, 0);
-			const productCounter = document.createElement("div");
-			productCounter.classList.add("product-bought-counter");
-			productCounter.innerHTML = `
-			<h6>CANTIDAD TOTAL APORTADA EN TIENDA: <span>${cantidadTotalGastada}€</span></h6>
-			`;
-			productsContainer.appendChild(productCounter);
-		}
 	});
 };
 
