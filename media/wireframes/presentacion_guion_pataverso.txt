@@ -1,0 +1,18 @@
+Diapositiva 1 - 
+Buenos días, soy Javier Ibáñez y hoy os presento PataVerso, una web para gestionar adopciones y apadrinamientos de perros, gatos y conejos.
+Diapositiva 2 -
+En España cientos de animales quedan en la calle o refugios con pocos recursos. PataVerso ofrece un espacio donde se les cuida y se difunde su perfil para encontrarles un hogar o padrinos.
+Diapositiva 3 -
+Apunté a dos prfiles: quien busca un compañero peludo y quien, aunque no adopte, quiere contribuir como padrino. El proyecto demuestra mis competencias en JS moderno y front-end optimizado.
+Diapositiva 4 -
+He usado ES6 para un código limpio y actualizado asi como <picture> con srcset para servir imágenes en diferentes resoluciones y compresiones mejorando el rendimiento en la carga de las mismas.
+Diapositiva 5 -
+En PataVerso he optado por un enfoque Mobile First: partimos de la versión móvil para asegurar usabilidad en pantallas pequeñas y vamos añadiendo media queries para tabletas, escritorio y pantallas XXL. 
+Usamos Flexbox y CSS Grid para reorganizar el layout, y <picture> con srcset para servir imágenes fluidas según el dispositivo. 
+Tambien he creado menú hamburguesa en móvil y barra fija en desktop, garantizando una experiencia óptima en todos los tamaños.
+Diapositiva 6 -
+Al entrar, se registra o inicia sesión. Explora las mascotas, decide adoptar o apadrinar. En “Perfil” revisa sus solicitudes y compras.
+Diapositiva 7 -
+En el futuro planeo añadir una sección avanzada de perfil, soporte multi-idioma, además de reforzar la accesibilidad.
+Diapositiva 8 -
+Para finalizar, construyendo Pataverso ademas de cuidar y difundir animales, tambien logro demostrar mis habilidades avanzadas de JS y HTML y CSS. Muchas gracias. ¿Preguntas?

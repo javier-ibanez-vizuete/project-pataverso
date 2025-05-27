@@ -10,9 +10,9 @@ import { getDataFromStorage } from "./storage.js";
  * @param {void}
  * @returns {void}
  */
-export const petsCounter = () => {
+export const petsCounter = async () => {
 	const counterdisplay = document.querySelector(".span-counter-pet-display");
-	const animals = getDataFromStorage("animalsData");
+	const animals = await getDataFromStorage("animalsData");
 
     if (!counterdisplay) {
         return;
