@@ -44,6 +44,7 @@ const verificationUser = async (newUser) => {
 		saveDataInStorage("sesionIsOpen", true);
 		handleSeason();
 		await firstRender();
+		console.log("ESTOy PASANDO POR AQUI?");
 		petsCounter();
 	}
 };

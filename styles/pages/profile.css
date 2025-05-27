@@ -366,6 +366,10 @@ main #h1-profile-page {
 		padding: 0 var(--spacing-lg);
 	}
 
+	.h4-no-pet-message {
+		grid-column: 2;
+	}
+
 	.sponsored-animal-image-container {
 		flex: 1;
 	}
@@ -375,6 +379,11 @@ main #h1-profile-page {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		padding: 0 var(--spacing-lg);
+	}
+
+	.no-products-title,
+	.no-products-link {
+		grid-column: 2;
 	}
 
 	.product-bought-image-container {
@@ -388,9 +397,8 @@ main #h1-profile-page {
 		grid-template-columns: repeat(3, 1fr);
 	}
 
-		/* ---------Products-bought-section -------- */
+	/* ---------Products-bought-section -------- */
 	.products-bought-container-opened {
 		grid-template-columns: repeat(3, 1fr);
 	}
-
 }
